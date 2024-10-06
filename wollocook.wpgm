@@ -1,2 +1,20 @@
 import objetosCocina.*
+import chefcito.*
+import posiciones.*
 
+program wollocok {
+    
+    // config
+    game.height(10)
+	game.width(10)
+
+    //teclas
+    keyboard.w().onPressDo({chefcito.mover(arriba)})
+    keyboard.s().onPressDo({chefcito.mover(abajo)})
+    keyboard.d().onPressDo({chefcito.mover(derecha)})
+    keyboard.a().onPressDo({chefcito.mover(izquierda)})
+
+    game.addVisual(chefcito)
+
+    game.start()
+}

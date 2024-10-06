@@ -6,3 +6,4 @@
     -cada pizza/ prepisa debe saber su nivel de coccion -> las imagenes deben tener número como la evolución del maiz??
 
     -> el horno después lo cambio
+
