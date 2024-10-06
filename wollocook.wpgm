@@ -13,6 +13,7 @@ program wollocok {
     keyboard.s().onPressDo({remy.mover(abajo)})
     keyboard.d().onPressDo({remy.mover(derecha)})
     keyboard.a().onPressDo({remy.mover(izquierda)})
+    keyboard.e().onPressDo({remy.recogerIngrediente()})
 
     game.addVisual(remy)
 
