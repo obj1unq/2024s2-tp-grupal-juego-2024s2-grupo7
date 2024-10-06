@@ -9,12 +9,12 @@ program wollocok {
 	game.width(10)
 
     //teclas
-    keyboard.w().onPressDo({chefcito.mover(arriba)})
-    keyboard.s().onPressDo({chefcito.mover(abajo)})
-    keyboard.d().onPressDo({chefcito.mover(derecha)})
-    keyboard.a().onPressDo({chefcito.mover(izquierda)})
+    keyboard.w().onPressDo({remy.mover(arriba)})
+    keyboard.s().onPressDo({remy.mover(abajo)})
+    keyboard.d().onPressDo({remy.mover(derecha)})
+    keyboard.a().onPressDo({remy.mover(izquierda)})
 
-    game.addVisual(chefcito)
+    game.addVisual(remy)
 
     game.start()
 }
