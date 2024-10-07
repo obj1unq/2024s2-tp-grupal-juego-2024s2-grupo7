@@ -1,0 +1,23 @@
+import wollok.game.*
+import objetosCocina.*
+import remy.*
+import posiciones.*
+
+program wollocok {
+    
+    // config
+    game.height(10)
+	game.width(10)
+
+    //teclas
+    keyboard.w().onPressDo({remy.mover(arriba)})
+    keyboard.s().onPressDo({remy.mover(abajo)})
+    keyboard.d().onPressDo({remy.mover(derecha)})
+    keyboard.a().onPressDo({remy.mover(izquierda)})
+    keyboard.e().onPressDo({remy.recogerIngrediente()})
+
+    game.addVisual(remy)
+
+    game.start()
+}
+
