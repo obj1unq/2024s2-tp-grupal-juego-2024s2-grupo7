@@ -1,3 +1,7 @@
+import wollok.game.*
+import comestibles.*
+
+
 object horno {
   var property position = game.at(0, 0)
   var property image = "oven_" + estadoComida + ".png"
