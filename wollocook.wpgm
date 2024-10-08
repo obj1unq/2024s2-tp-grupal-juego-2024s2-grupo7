@@ -1,6 +1,6 @@
 import wollok.game.*
 import objetosCocina.*
-import remy.*
+import Chef_remy.*
 import posiciones.*
 import comestibles.*
 
