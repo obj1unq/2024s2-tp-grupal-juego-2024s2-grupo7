@@ -11,8 +11,7 @@ class Pizza {
 
 
     method image(){
-
-        return "pizaa_" + nivelCoccion + ".png"
+        return "pizza_1.png"
     }
 
     method serCocinada(){
@@ -24,6 +23,18 @@ class Pizza {
     method pizzaQuemada(){
         game.say(self,"me olvidaste en el horno :()")
     }
+
+    method serSostenido(chef) {
+        self.validarSostener(chef.bandeja())
+        chef.bandeja().add(self)
+        game.removeVisual(self)
+    }
+
+    method validarSostener(lista) {
+         if(not lista.isEmpty()){ 
+            self.error("Ya esta sosteniendo algo")
+        }
+    } 
 
     method coccion(){
 
@@ -61,7 +72,7 @@ class Ingrediente {
     }
      
     method sumarseAPizza(pizzaDelante) { //Aca el chef probablemente necesite un metodo que devuelva
-        self.validarIngrediente(pizza.ingredientes())// la pizza que tenga delante si es que la tiene
-        pizza.ingredientes().add(self)
+        self.validarIngrediente(pizzaDelante.ingredientes())// la pizza que tenga delante si es que la tiene
+        pizzaDelante.ingredientes().add(self)
     } // con el mismo boton que se agarran los ingredientes deberian poder ser colocados en la pizza
 }

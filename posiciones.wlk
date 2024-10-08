@@ -1,6 +1,6 @@
 object arriba {
   
-  method siguiente(position)= position.up(1)
+  method siguiente(position) = position.up(1)
 }
 
 object abajo {

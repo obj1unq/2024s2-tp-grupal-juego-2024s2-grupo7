@@ -2,12 +2,16 @@ import wollok.game.*
 import objetosCocina.*
 import remy.*
 import posiciones.*
+import comestibles.*
 
-program wollocok {
+program wollocook {
     
     // config
     game.height(10)
 	game.width(10)
+    //game.ground("fondoPizzeria.jpg")
+    game.addVisual(horno)
+    game.addVisual(new Pizza(position = game.origin()))
 
     //teclas
     keyboard.w().onPressDo({remy.mover(arriba)})
@@ -15,6 +19,8 @@ program wollocok {
     keyboard.d().onPressDo({remy.mover(derecha)})
     keyboard.a().onPressDo({remy.mover(izquierda)})
     keyboard.e().onPressDo({remy.recogerIngrediente()})
+    keyboard.q().onPressDo({remy.depositarIngrediente()})
+    
 
     game.addVisual(remy)
 

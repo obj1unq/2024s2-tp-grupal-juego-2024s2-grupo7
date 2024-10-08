@@ -1,0 +1,96 @@
+game.onCollideDo(pepita, {algo => algo.colision(pepita)})
+Primero va el objeto que va a colisionar
+
+method colision(personaje) {
+    personaje.comerVisual(self)
+}
+
+(0 .. game.width() - 1) Generador de rango, defino los limites, es algo parecido a una lista
+
+(0 .. game.width() - 1).anyOne() esto seria un randomzier del eje x
+
+game.onTick(3000, "comidas", {administradorDeComidas.nuevaComida()})
+
+object administradorDeComidas {
+
+    var contador = 0
+    
+    method nuevaComida() {
+        if(self.hayEspacio()) {
+            game.addVisual(new Manzana(position = randomizer.emptyPosition()))
+            contador += 1
+        }
+        
+    }
+
+    method hayEspacio() {
+        return contador < 3
+    }
+
+    method remover() {
+        contador -= 1
+    }
+
+    Aca pepita tendria que restarle al contador cuando coma una manzana para que el contador
+    no se quede en 3 y se puedan seguir generando manzanas
+}
+
+method construirComida() {
+    return new Manzana(position = randomizer.emptyPosition)
+}
+
+Esto es un factory method, es un metodo de consulta pero que tiene un efecto, solo que no tiene
+un efecto en self, y ademas nos oculta su funcionamiento, no nos dice en su nombre exactamente que 
+comida construye.
+
+method construirComida() {
+    return ({new Manzana(position = etc)}, {new Alpiste = position = etc}).anyOne().apply()
+}
+Una forma de hacerlo
+
+method construirComida() {
+    return [manzanaFactory, alpisteFactory].anyOne().construir(randomizer.emptyPosition)
+}
+
+Entonces este metodo crea una lista con las dos factories y ejecuta un anyOne para obtener 
+aleatoriamente uno de las dos factory y al que toco le pide ejecutar construir, metodo el cual 
+devuelve un nuevo objeto, en este caso una manzana o un alpiste que finalmente es devuelto en el
+return del metodo construirComida.
+
+Luego el administradorDeComidas puede tener una variable con una lista que contenga
+todas las factories para que las conozca y las pueda utilizar como quiera.
+
+object manzanaFactory {
+
+    method construir(position) {
+        return new Manzana(position = position)
+    }
+}
+
+object alpisteFactory{
+
+    method construir(position) {
+        return new Alpiste(position = position)
+    }
+}
+
+method construirComida() {
+    const factory = if(0.randomUpTo(100) < 30) {
+        manzanaFactory
+    }
+    else if(0.randomUpTo(100) > 30) {
+        alpisteFactory
+    }
+}
+
+Esto sirve para determinar las chances de que se cree cada tipo de objeto, en este caso
+las manzanas se crearian un 30% de las veces y el alpiste un 70%
+
+
+object mapa {
+
+    const tablero = 
+    [[_, _, m, _, _, _, _, n, _,],
+    [_, _, m, _, p, _, _, _, _,],
+    [_, _, m, _, s, _, _, _, _,]]
+}
