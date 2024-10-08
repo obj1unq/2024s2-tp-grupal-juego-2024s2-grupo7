@@ -1,5 +1,5 @@
-import wollok.game.*
 import comestibles.*
+import wollok.game.*
 
 
 object horno {
@@ -33,3 +33,15 @@ object horno {
   }
 }
 
+object basura {
+/*
+  tiene que entender eliminar objeto : para cuando se arruine la comida, se queme o así 
+
+*/  
+}
+
+class Mesada {
+/*
+  unico lugar donde se pueden "procesar" los ingredientes
+*/  
+}

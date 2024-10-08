@@ -13,4 +13,23 @@
     -La pizza creo yo, que deberia de estar donde remy la cree, ya que como ingrediente principal
     esta la masa de la pizza que deberia de agarrar remy y despues llevarlo a un lugar para hacer la pizza
 
-    -
+
+
+##¿Cuáles son los ingredientes más utilizados en las pizzas? Los mejores toppings:
+Masa
+Tomate ✔
+Mozzarella 
+Quesos variados ✔
+Embutidos italianos
+Embutidos picantes
+Aceitunas ✔
+Champiñones ✔
+Pimientos
+Atún ✔
+Albahaca fresca
+
+##REMINDERS:
+
+-ver medidas para el juego
+-cambiar los assets que no andan y el horno explosivo
+-conseguir un background
