@@ -1,5 +1,6 @@
 import wollok.game.*
 import objetosCocina.*
+import remy.*
 
 class Pizza {
 
@@ -61,7 +62,114 @@ class Ingrediente {
     }
      
     method sumarseAPizza(pizzaDelante) { //Aca el chef probablemente necesite un metodo que devuelva
-        self.validarIngrediente(pizza.ingredientes())// la pizza que tenga delante si es que la tiene
-        pizza.ingredientes().add(self)
+ //       self.validarIngrediente(pizza.ingredientes())// la pizza que tenga delante si es que la tiene
+   //     pizza.ingredientes().add(self)
     } // con el mismo boton que se agarran los ingredientes deberian poder ser colocados en la pizza
+}
+
+class Tomate {
+
+    var property position = null
+    var property image = "mesadaConTomate.png"
+
+    method serSostenido(remy){
+        remy.recogerIngrediente(self)
+    }
+
+}
+
+
+class Muzzarella {
+
+    var  property position = null 
+    var property image = "muzzarella.png"
+
+    method serSotenido(remy){
+
+        remy.recogerIngrediente(self)
+    }
+}
+
+class Masa {
+
+    var property position = null
+    var property image = "masa.png"
+
+    method serSotenido(remy){
+
+        remy.recogerIngrediente(self)
+    }
+}
+
+class PureTomate {
+
+    var property position = null
+    var property image = "pureTomte.png"
+
+    method serSotenido(remy){
+
+        remy.recogerIngrediente(new PureTomate(position= remy.position())) // por refactorizar
+    }
+}
+
+object administradorIngredientes{
+     const creados = #{}
+     const factories = [tomateFactory,masaFactory,muzzarellaFactory]
+
+
+     method nuevoIngrediente(){
+
+        if(self.hayEspacio()){
+            const ingrediente = self.construirIngrediente()
+                game.addVisual(ingrediente)
+                creados.add(ingrediente)
+        }
+     }
+
+     method hayEspacio(){
+
+        return creados.size() < 5
+     }
+
+     method construirIngrediente(){
+
+
+        return factories.anyOne().construir()
+     }
+
+     method remover(ingrediente){
+
+        game.removeVisual(ingrediente)
+        creados.remove(ingrediente)
+     }
+}
+
+object tomateFactory {
+    const position = null // aca hay que llenar con la posicion donde va a estar la canaste de tomates o como lo llamemos
+
+        method construir(){
+
+            return new Tomate (position = position)
+        }
+
+}
+
+object masaFactory {
+    
+    const position = null // aca vamos a llenar con la posicion donde va a estar  el lugar donde supuestamente agarremos la masa
+
+        method construir(){
+
+            return new Masa (position = position)
+        }
+}
+
+object muzzarellaFactory {
+
+    const position = null // aca vamos a llenar con la posicion donde va a estar la heladera con  el queso
+
+    method construir(){
+
+        return new Muzzarella (position = position)
+    }
 }
