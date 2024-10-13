@@ -4,9 +4,9 @@ import comestibles.*
 
 object remy { //remy es el de Ratatouille
     var property position = game.center() 
-    const property image = "remy.1.png"
+    const property image = "chefPrueba.png"
     const property ingredientes = #{}
-    const limiteDeIngredientes = 3
+    const limiteDeIngredientes = 10
 
     method mover(direccion){
 		position =  direccion.siguiente(self.position())

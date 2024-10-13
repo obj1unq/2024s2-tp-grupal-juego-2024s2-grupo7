@@ -11,16 +11,20 @@ program wollocok {
 	game.width(10)
 
     //teclas
-    keyboard.w().onPressDo({remy.mover(arriba)})
-    keyboard.s().onPressDo({remy.mover(abajo)})
-    keyboard.d().onPressDo({remy.mover(derecha)})
-    keyboard.a().onPressDo({remy.mover(izquierda)})
+    //keyboard.w().onPressDo({remy.mover(arriba)})
+    //keyboard.s().onPressDo({remy.mover(abajo)})
+    //keyboard.d().onPressDo({remy.mover(derecha)})
+    //keyboard.a().onPressDo({remy.mover(izquierda)})
     
 
     game.onCollideDo(remy,{ingrediente => ingrediente.serSostenido(remy) })
     
 
-    game.addVisual(remy)
+    game.addVisualCharacter(remy)
+
+    //generador de ingredientea
+
+    game.onTick(10000, "ingredientes", {administradorIngredientes.nuevoIngrediente()})
 
     game.start()
 }

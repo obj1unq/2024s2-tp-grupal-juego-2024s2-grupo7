@@ -70,10 +70,15 @@ class Ingrediente {
 class Tomate {
 
     var property position = null
-    var property image = "mesadaConTomate.png"
+    
 
     method serSostenido(remy){
         remy.recogerIngrediente(self)
+    }
+
+    method image(){
+
+        return "tomate.png"
     }
 
 }
@@ -82,22 +87,32 @@ class Tomate {
 class Muzzarella {
 
     var  property position = null 
-    var property image = "muzzarella.png"
+    
 
-    method serSotenido(remy){
+    method serSostenido(remy){
 
         remy.recogerIngrediente(self)
+    }
+
+    method image(){
+
+        return "muzzarella.png"
     }
 }
 
 class Masa {
 
     var property position = null
-    var property image = "masa.png"
+    
 
-    method serSotenido(remy){
+    method serSostenido(remy){
 
         remy.recogerIngrediente(self)
+    }
+
+    method image(){
+
+        return "masa.png"
     }
 }
 
@@ -145,7 +160,7 @@ object administradorIngredientes{
 }
 
 object tomateFactory {
-    const position = null // aca hay que llenar con la posicion donde va a estar la canaste de tomates o como lo llamemos
+    const position = game.at(5,5) // aca hay que llenar con la posicion donde va a estar la canaste de tomates o como lo llamemos
 
         method construir(){
 
@@ -156,7 +171,7 @@ object tomateFactory {
 
 object masaFactory {
     
-    const position = null // aca vamos a llenar con la posicion donde va a estar  el lugar donde supuestamente agarremos la masa
+    const position = game.at(5,6)// aca vamos a llenar con la posicion donde va a estar  el lugar donde supuestamente agarremos la masa
 
         method construir(){
 
@@ -166,7 +181,7 @@ object masaFactory {
 
 object muzzarellaFactory {
 
-    const position = null // aca vamos a llenar con la posicion donde va a estar la heladera con  el queso
+    const position = game.at(5,7) // aca vamos a llenar con la posicion donde va a estar la heladera con  el queso
 
     method construir(){
 
