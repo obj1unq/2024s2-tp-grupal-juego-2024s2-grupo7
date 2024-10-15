@@ -1,8 +1,10 @@
-import wollok.game.*
+import comestibles.*
 import objetosCocina.*
 import Chef_remy.*
 import posiciones.*
-import comestibles.*
+
+import wollok.game.*
+
 
 program wollocook {
     
@@ -11,7 +13,7 @@ program wollocook {
 	game.width(10)
     //game.ground("fondoPizzeria.jpg")
     game.addVisual(horno)
-    game.addVisual(new Pizza(position = game.origin()))
+    //game.addVisual(new Masa(position = game.origin()))
 
     //teclas //si hacemos 1 solo cheff no sería más facil hacer que se mueva con las flechas y que todo lo demás lo haga son qwerty?
     keyboard.w().onPressDo({remy.mover(arriba)})
@@ -20,9 +22,22 @@ program wollocook {
     keyboard.a().onPressDo({remy.mover(izquierda)})
     keyboard.e().onPressDo({remy.recogerIngrediente()})
     keyboard.q().onPressDo({remy.depositarIngrediente()})
+
+    //teclas
+    //keyboard.w().onPressDo({remy.mover(arriba)})
+    //keyboard.s().onPressDo({remy.mover(abajo)})
+    //keyboard.d().onPressDo({remy.mover(derecha)})
+    //keyboard.a().onPressDo({remy.mover(izquierda)})
     
 
-    game.addVisual(remy)
+    game.onCollideDo(remy,{ingrediente => ingrediente.serSostenido(remy) })
+    
+
+    game.addVisualCharacter(remy)
+
+    //generador de ingredientea
+
+    game.onTick(10000, "ingredientes", {administradorIngredientes.nuevoIngrediente()})
 
     game.start()
 }
