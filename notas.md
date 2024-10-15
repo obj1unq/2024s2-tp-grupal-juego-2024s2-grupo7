@@ -60,3 +60,5 @@ Atún ✔
 Huevo ✔
 
 ##REMINDERS:
+
+-agregar cocina
