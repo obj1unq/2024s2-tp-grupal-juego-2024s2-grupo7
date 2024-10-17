@@ -3,6 +3,9 @@ import Chef_remy.*
 
 import wollok.game.*
 
+/* Quiza deberiamos tener algun objeto que sea tipo, pilaDeTomates, que podria ser una factory o no, y que cuando lo 
+accionas te da un objeto tomate, que ese objeto tomate despues cuando lo procesas, se te devuelve el mismo objeto pero con 
+distinta imagen dependiendo de como lo hayas procesado,tipo "tomate_Cortado.png" o "salsa_Tomate.png"*/
 class Ingrediente { 
     var property position = null
     var property image = null // Depende del ingrediente
@@ -136,7 +139,8 @@ class PureTomate {
 }
 
 
-//no creo que se deba hacer con factories, estaría bueno que simplemente puedas hagarrar los ingredientes infinitamente cuando quieras y que la dificultad del tiempo esté en los clientes y la de los ingredientes sea la gestion tal vez
+//no creo que se deba hacer con factories, estaría bueno que simplemente puedas agarrar los ingredientes infinitamente
+// cuando quieras y que la dificultad del tiempo esté en los clientes y la de los ingredientes sea la gestion tal vez
 object administradorIngredientes{
      const creados = #{}
      const factories = [tomateFactory,masaFactory,muzzarellaFactory]
