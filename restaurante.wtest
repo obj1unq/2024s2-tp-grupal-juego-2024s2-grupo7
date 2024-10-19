@@ -1,13 +1,51 @@
+import comestibles.*
+import Chef_remy.*
+import wollok.game.*
 
 describe "restaurante" {
+
+    const tomate1 = new Tomate(position= game.origin())
+    const queso1 = new Queso (position = game.origin())
+    const masa1 = new Masa (position = game.origin())
 
     method initialize() {
       game.height(10)
       game.width(10)
+      game.addVisualCharacter(remy)
+
+     
     }
   test "el chef agarra un tomate y lo tiene en la mano" {
+    remy.recogerIngrediente(tomate1)
+
+    assert.equals(#{tomate1}, remy.ingredienteEnMano())
 
 
     
+  }
+
+  test "el chef agarra un queso y lo tiene en la mano"{
+    remy.recogerIngrediente(queso1)
+
+    assert.equals(#{queso1}, remy.ingredienteEnMano())
+  }
+
+
+  test "el chef agarra una masa y lo tiene en la mano"{
+    remy.recogerIngrediente(masa1)
+
+    assert.equals(#{masa1}, remy.ingredienteEnMano())
+  }
+
+
+  test "validacion si el chef puede agarrar mas de un ingrediente a la vez"{
+
+    remy.recogerIngrediente(tomate1)
+    assert.equals(#{tomate1}, remy.ingredienteEnMano())
+    remy.recogerIngrediente(queso1)
+    assert.equals(#{tomate1,queso1},remy.ingredienteEnMano())
+    assert.throwsException({ remy.recogerIngrediente(masa1)})
+
+    // funciona con  el excepcion pero  sin la excepcion TAMBIEN  si alguien le encuenta la vuelta genial jaja
   }
 }
