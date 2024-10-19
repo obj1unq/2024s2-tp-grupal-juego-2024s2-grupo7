@@ -1,22 +1,25 @@
 import objetosCocina.*
 import Chef_remy.*
-
+import proceso.*
 import wollok.game.*
 
 class Ingrediente { 
-    var property position = null
-    var property image = null // Depende del ingrediente
-    const property precio = null //cada ingrediente tenga un precio diferente que se le sume a la pizza?
+    var property position //= null
+    var property procesoing = inicial
+    //var property image = null // Depende del ingrediente
+   // const property precio = null //cada ingrediente tenga un precio diferente que se le sume a la pizza?
 
     method serSostenido(chef) {
         //self.validarSerSostenido(chef.tieneLasManosOcupadas())
         //creo que la validacion debería estar en el cheff ya que no le debería importar eso al ingrediente
-        chef.bandeja().add(self) 
+        chef.recogerIngrediente(self) 
         game.removeVisual(self)
     }
 
-    method serProcesado() //depende de cada ingrediente
+    method serProcesado(){ //depende de cada ingrediente
+        procesoing.proceso(self)
 
+    }
 /*
     method validarSerSostenido(lista) {
          if(not lista.isEmpty()){ 
@@ -24,6 +27,7 @@ class Ingrediente {
         }
     } 
 */
+    method image() 
 }
 
 object cruda {
@@ -54,54 +58,87 @@ object quemada {
     }
 }
 
-class Masa inherits Ingrediente( position = game.at(0,0), image = "masa.png", precio = 4000 ) {
-    const property ingredientes = #{} //se hace desde el chef y eso modifica el precio de la piza tmb
+class Masa inherits Ingrediente( ) {
+    //const property ingredientes = #{} //se hace desde el chef y eso modifica el precio de la piza tmb
     //var property estado = cruda
 
-    method serCocinada(gradosHorno){
-        self.actualizarEstadoMasa(gradosHorno)
-    }
-    method actualizarEstadoMasa(gradosHorno) {
+    //method serCocinada(gradosHorno){
+    //    self.actualizarEstadoMasa(gradosHorno)
+    //}
+   // method actualizarEstadoMasa(gradosHorno) {
        //image = 
        //if (gradosHorno < 2) gradosHorno+1 else quemada.quemarse(self) -> faltaría cruda y quemada
-    }
-    method ingreDientePrincipal() {
+    //}
+   // method ingredientePrincipal() {
       //
+    //}
+
+    override  method image() {
+
+        return "masa_inicial.png"
     }
+
+    method imagenIngredienteInicial() = "masa_incial.png"
+    
+    method imagenIngredienteFinal() = "masa_final.png"
+
+
 }
 
 
-class Queso inherits Ingrediente( position = game.at(0,0), image = ".png", precio = 100 ){
-    override method serProcesado() {
-      
-    }
+class Queso inherits Ingrediente {
+
+        override method image(){
+
+            return "muzzarella_inicial.png"
+        }
+
+        method imagenIngredienteInicial(){
+            return "muzzarella_inicial.png"
+        }
+
+        method imagenIngredienteFinal(){
+            return "muzzarella_final.png"
+        }
 }
 
-class Tomate inherits Ingrediente ( position = game.at(0,0), image = ".png", precio = 100 ){
-  override method serProcesado() {
-      
-    }
+class Tomate inherits Ingrediente {
+
+      override method image(){
+
+        return "tomate_inicial.png"
+      }
+  
+      method imagenIngredienteInicial(){
+
+        return "tomate_inicial.png"
+      }
+
+      method imagenIngredienteFinal(){
+
+        return "tomate_inicial.png"
+      }
 }
 
-class Aceituna inherits Ingrediente ( position = game.at(0,0), image = ".png", precio = 100 ) {
+class Aceituna inherits Ingrediente { //( position = game.at(0,0), image = ".png", precio = 100 ) 
  override method serProcesado() {
       
     }
 }
 
-class Huevo inherits Ingrediente ( position = game.at(0,0), image = ".png", precio = 100 ){
+class Huevo inherits Ingrediente {
   override method serProcesado() {
       
     }
 }
 
-class Atun inherits Ingrediente ( position = game.at(0,0), image = ".png", precio = 100 ) {
+class Atun inherits Ingrediente  {
   override method serProcesado() {
       
     }
 }
 
-class Hongo inherits Ingrediente ( position = game.at(0,0), image = ".png", precio = 100 ) { 
+class Hongo inherits Ingrediente  { 
   override method serProcesado() {
       
     }
@@ -185,7 +222,7 @@ object masaFactory {
 
         method construir(){
 
-            //return new Masa (position = position)
+            return new Masa (position = position)
         }
 }
 

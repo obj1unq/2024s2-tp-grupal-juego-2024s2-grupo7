@@ -16,12 +16,12 @@ program wollocook {
     //game.addVisual(new Masa(position = game.origin()))
 
     //teclas //si hacemos 1 solo cheff no sería más facil hacer que se mueva con las flechas y que todo lo demás lo haga son qwerty?
-    keyboard.w().onPressDo({remy.mover(arriba)})
-    keyboard.s().onPressDo({remy.mover(abajo)})
-    keyboard.d().onPressDo({remy.mover(derecha)})
-    keyboard.a().onPressDo({remy.mover(izquierda)})
-    keyboard.e().onPressDo({remy.recogerIngrediente()})
-    keyboard.q().onPressDo({remy.depositarIngrediente()})
+    //keyboard.w().onPressDo({remy.mover(arriba)})
+    //keyboard.s().onPressDo({remy.mover(abajo)})
+    //keyboard.d().onPressDo({remy.mover(derecha)})
+    //keyboard.a().onPressDo({remy.mover(izquierda)})
+    //keyboard.e().onPressDo({remy.recogerIngrediente()})
+    //keyboard.q().onPressDo({remy.depositarIngrediente()})
 
     //teclas
     //keyboard.w().onPressDo({remy.mover(arriba)})

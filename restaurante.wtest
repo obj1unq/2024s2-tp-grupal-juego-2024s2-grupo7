@@ -1,0 +1,13 @@
+
+describe "restaurante" {
+
+    method initialize() {
+      game.height(10)
+      game.width(10)
+    }
+  test "el chef agarra un tomate y lo tiene en la mano" {
+
+
+    
+  }
+}
