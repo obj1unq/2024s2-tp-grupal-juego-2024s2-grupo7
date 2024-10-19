@@ -7,7 +7,7 @@ object remy { //remy es el de Ratatouille -> mejor nombre imposible
     const property image = "chefPrueba.png"
     var property ingredienteEnMano = #{}
    // const property ingredientes = #{}
-    const limiteEnMano = 2  // después va a ser mucho lio el que elija cuál de los 10 ingredientes que tiene va a poner en l apizza, opino que solo tenga 1 en la bandeja por simplicidad
+    const limiteEnMano = 1  // después va a ser mucho lio el que elija cuál de los 10 ingredientes que tiene va a poner en l apizza, opino que solo tenga 1 en la bandeja por simplicidad
     //var direccionALaQueMira  -> para los sprites
 
     method puedeMover(nuevaPosicion) {
@@ -83,7 +83,7 @@ object remy { //remy es el de Ratatouille -> mejor nombre imposible
 
    method hayEspacio(){
 
-    return  limiteEnMano < 2
+    return  ingredienteEnMano.size() <= limiteEnMano
   }
 
 
