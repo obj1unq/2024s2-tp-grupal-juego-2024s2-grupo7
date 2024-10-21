@@ -28,6 +28,7 @@ object izquierda {
 	}
 }
 
+
 object derecha {
 	method siguiente(position) {
 		return position.right(1)
@@ -37,6 +38,7 @@ object derecha {
 	method esValida(position) {
 		return position.x() + 1 < game.width()
 	}
+
 }
 /*
   creo que el profe había dicho algo de hacer que las posiciones sean classes y que de eso depensan las imagenes para que todo se mueva de a cuerdo a donde esta moviendose Remy

@@ -4,6 +4,7 @@ import comestibles.*
 
 object remy {
     var property position = game.center() 
+
     var property bandeja = plato
     var orientacion = abajo
     // const limiteDeIngredientes = 10 -> después va a ser mucho lio el que elija,
@@ -26,40 +27,41 @@ object remy {
   }
 
   method recogerIngrediente(){ //puede agarrar cualquier ingrediente de la cocina
+
     // game.onCollideDo(self, {algo = algo.serSostenido(self)})
     //game.uniqueCollider(self).serSostenido(self)
 
     //creo que no estaba bueno usar eso, sería mejor deribarle a la cosina si puedo agarrar algún ingrediente en esa posicion??
     //self.validarRecogerIngrediente()
-    //pizeria.agarrarIngredienteAqui(self.position)
-  }
+    //pizzeria.agarrarIngredienteAqui(self.position)
+  //}
 
   method validarRecogerIngrediente(){
     //si la bandeja no está vacia no podría, sino ya es problema de la cocina las demás cosas a validar
   }
-/*
+
  method recogerIngrediente(ingrediente){
     // habria tambien que tener un objetio pedido, que sepa los ingredientes necesarios para esa pizza.
     //self.validarIngrediente(pedido.ingrediente()
     //ingredienteReceta.add(pedido.ingrediente()
 
-    self.validarEspacioEnBandeja() 
-    self.validarIngrediente(ingrediente)
+    self.validarEspacioEnMano() 
+    //self.validarIngrediente(ingrediente)
     
     self.agregarIngrediente(ingrediente)
     administradorIngredientes.remover(ingrediente)
   }
 
-*/
 
-/*
+
+
  method agregarIngrediente(ingrediente){
-    ingredientes.add(ingrediente)
+    ingredienteEnMano.add(ingrediente)
   }
-*/
 
-/*
-method validarIngrediente(ingrediente){
+
+
+/*method validarIngrediente(ingrediente){
     if(not pizzeria.hayIngrediente()){
         self.error(no hay ningun ingrediente aca.)
       }
@@ -67,7 +69,7 @@ method validarIngrediente(ingrediente){
   if ( self.tengoIngrediente(ingrediente)){
       self.error("ya tengo Este ingrediente en la bandeja")
     }
-*/
+}
 
 /*
   method tengoIngrediente(ingrediente){
@@ -77,22 +79,22 @@ method validarIngrediente(ingrediente){
   }
 */
 
-/*
-  method validarEspacioEnBandeja(){
+
+  method validarEspacioEnMano(){
 
     if (not self.hayEspacio()){
-      self.error("no tengo mas espacio en la bandeja")
+      self.error("solo puedo agarrar una cosa")
     }
   }
-*/
 
-/*
+
+
    method hayEspacio(){
 
-    return ingredientes.size() < limiteDeIngredientes
+    return  ingredienteEnMano.size() <= limiteEnMano
   }
-}
-*/
+
+
 
   method depositarIngrediente() {
       //self.validarDepositar(game.uniqueCollider(self))
@@ -104,6 +106,7 @@ method validarIngrediente(ingrediente){
 
   method procesarIngrediente(){
     //ingredientes.forEach({ingrediente => ingrediente.serProcesado()})
+
 
     bandeja.contenido().serProcesado()
   }
@@ -121,6 +124,9 @@ object plato {
 
   method position() {
     return chef.orientacion().siguiente(chef.position())
+
+    
+
   }
 
 }
