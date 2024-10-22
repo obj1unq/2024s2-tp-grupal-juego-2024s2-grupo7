@@ -19,7 +19,7 @@ describe "restaurante" {
     remy.recogerIngrediente(tomate1)
 
     assert.equals(#{tomate1}, remy.ingredienteEnMano())
-
+  }
   test "el restaurante dice si encuentra lo que se busca en el restaurante" {
     assert.that(restaurante.hayIngredienteAqui(game.at(0,0)))
     assert.notThat(restaurante.hayIngredienteAqui(game.at(0,2)))
@@ -50,4 +50,4 @@ describe "restaurante" {
 
     // funciona con  el excepcion pero  sin la excepcion TAMBIEN  si alguien le encuenta la vuelta genial jaja
   }
-}
+ }

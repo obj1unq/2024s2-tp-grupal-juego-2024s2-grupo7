@@ -23,7 +23,7 @@ program wollocook {
     keyboard.down().onPressDo({remy.mover(abajo)})
     keyboard.right().onPressDo({remy.mover(derecha)})
     keyboard.left().onPressDo({remy.mover(izquierda)})
-    keyboard.e().onPressDo({remy.recogerIngrediente()})
+    keyboard.e().onPressDo({remy.recogerIngrediente(ingrediente)})
     keyboard.q().onPressDo({remy.depositarIngrediente()})
 
 
