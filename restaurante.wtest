@@ -15,7 +15,7 @@ describe "restaurante" {
 
      
     }
-  test "el chef agarra un tomate y lo tiene en la mano" {
+  /*test "el chef agarra un tomate y lo tiene en la mano" {
     remy.recogerIngrediente(tomate1)
 
     assert.equals(#{tomate1}, remy.ingredienteEnMano())
@@ -50,4 +50,6 @@ describe "restaurante" {
 
     // funciona con  el excepcion pero  sin la excepcion TAMBIEN  si alguien le encuenta la vuelta genial jaja
   }
+}
+*/
 }

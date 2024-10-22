@@ -5,7 +5,7 @@ import comestibles.*
 object remy {
     var property position = game.center() 
 
-    var property bandeja = plato
+    var property bandeja = null
     var orientacion = abajo
     // const limiteDeIngredientes = 10 -> después va a ser mucho lio el que elija,
     // cuál de los 10 ingredientes que tiene va a poner en la pizza, opino que solo tenga 1 en la bandeja por simplicidad
@@ -34,7 +34,7 @@ object remy {
     //creo que no estaba bueno usar eso, sería mejor deribarle a la cosina si puedo agarrar algún ingrediente en esa posicion??
     //self.validarRecogerIngrediente()
     //pizzeria.agarrarIngredienteAqui(self.position)
-  //}
+  }
 
   method validarRecogerIngrediente(){
     //si la bandeja no está vacia no podría, sino ya es problema de la cocina las demás cosas a validar
@@ -123,7 +123,9 @@ object plato {
   
 
   method position() {
-    return chef.orientacion().siguiente(chef.position())
+    //return chef.orientacion().siguiente(chef.position())
+
+    return game.at(1,1)
 
     
 
