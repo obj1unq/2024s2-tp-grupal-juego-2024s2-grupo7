@@ -1,5 +1,5 @@
 import objetosCocina.*
-import Chef_remy.*
+//import chefs.*
 import proceso.*
 import wollok.game.*
 
@@ -11,6 +11,10 @@ class Ingrediente {
     var property procesoing = inicial
     //var property image = null // Depende del ingrediente
    // const property precio = null //cada ingrediente tenga un precio diferente que se le sume a la pizza?
+
+   method esBandejaVacia(){
+    return false
+   }
 
     method serSostenido(chef) {
         //self.validarSerSostenido(chef.tieneLasManosOcupadas())

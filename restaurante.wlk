@@ -1,22 +1,11 @@
 import comestibles.*
-/*
-    -la pizzería sabe todo lo que tiene, para consultar posiciones y cosas y validaciones como en la granja. 
-    -puede tener una lista con todas las cosas de la cocina y  todas las cosas de la recepcion -> como la granja de Hector
-*/    
-const masa = new Masa( position = game.at(1,1) )
-const tomate = new Tomate ( position = game.at(0,0) )
-const queso = new Queso ( position = game.at(0,0) )
+import objetosCocina.*
 
 object restaurante {
 
-    const property muebles = #{}
-    const property ingredientes = #{tomate, queso} //acá en realidad se pondrían las estaciones donde estan los ingredientes
-    const property hornos = #{}
-    const property preparacion = #{masa} //para las pizzas solo, la masa
-    const property tachos ={}
-    const caja = 0 // aca se podría el objeto único de la caja
-    const postres = 0 // aca se pondría el objeto único de la caja de postres
-    const bebidas = 0 // aca se pondría el objeto único de la maquina expendedora
+    const property muebles = #{} //los muebles saben su clasicicacion de que tipo son
+    const property ingredientes = #{} //acá en realidad se pondrían las estaciones donde estan los ingredientes nadamas
+    const property hornos = #{} //la preparacion es un ingrediente más especial.
 
     method hayIngredienteAqui(direccion){
         return ingredientes.any({ingrediente => ingrediente.position() == direccion})
@@ -34,34 +23,35 @@ object restaurante {
         return hornos.any({horno => horno.position() == direccion})
     }
 
-    method hayTachosAqui(direccion) {
-        return tachos.any({tacho => tacho.position() == direccion})
+    method hayObjetoSolidoEn(position){
+        return //hacer
     }
 
-    method estaLaPreparacionAqui(direccion) {
-        return preparacion.any({masa => masa.position() == direccion})
+    method hayEspacioLibreAqui(position) {
+      return //
     }
 
-    method hayCajaAqui(direccion) {
-        return caja.direccion() == direccion
+    method hayEstacionDeProcesamientoAqui(position) {
+      return //
     }
 
-    method hayPostresAqui(direccion){
-        return postres.direccion() == direccion
+    method hayHornoVacioAqui(position){
+        return //
+    } 
+
+    method hornoVacioAqui(position) {
+      return //
     }
 
-    method hayBebidasAqui(direccion){
-        return bebidas.direccion() == direccion
+    method hayBasuraAqui(position) {
+      return //
     }
 
-}
+    method basuraAqui(position) {
+      return //
+    }
 
-class Cliente{
-/*
-    tiene que tener posición e imagen -> sería facil que solo se mueva derecho para entrar y salir
-    tienen saber pedir un pedido -> imagen
-    tiene que saber que pedido quería -> para despues comprarlo con el que le dan
-    tiene que devolver una opinión (la opinión afecta el pago?) -> emojis
-    tienen que tener la plata para pagar su pedido 
-*/
+    method hornoAqui(position) {
+      return //
+    }
 }

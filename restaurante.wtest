@@ -1,7 +1,7 @@
 import comestibles.*
 import restaurante.*
 import wollok.game.*
-import Chef_remy.*
+import Chefs.*
 describe "restaurante" {
 
     const tomate1 = new Tomate(position= game.origin())
