@@ -1,0 +1,65 @@
+import restaurante.*
+import comestibles.*
+import posiciones.*
+import Chefs.*
+import restauranteTest.*
+import objetosParaTests.*
+
+
+import wollok.game.*
+
+describe "chefs test" {
+  test "remy puede moverse y se mueve" {
+    remy.mover(arriba)
+    assert.equals(game.at(0,1), remy.position())
+
+    remy.mover(derecha)
+    assert.equals(game.at(1,1), remy.position())
+  }
+
+  test "remy no puede moverse" {
+    assert.throwsException({ remy.moverse(derecha) })
+    assert.throwsException({ remy.moverse(izquierda) })
+  }
+
+  test "remy agarra un ingrediente" {
+    remy.position( game.at(0,3) )
+    remy.mover(arriba)
+    remy.recogerIngrediente()
+
+    assert.equals(tomate1, remy.bandeja())
+  }
+
+  test "remy no puede agarrar un ingrediente porque no esta" {
+    assert.throwsException({ remy.recogerIngrediente() })
+  }
+
+  test "remy no puede agarrar un ingrediente porque tiene algo en las manos ya" {
+    remy.position( game.at(0,3) )
+    remy.mover(arriba)
+    remy.recogerIngrediente()
+    remy.mover(arriba)
+
+    assert.that(restaurante.hayIngredienteAqui(remy.position()))
+    assert.notThat(remy.tengoBandejaVacia())
+    assert.throwsException({ remy.recogerIngrediente() })
+  }
+
+  test "remy puede soltar ingrediente" {
+    remy.position( game.at(0,4) )
+    remy.mover(arriba) //remy at 0,5 mirando a 0,6
+    remy.recogerIngrediente() //remy agarra el queso
+
+    assert.equals(queso1, remy.bandeja())
+
+    remy.mover(derecha) //remi at 1,4 mirando a 2,4
+
+    remy.soltarIngrediente() //lo suelta en la mesada 2
+
+    //assert.equals(queso1, mesada2.cosaEncima())
+
+    assert.notThat(mesada2.estaLibre())
+  }
+
+
+}

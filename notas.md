@@ -61,4 +61,4 @@ Huevo ✔
 
 ##REMINDERS:
 
-
+-> el procesado y requerimiento de los ingredientes se va a hacer a traves de la comaparacion de imagenes.

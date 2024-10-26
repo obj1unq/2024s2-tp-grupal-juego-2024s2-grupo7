@@ -1,11 +1,13 @@
 import comestibles.*
 import restaurante.*
+import Chefs.*
+
 
 import wollok.game.*
 
 
-object horno {
-  var property position = game.at(4, 4)
+class Horno {
+  const property position = game.at(4, 4)
   var image = "" //ponerle una imagen base normal
   var property temperatura = 0
   var property contenido = [] 
@@ -26,26 +28,31 @@ object horno {
   }
 
   method hayAlMenos1Pizza() {
-    return contenido.zise() == 1
+    return contenido.notEmpty()
+  }
+
+  method sacaDelHorno(chef) {
+    chef.bandeja(self.primeraPizzaEnHorno())
+    contenido.remove(self.primeraPizzaEnHorno())
+  }
+
+  method primeraPizzaEnHorno() {
+    return contenido.head()
   }
 
   method cocinar() { 
     game.onTick(2500, self, {
-                                contenido.forEach({pizza => self.calentar(pizza)})  
+                                contenido.forEach({pizza => pizza.serCocinada()})  
                             })
     game.onTick(2500, self, {self.subirNivelDeHorno()})
   } 
 
-  method calentar(comida) {
-    comida.serCocinada(temperatura)
-  }
-
   method subirNivelDeHorno(){
     temperatura = (temperatura + 1).min(3)
-    self.actualizarEstado()
+    self.actualizarEstadoHorno()
   }
 
-  method actualizarEstado() {
+  method actualizarEstadoHorno() {
     if (temperatura == 3) self.simularFuego()
   }
 
@@ -58,22 +65,84 @@ object horno {
 
 }
 
-object basura {
+class Tacho {
+
+  const property position = game.center()
+  const property image = "" 
 
   method recibirBasura(chef) {
     chef.image(self.chefBandejaVacia(chef))
-    chef.bandeja(null) 
+    chef.bandeja(bandejaVacia) 
   }
 
   method chefBandejaVacia(chef) {
-    return chef.nombre() + "" + "_bandejaVacia.png"
+    return chef.nombre() + "" + "_bandejaVacia.png" //se necesita esa imagen
   }
 
 }
 
-class Mesada {
-/*
-  unico lugar donde se pueden "procesar" los ingredientes
-*/  
+class Mueble {
+  const property position = game.center()
+  const property image = ""
+  
+
+  method esMuebleDeCocina()
+
+  method esParaProcesar()
+
+  method estaLibre()
+
 }
 
+class Mesada inherits Mueble{
+  var property cosasEncima = []
+
+  override method esMuebleDeCocina() {
+    return true 
+  }
+
+  override method esParaProcesar(){
+    return true
+  }
+
+  override method estaLibre(){
+    return cosasEncima.isEmpty() || self.tieneUnaPiza()
+  }
+
+  method cosaEncima() {
+    return cosasEncima.head()
+  }
+
+  method tieneUnaPiza(){
+    return not cosasEncima.isEmpty() and self.cosaEncima().aceptaIngredientesEncima()
+  }
+
+  method recibirIngrediente(ingrediente) {
+    if(not self.estaLibre() and self.tieneUnaPiza()){
+      const objetoAqui = cosasEncima.head()
+      objetoAqui.recibirIngrediente(ingrediente)
+    } else{
+      cosasEncima.add(ingrediente)
+    }
+  }
+}
+
+class Dispencer inherits Mueble{
+  override method esMuebleDeCocina(){
+    return false
+  }
+
+  override method esParaProcesar(){
+    return false
+  }
+
+  override method estaLibre() {
+    return false
+  }
+}
+
+/*
+muebles:
+-es mueble de cocina = t/f -> si es mueble de cocina es una estacion para procesar, sino es un dispencer. los dicspencer son otra clase que 1 va a ser para postrees otro para bebidas.
+-unico lugar donde se pueden "procesar" los ingredientes son las mesadas
+*/

@@ -7,3 +7,7 @@ class Cliente{
     tienen que tener la plata para pagar su pedido 
 */
 }
+
+/*
+creo que se va a tener que hacer una factory de clientes con un randomizer para lo que quieran pedir.
+*/
