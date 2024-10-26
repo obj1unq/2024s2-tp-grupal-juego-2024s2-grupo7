@@ -114,16 +114,23 @@ class Mesada inherits Mueble{
   }
 
   method tieneUnaPiza(){
-    return not cosasEncima.isEmpty() and self.cosaEncima().aceptaIngredientesEncima()
+    return not cosasEncima.isEmpty() and cosasEncima.head().aceptaIngredientesEncima()
   }
 
   method recibirIngrediente(ingrediente) {
-    if(not self.estaLibre() and self.tieneUnaPiza()){
+    if(self.tieneUnaPiza()){
       const objetoAqui = cosasEncima.head()
       objetoAqui.recibirIngrediente(ingrediente)
+      ingrediente.serDejadoAqui(objetoAqui.position())
     } else{
       cosasEncima.add(ingrediente)
+      ingrediente.serDejadoAqui(self.position())
     }
+  }
+
+  method entregarIngredienteEncima(){
+    //cosasEncima.remove(self.cosaEncima())
+    cosasEncima = []
   }
 }
 

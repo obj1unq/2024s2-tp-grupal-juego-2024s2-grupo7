@@ -20,10 +20,12 @@ class Ingrediente {
 
     method serSostenido(chef) {
         game.removeVisual(self)
+        position = chef.position()
     }
 
     method serDejadoAqui(nuevaPosition){
-        game.addVisual(nuevaPosition)
+        //game.addVisual(nuevaPosition)
+        position = nuevaPosition
     }
 
     method imagenIngredienteInicial()

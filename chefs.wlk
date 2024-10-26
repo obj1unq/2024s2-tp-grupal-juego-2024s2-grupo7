@@ -14,10 +14,10 @@ class Chef {
     var property nombre = null
 
     method mover(direccion) {
+      orientacion = direccion
       const nuevaPosition = direccion.moverse(self.position())
 
       self.validarMoverseHacia(nuevaPosition)
-      orientacion = direccion
       self.nuevaImagen()
       position = nuevaPosition
 	}
@@ -67,14 +67,13 @@ class Chef {
 
   method dejarIngredienteAqui(posicionADejar) {
     restaurante.seDejaIngredienteAqui(bandeja, posicionADejar)
-    //bandeja.serDejadoAqui(self.position()) -> esto iria en restaurante
     bandeja = bandejaVacia
   }
 
   method validarSoltarIngrediente(posicionADejar){
     if(self.tengoBandejaVacia()){
       self.error("no tengo nada que soltar")
-    } else if (not restaurante.hayEspacioLibreAqui(posicionADejar)){ //|| not restaurante.hayMasaAqui(posicionADejar)
+    } else if (not restaurante.hayEspacioLibreAqui(posicionADejar)){
       self.error("no lo puedo soltar aqui")
     }
   }
@@ -84,6 +83,7 @@ class Chef {
     self.soltarIngrediente()
     restaurante.ingredienteAqui(self.dondeEstoyApuntando()).serProcesado()
     self.recogerIngrediente()
+    restaurante.seSacaIngredienteAqui(self.dondeEstoyApuntando())
   }
 
   method validarProcesarIngrediente(){
