@@ -17,7 +17,7 @@ describe "chefs test" {
     assert.equals(game.at(1,1), remy.position())
   }
 
-  test "remy no puede moverse porque hay un mueble a su derecha y a su izquiera está el límite del mapa" { //luego reemplazar el limite por muebles o paredes a su alrederor
+  test "remy no puede moverse porque hay un mueble a su derecha y a su izquiera está el límite del mapa" {
     assert.throwsException({ remy.moverse(derecha) })
     assert.throwsException({ remy.moverse(izquierda) })
   }

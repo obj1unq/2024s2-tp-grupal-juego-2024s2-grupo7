@@ -1,0 +1,47 @@
+import restauranteTest.*
+import objetosParaTests.*
+
+import wollok.game.*
+
+describe "horno" {
+  test "el horno recibe pizzas porque tiene espacio y devuelve las pizzas en orden" {
+    horno.recibir(preparacion)
+    assert.that(horno.hayAlMenos1Pizza())
+    horno.recibir(preparacion2)
+    assert.notThat(horno.hayEspacioEnHorno())
+    assert.equals(preparacion, horno.primeraPizzaEnHorno())
+  }
+
+  test "el horno recibe pizzas hasta su maximo espacio" {
+    horno.recibir(preparacion)
+    assert.that(horno.hayAlMenos1Pizza())
+    horno.recibir(preparacion2)
+    assert.notThat(horno.hayEspacioEnHorno())
+    assert.throwsException({ horno.recibir(masa) })
+  }
+}
+
+describe "mesada" {
+  test "mesada vacia recibe un ingredinte y luego lo entrega" {
+    mesada1.recibirIngrediente(tomate)
+    assert.equals(tomate, mesada1.cosasEncima())
+
+    mesada1.entregarIngredienteEncima()
+    assert.that(mesada1.estaLibre())
+  }
+
+  test "mesada recibe una preparacion y los ingredientes que van hacia la mesada se agregan a la preparacion en vez de a la mesada y modifican la preparacion" {
+    mesada1.recibirIngrediente(preparacion)
+    assert.equals(preparacion, mesada1.cosasEncima())
+
+    mesada1.recibirIngrediente(tomate)
+
+    assert.equals(preparacion, mesada1.cosasEncima())
+    assert.that(mesada1.tieneUnaPiza())
+    assert.that(preparacion.tieneIngredientes())
+
+    mesada1.entregarIngredienteEncima()
+    assert.that(mesada1.estaLibre())
+    assert.that(preparacion.tieneIngredientes())
+  }
+}

@@ -40,7 +40,6 @@ class Chef {
     self.validarRecogerIngrediente()
     const ingredienteAqui = restaurante.ingredienteAqui(self.dondeEstoyApuntando())
     self.recibirIngrediente(ingredienteAqui)
-    //restaurante.sacarIngredienteSiNoEsPilaDeIngrdientes(ingredienteAqui)
   }
 
   method recibirIngrediente(ingrediente){
@@ -57,10 +56,10 @@ class Chef {
   }
 
   method tengoBandejaVacia() {
-    return bandeja.esBandejaVacia() //TODAS LAS COSAS QUE LOS CHEFS PUEDAN LEVANTAR DEBEN RESPONDER FALSE.
+    return bandeja.esBandejaVacia()
   }
 
-  method soltarIngrediente() { //se deja todo uno más de donde estás porque no podes atravesar el mueble.
+  method soltarIngrediente() { //"tiras" todo adelante tuyo porque no podes atravesar el mueble.
     const posicionADejar = self.dondeEstoyApuntando()
     self.validarSoltarIngrediente(posicionADejar)   
     self.dejarIngredienteAqui(posicionADejar)
@@ -110,7 +109,7 @@ class Chef {
   }
 
   method tengoUnaPreparacion() {
-    return bandeja.aceptaIngredientesEncima() //ahora todos los objetos deben entender si aceptan ingredientes encima -> solo las cosas que se van a cocinar van a aceptar ingredintes encima
+    return bandeja.aceptaIngredientesEncima()
   }
 
   method sacarDelHorno() {

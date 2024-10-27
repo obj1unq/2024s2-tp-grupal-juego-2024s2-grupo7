@@ -44,7 +44,7 @@ class Masa inherits Ingrediente( image = "", precio = 100 ) {
     const property ingredientes = #{} //aunque lo haga el chef la masa tiene que saber que tiene dentro.
     var property estado = cruda
 
-    override method serProcesado(){} //no hace nada, la masa no se procesa, solo se le agregan ingredientes encima que es diferente.
+    //override method serProcesado(){} 
 
     override method imagenIngredienteInicial(){
         return "" //imagen de masa redondita
@@ -74,6 +74,10 @@ class Masa inherits Ingrediente( image = "", precio = 100 ) {
 
     method recibirIngrediente(ingrediente){
         ingredientes.add(ingrediente)
+    }
+
+    method tieneIngredientes() {
+      return not ingredientes.isEmpty()
     }
 }
 

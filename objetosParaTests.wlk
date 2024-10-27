@@ -28,6 +28,7 @@ const queso = new Queso (position = game.at(5, 5)) //Q
 const masa = new Masa (position = game.at(0, 7)) //M
 
 const preparacion = new Masa(position = game.at(0, 2)) //g
+const preparacion2 = new Masa(position = game.at(0, 2)) //g
 
 const horno = new Horno(position = game.at(1, 0)) //H
 const mesada1 = new Mesada(position = game.at(2, 5)) //1
