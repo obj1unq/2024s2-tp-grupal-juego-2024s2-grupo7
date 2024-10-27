@@ -23,12 +23,12 @@ object restaurante {
         return self.hayObjetoDeListaAqui(ingredientes, position) || self.hayPilaDeIngredientesAqui(position)
     }
 
-    method hayPilaDeIngredientesAqui(position){
-      return muebles.any({mueble => mueble.esPilaDeIngredientes()})
-    }
-
     method ingredienteAqui(position) {
         return self.objetoDeListaAqui(ingredientes, position)
+    }
+
+    method hayPilaDeIngredientesAqui(position){
+      return muebles.any({mueble => mueble.esPilaDeIngredientes()})
     }
 //
     method hayMuebleAqui(position) {
