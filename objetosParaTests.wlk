@@ -31,6 +31,7 @@ const preparacion = new Masa(position = game.at(0, 2)) //g
 const preparacion2 = new Masa(position = game.at(0, 2)) //g
 
 const horno = new Horno(position = game.at(1, 0)) //H
+const horno2 = new Horno(position = game.at(1, 0))
 const mesada1 = new Mesada(position = game.at(2, 5)) //1
 const mesada2 = new Mesada(position = game.at(2, 4)) //2
 const tacho3 = new Tacho(position = game.at(2, 7)) //3

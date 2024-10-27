@@ -13,11 +13,12 @@ describe "horno" {
   }
 
   test "el horno recibe pizzas hasta su maximo espacio" {
-    horno.recibir(preparacion)
-    assert.that(horno.hayAlMenos1Pizza())
-    horno.recibir(preparacion2)
-    assert.notThat(horno.hayEspacioEnHorno())
-    assert.throwsException({ horno.recibir(masa) })
+    horno2.recibir(preparacion)
+    assert.that(horno2.hayAlMenos1Pizza())
+    horno2.recibir(preparacion2)
+    assert.notThat(horno2.hayEspacioEnHorno())
+    
+    assert.throwsException({ horno2.recibir(masa) })
   }
 }
 
