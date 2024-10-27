@@ -128,13 +128,27 @@ describe "chefs test" {
     assert.throwsException({ remy.tirarALaBasura() })
   }
 
-  
+  test "remy agarra una masa con queso y la mete al horno y luego la saca del horno" {
+    remy.position( game.at(1,2) )
+    preparacion.recibirIngrediente(queso)
+    remy.bandeja(preparacion)
+    remy.mover(abajo)
+
+    assert.that(remy.tengoUnaPreparacion())
+
+    assert.that(restaurante.hayHornoConEspacioAqui(remy.dondeEstoyApuntando()))
+    
+    remy.meterAlHorno()
+
+    assert.that(horno.hayAlMenos1Pizza())
+
+    remy.sacarDelHorno()
+
+    assert.notThat(horno.hayAlMenos1Pizza())
+    
+    assert.equals(preparacion, remy.bandeja())
+    
+  }
+
 
 }
-
-/*
-FALTAN:
--meter al horno -> ver si anda el horno
--tener pizza -> ver si funciona la masa
--sacar del horno -> ver si anda el horno
-*/

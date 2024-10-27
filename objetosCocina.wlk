@@ -24,11 +24,11 @@ class Horno {
   }
 
   method hayEspacioEnHorno(){
-    return contenido.size() < 2
+    return contenido.isEmpty() || contenido.size() < 2
   }
 
   method hayAlMenos1Pizza() {
-    return contenido.notEmpty()
+    return not contenido.isEmpty()
   }
 
   method sacaDelHorno(chef) {

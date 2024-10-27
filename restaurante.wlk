@@ -86,8 +86,8 @@ object restaurante {
       return self.hayMuebleAqui(position) and self.muebleAqui(position).esParaProcesar()
     }
 
-    method hayHornoVacioAqui(position){
-        return self.hayHornoAqui(position) and self.hornoAqui(position).hayEspacioEnHorno()
+    method hayHornoConEspacioAqui(position){
+        return self.hornoAqui(position).hayEspacioEnHorno() //self.hayHornoAqui(position) and 
     }
 
     method hayBasuraAqui(position) {

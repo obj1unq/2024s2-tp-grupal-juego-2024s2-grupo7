@@ -100,8 +100,12 @@ class Chef {
   }
 
   method validarMeterAlHorno(){
-    if(self.tengoUnaPreparacion() and restaurante.hayHornoVacioAqui(self.dondeEstoyApuntando())){
-      self.error("no hay ningun horno vacio aquí o no tengo nada para poner en el horno")
+    if(not self.tengoUnaPreparacion()){
+      self.error("no tengo ninguna preparacion para meter al horno")
+    } else if(not restaurante.hayHornoAqui(self.dondeEstoyApuntando())){
+      self.error("no hay un horno en donde pueda meter la preparacion")
+    } else if(not restaurante.hayHornoConEspacioAqui(self.dondeEstoyApuntando())){
+      self.error("el horno no tiene espacio")
     }
   }
 
@@ -111,14 +115,14 @@ class Chef {
 
   method sacarDelHorno() {
     self.validarSacarDelHorno()
-    restaurante.hornoAqui(self.position()).sacaDelHorno(self)
+    restaurante.hornoAqui(self.dondeEstoyApuntando()).sacaDelHorno(self)
   }
 
   method validarSacarDelHorno() {
     if(not restaurante.hayHornoAqui(self.dondeEstoyApuntando())){
       self.error("no hay un horno aquí") 
     } else if(not restaurante.hornoAqui(self.dondeEstoyApuntando()).hayAlMenos1Pizza()){
-      self.error("no hay un horno no tengo nada que sacar") 
+      self.error("no hay nada en el horno") 
     } else if(not self.tengoBandejaVacia()){
       self.error("no puedo agarrar nada ahora") 
     }

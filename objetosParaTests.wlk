@@ -17,7 +17,7 @@ mapa tests:
 [t,_,1,_,_,q,_,_],
 [_,_,_,2,_,_,_,_],
 [_,_,_,_,_,_,_,_],
-[_,_,_,_,_,_,_,_],
+[g,_,_,_,_,_,_,_],
 [_,_,_,_,_,_,_,_],
 [r,h,_,_,_,_,_,_]
 
@@ -26,6 +26,8 @@ mapa tests:
 const tomate = new Tomate(position= game.at(0, 5)) //T
 const queso = new Queso (position = game.at(5, 5)) //Q
 const masa = new Masa (position = game.at(0, 7)) //M
+
+const preparacion = new Masa(position = game.at(0, 2)) //g
 
 const horno = new Horno(position = game.at(1, 0)) //H
 const mesada1 = new Mesada(position = game.at(2, 5)) //1
