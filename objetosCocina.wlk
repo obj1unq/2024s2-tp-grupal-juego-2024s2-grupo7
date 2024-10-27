@@ -24,7 +24,7 @@ class Horno {
   }
 
   method hayEspacioEnHorno(){
-    return contenido.zise() < 2
+    return contenido.size() < 2
   }
 
   method hayAlMenos1Pizza() {
@@ -32,7 +32,7 @@ class Horno {
   }
 
   method sacaDelHorno(chef) {
-    chef.bandeja(self.primeraPizzaEnHorno())
+    chef.recibirIngrediente(self.primeraPizzaEnHorno())
     contenido.remove(self.primeraPizzaEnHorno())
   }
 
@@ -60,23 +60,7 @@ class Horno {
     if(image == "ovenFuego1.png") {
             image = "ovenFuego2.png"
           } else 
-            image == "ovenFuego1.png" 
-  }
-
-}
-
-class Tacho {
-
-  const property position = game.center()
-  const property image = "" 
-
-  method recibirBasura(chef) {
-    chef.image(self.chefBandejaVacia(chef))
-    chef.bandeja(bandejaVacia) 
-  }
-
-  method chefBandejaVacia(chef) {
-    return chef.nombre() + "" + "_bandejaVacia.png" //se necesita esa imagen
+            image = "ovenFuego1.png" 
   }
 
 }
@@ -86,16 +70,30 @@ class Mueble {
   const property image = ""
   
 
-  method esMuebleDeCocina()
+  method esMuebleDeCocina(){
+    return false
+  }
 
-  method esParaProcesar()
+  method esParaProcesar(){
+    return false
+  }
 
-  method estaLibre()
+  method estaLibre(){
+    return false
+  }
+
+  method esPilaDeIngredientes(){
+    return false
+  }
+
+  method esTacho() {
+    return false
+  }
 
 }
 
 class Mesada inherits Mueble{
-  var property cosasEncima = []
+  var property cosasEncima = bandejaVacia
 
   override method esMuebleDeCocina() {
     return true 
@@ -106,32 +104,45 @@ class Mesada inherits Mueble{
   }
 
   override method estaLibre(){
-    return cosasEncima.isEmpty() || self.tieneUnaPiza()
-  }
-
-  method cosaEncima() {
-    return cosasEncima.head()
+    return cosasEncima.esBandejaVacia() || self.tieneUnaPiza()
   }
 
   method tieneUnaPiza(){
-    return not cosasEncima.isEmpty() and cosasEncima.head().aceptaIngredientesEncima()
+    return cosasEncima.aceptaIngredientesEncima()
+    //not cosasEncima.isEmpty() and cosasEncima.head().aceptaIngredientesEncima()
   }
-
+//PROVAR ESTO EN ESPECIAL.
   method recibirIngrediente(ingrediente) {
     if(self.tieneUnaPiza()){
-      const objetoAqui = cosasEncima.head()
-      objetoAqui.recibirIngrediente(ingrediente)
-      ingrediente.serDejadoAqui(objetoAqui.position())
+      cosasEncima.recibirIngrediente(ingrediente)
+      ingrediente.serDejadoAqui(cosasEncima.position())
     } else{
-      cosasEncima.add(ingrediente)
+      cosasEncima = ingrediente
       ingrediente.serDejadoAqui(self.position())
     }
   }
 
   method entregarIngredienteEncima(){
     //cosasEncima.remove(self.cosaEncima())
-    cosasEncima = []
+    cosasEncima = bandejaVacia
   }
+}
+
+class Tacho inherits Mueble{
+
+  override method esTacho() {
+    return true
+  }
+  method recibirBasura(chef) {
+    //o mandarle un mensaje al chef de que si tiro la basura entonces cambie su imagen
+    chef.image(self.chefBandejaVacia(chef))
+    chef.bandeja(bandejaVacia) 
+  }
+
+  method chefBandejaVacia(chef) {
+    return chef.nombre() + "_bandejaVacia.png" //se necesita esa imagen
+  }
+
 }
 
 class Dispencer inherits Mueble{
@@ -146,10 +157,12 @@ class Dispencer inherits Mueble{
   override method estaLibre() {
     return false
   }
+
+  override method esPilaDeIngredientes(){
+    return false
+  }
 }
 
 /*
-muebles:
--es mueble de cocina = t/f -> si es mueble de cocina es una estacion para procesar, sino es un dispencer. los dicspencer son otra clase que 1 va a ser para postrees otro para bebidas.
--unico lugar donde se pueden "procesar" los ingredientes son las mesadas
+las pilas de ingredientes deberian ir en muebles e instanciar un nuevo ingrediente cada vez que se precion x en frente de ellas.
 */

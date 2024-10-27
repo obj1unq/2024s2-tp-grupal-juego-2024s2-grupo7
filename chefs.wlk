@@ -40,6 +40,7 @@ class Chef {
     self.validarRecogerIngrediente()
     const ingredienteAqui = restaurante.ingredienteAqui(self.dondeEstoyApuntando())
     self.recibirIngrediente(ingredienteAqui)
+    //restaurante.sacarIngredienteSiNoEsPilaDeIngrdientes(ingredienteAqui)
   }
 
   method recibirIngrediente(ingrediente){
@@ -80,14 +81,14 @@ class Chef {
 
   method procesarIngrediente(){
     self.validarProcesarIngrediente()
-    self.soltarIngrediente()
-    restaurante.ingredienteAqui(self.dondeEstoyApuntando()).serProcesado()
-    self.recogerIngrediente()
-    restaurante.seSacaIngredienteAqui(self.dondeEstoyApuntando())
+    bandeja.serProcesado()
+
+    //faltraría la "animación" de procesarlo
+    //self.animarProcesarIngrediente()
   }
 
   method validarProcesarIngrediente(){
-    if(not restaurante.hayEstacionDeProcesamientoAqui(self.dondeEstoyApuntando()) and not restaurante.hayEspacioLibreAqui(self.dondeEstoyApuntando())){
+    if(not restaurante.hayEstacionDeProcesamientoAqui(self.dondeEstoyApuntando())){ 
       self.error("no puedo procesar el ingrediente aqui")
     }
   }
@@ -138,5 +139,8 @@ class Chef {
 object bandejaVacia {
   method esBandejaVacia(){
     return true 
+  }
+  method aceptaIngredientesEncima(){ //tal vez cambiar el nombre porque no tiene mucho sentido para la bandeja
+    return false
   }
 }

@@ -6,33 +6,47 @@ import objetosParaTests.*
 object restaurante {
 
     const property muebles = [tacho3, mesada1, mesada2] //los muebles saben su clasicicacion de que tipo son, incluye la basura
-    const property ingredientes = [tomate, queso, masa] //acá en realidad se pondrían las estaciones donde estan los ingredientes y después se registra todo ingrediente que se deje en alguna mesada
+    //entonces poner la pila de ingredientes como un mueble y en ingredientes se manejan todos los ingredientes sueltos que esta moviendo el chef
+    const property ingredientes = [tomate, queso, masa]
     const property hornos = [horno]
+//  
+    method hayObjetoDeListaAqui(lista, position){
+      return lista.any({objeto => objeto.position() == position})
+    }
+
+    method objetoDeListaAqui(lista, position) {
+      return lista.filter({objeto => objeto.position() == position}).head()
+    }
+
 //
     method hayIngredienteAqui(position){
-        return ingredientes.any({ingrediente => ingrediente.position() == position})
+        return self.hayObjetoDeListaAqui(ingredientes, position) || self.hayPilaDeIngredientesAqui(position)
+    }
+
+    method hayPilaDeIngredientesAqui(position){
+      return muebles.any({mueble => mueble.esPilaDeIngredientes()})
     }
 
     method ingredienteAqui(position) {
-        return ingredientes.filter({ingrediente => ingrediente.position() == position}).head()
+        return self.objetoDeListaAqui(ingredientes, position)
     }
 //
     method hayMuebleAqui(position) {
-        return muebles.any({mueble => mueble.position() == position})
+        return self.hayObjetoDeListaAqui(muebles, position)
     }
 
     method muebleAqui(position) {
-      return muebles.filter({mueble => mueble.position() == position}).head()
+      return self.objetoDeListaAqui(muebles, position)
     }
 //
     method hayHornoAqui(position) {
-        return hornos.any({horno => horno.position() == position})
+        return self.hayObjetoDeListaAqui(hornos, position)
     }
 
-        method hornoAqui(position) {
-      return hornos.filter({horno => horno.position() == position}).head()
+    method hornoAqui(position) {
+      return self.objetoDeListaAqui(hornos, position)
     }
-
+//
     method hayObjetoSolidoEn(position){
         return self.hayMuebleAqui(position) or self.hayHornoAqui(position)
     }
@@ -43,15 +57,15 @@ object restaurante {
 
     method seDejaIngredienteAqui(ingrediente, position){
       ingredientes.add(ingrediente)
-//      ingrediente.serDejadoAqui(position)
+      //ingrediente.serDejadoAqui(position)
       self.muebleAqui(position).recibirIngrediente(ingrediente)
     }
-
+/*    
     method seSacaIngredienteAqui(position) {
       self.muebleAqui(position).entregarIngredienteEncima()
       ingredientes.remove(self.ingredienteAqui(position))
     }
-
+*/
 //VER SI SACAR:
 
     method estacionDeProcesamientoAqui(position) {
@@ -77,7 +91,7 @@ object restaurante {
     }
 
     method hayBasuraAqui(position) {
-      return not muebles.filter({mueble => mueble.esTacho()}).isEmpty()
+      return not muebles.filter({mueble => mueble.esTacho() and mueble.position() == position}).isEmpty()
     }
 
     method hayMasaAqui(position) {
