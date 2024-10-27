@@ -109,9 +109,7 @@ class Mesada inherits Mueble{
 
   method tieneUnaPiza(){
     return cosasEncima.aceptaIngredientesEncima()
-    //not cosasEncima.isEmpty() and cosasEncima.head().aceptaIngredientesEncima()
   }
-//PROVAR ESTO EN ESPECIAL.
   method recibirIngrediente(ingrediente) {
     if(self.tieneUnaPiza()){
       cosasEncima.recibirIngrediente(ingrediente)
