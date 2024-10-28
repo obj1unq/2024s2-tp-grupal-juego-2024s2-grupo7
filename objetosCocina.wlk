@@ -8,7 +8,7 @@ import wollok.game.*
 
 class Horno {
   const property position = game.at(4, 4)
-  var image = "" //ponerle una imagen base normal
+  var image = "oven_0.png" //ponerle una imagen base normal
   var property temperatura = 0
   var property contenido = [] 
   

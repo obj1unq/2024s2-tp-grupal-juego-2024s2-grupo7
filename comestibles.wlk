@@ -42,18 +42,18 @@ class Ingrediente {
 }
 
 
-class Masa inherits Ingrediente( image = "", precio = 100 ) {
+class Masa inherits Ingrediente( image = "masa_inicial.png", precio = 100 ) {
     const property ingredientes = #{} //aunque lo haga el chef la masa tiene que saber que tiene dentro.
     var property estado = cruda
 
     //override method serProcesado(){} 
 
     override method imagenIngredienteInicial(){
-        return "" //imagen de masa redondita
+        return "masa_inicial.png" //imagen de masa redondita
     }
 
     override method imagenIngredienteFinal(){
-        return "" //imagen de masa amazada
+        return "masa_final.png" //imagen de masa amazada
     }
 
 
@@ -115,14 +115,14 @@ object quemada {
     }
 }
 
-class Queso inherits Ingrediente( image = "muzzarella_inicial.png", precio = 200) {
+class Queso inherits Ingrediente( image = "queso_inicial.png", precio = 200) {
 
         override method imagenIngredienteInicial(){
-            return "muzzarella_inicial.png"
+            return "queso_inicial.png"
         }
 
         override method imagenIngredienteFinal(){
-            return "muzzarella_final.png"
+            return "queso_final.png"
         }
 
         override method id(){
@@ -139,7 +139,7 @@ class Tomate inherits Ingrediente( image = "tomate_inicial.png", precio = 200) {
 
       override method imagenIngredienteFinal(){
 
-        return "tomate_inicial.png"
+        return "tomate_final.png"
       }
 
       override method id(){
@@ -147,14 +147,14 @@ class Tomate inherits Ingrediente( image = "tomate_inicial.png", precio = 200) {
         }
 }
 
-class Aceituna inherits Ingrediente( image = "", precio = 200) {
+class Aceituna inherits Ingrediente( image = "aceituna_factory.png", precio = 200) {
 
     override method imagenIngredienteInicial(){
-            return ""
+            return "aceituna_factory.png"
         }
 
         override method imagenIngredienteFinal(){
-            return ""
+            return "aceituna_final.png"
         }
 
     override method id(){
@@ -162,14 +162,14 @@ class Aceituna inherits Ingrediente( image = "", precio = 200) {
         }
 }
 
-class Huevo inherits Ingrediente( image = "", precio = 200) {
+class Huevo inherits Ingrediente( image = "huevo_inicial.png", precio = 200) {
 
     override method imagenIngredienteInicial(){
-            return ""
+            return "huevo_inicial.png"
         }
 
         override method imagenIngredienteFinal(){
-            return ""
+            return "huevo_final.png"
         }
 
     override method id(){
@@ -177,14 +177,14 @@ class Huevo inherits Ingrediente( image = "", precio = 200) {
         }
 }
 
-class Atun inherits Ingrediente( image = "", precio = 200) {
+class Atun inherits Ingrediente( image = "atun_factory.png", precio = 200) {
 
     override method imagenIngredienteInicial(){
-            return ""
+            return "atun_factory.png"
         }
 
         override method imagenIngredienteFinal(){
-            return ""
+            return "atun_final.png"
         }
 
     override method id(){
@@ -192,14 +192,14 @@ class Atun inherits Ingrediente( image = "", precio = 200) {
         }
 }
 
-class Hongo inherits Ingrediente( image = "", precio = 200) {
+class Hongo inherits Ingrediente( image = "hongo_inicial.png", precio = 200) {
 
     override method imagenIngredienteInicial(){
-            return ""
+            return "hongo_inicial.png"
         }
 
         override method imagenIngredienteFinal(){
-            return ""
+            return "hongo_final.png"
         }
 
     override method id(){

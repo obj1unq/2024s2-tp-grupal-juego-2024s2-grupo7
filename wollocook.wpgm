@@ -3,6 +3,8 @@ import chefs.*
 import comestibles.*
 import objetosCocina.*
 import posiciones.*
+import objetosParaTests.*
+import mapa.*
 
 
 import wollok.game.*
@@ -10,42 +12,21 @@ import wollok.game.*
 
 program wollocook {
     
-    // config
-    game.height(10)
-	game.width(10)
+   // tamaño mapa
+    dimension.tamanioMapa()
     
-    //game.addVisual(horno)
-    //game.addVisual(new Masa(position = game.origin()))
-
+ 
 
     //teclas
-    /*
-    keyboard.up().onPressDo({remy.mover(arriba)})
-    keyboard.down().onPressDo({remy.mover(abajo)})
-    keyboard.right().onPressDo({remy.mover(derecha)})
-    keyboard.left().onPressDo({remy.mover(izquierda)})
-    keyboard.e().onPressDo({remy.recogerIngrediente()})
-    keyboard.q().onPressDo({remy.depositarIngrediente()})
-*/
+    teclas.movimiento()
 
-    //teclas
-    //keyboard.w().onPressDo({remy.mover(arriba)})
-    //keyboard.s().onPressDo({remy.mover(abajo)})
-    //keyboard.d().onPressDo({remy.mover(derecha)})
-    //keyboard.a().onPressDo({remy.mover(izquierda)})
-    
 
-    //game.onCollideDo(remy,{ingrediente => ingrediente.serSostenido(remy) })
-    
-
-    //game.addVisual(remy)
-    /*game.addVisual(new Tomate(position = game.at(5,2)))
-    game.addVisual(new Masa(position = game.at(6,2)))
-    game.addVisual(new Queso(position = game.at(7,2)))*/
-
-    //generador de ingredientea
-
-    //game.onTick(10000, "ingredientes", {administradorIngredientes.nuevoIngrediente()})
+    //chef
+    imagen.chef()
+    //ingredientes
+   imagen.ingredientes()
+   // hornos
+   imagen.horno()
 
     game.start()
 }

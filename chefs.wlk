@@ -29,7 +29,10 @@ class Chef {
   }
 
   method nuevaImagen(){
-    image = orientacion.imagen(nombre)
+
+    image = "chefPrueba.png"
+    //image = orientacion.imagen(nombre)
+    // hay que hacer los place holder del chef con bandeja
   }
 
   method dondeEstoyApuntando() {
