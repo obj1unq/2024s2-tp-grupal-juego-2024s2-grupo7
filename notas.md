@@ -31,4 +31,14 @@
     -CAJA:
         *hacer la caja
 
+    -MUEBLES:
+        *refactorizar para tener mayor polimorfismo
+        *agregar el ser accionado polimorfico
+
+    -RESTAURANTE: -> PRIORIZAR
+        *juntar los muebles
+        -cambiar las consultas a solo las necesarias con polimorfismo en los muebles.
+
+    -INGREDIENTES: -> PRIORIZAR
+        *agregar los estados de procesamiento y los de estar sostenido o no
         
