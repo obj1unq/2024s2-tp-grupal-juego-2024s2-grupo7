@@ -10,7 +10,6 @@ import wollok.game.*
 //temporal hasta tener todo en el lugar que se debe
 
 /*
-//mapa tests:
 
 [m,_,3,_,_,_,_,_],
 [_,_,_,_,_,_,_,_],

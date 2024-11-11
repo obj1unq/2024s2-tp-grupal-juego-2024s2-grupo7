@@ -4,6 +4,8 @@ import comestibles.*
 import objetosCocina.*
 import posiciones.*
 import objetosParaTests.*
+import game.*
+
 
 object dimension {
 
