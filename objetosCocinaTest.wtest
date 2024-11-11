@@ -1,4 +1,4 @@
-import restauranteTest.*
+//import restauranteTest.*
 import objetosParaTests.*
 
 import wollok.game.*

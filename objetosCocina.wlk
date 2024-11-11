@@ -6,7 +6,7 @@ import chefs.*
 
 import wollok.game.*
 
-
+//hacer que el horno sea un mueble también -> IMPORTANTE
 class Horno {
   const property position = game.at(4, 4)
   var image = "oven_0.png" //ponerle una imagen base normal

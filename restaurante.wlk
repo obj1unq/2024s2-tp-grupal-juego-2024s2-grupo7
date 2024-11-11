@@ -3,6 +3,8 @@ import objetosCocina.*
 import objetosParaTests.*
 
 //HACER UNA CLASE POSICION DE OBJETO?
+//juntar horno con mueble -> el horno ahora va a ser un mueble
+
 object restaurante {
 
     const property muebles = [tacho3, mesada1, mesada2] //los muebles saben su clasificacion 
@@ -16,7 +18,7 @@ object restaurante {
     }
 
     method objetoDeListaAqui(lista, position) {
-      return lista.filter({objeto => objeto.position() == position}).head()
+      return lista.filter({objeto => objeto.position() == position}).head() //esto es un find
     }
 
 //
@@ -32,7 +34,7 @@ object restaurante {
       return muebles.any({mueble => mueble.esPilaDeIngredientes()})
     }
 
-    method hayMuebleAqui(position) {
+    method hayMuebleAqui(position) { //falta una abstracion entre mueble y horno para no preguntar directamente a la cosa concreta
         return self.hayObjetoDeListaAqui(muebles, position)
     }
 
@@ -44,7 +46,7 @@ object restaurante {
         return self.hayObjetoDeListaAqui(hornos, position)
     }
 
-    method hornoAqui(position) {
+    method hornoAqui(position) { //priorizar el polimorfismo y dejar los parentecis vacios
       return self.objetoDeListaAqui(hornos, position)
     }
 

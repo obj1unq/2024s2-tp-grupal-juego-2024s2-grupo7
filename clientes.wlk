@@ -24,12 +24,12 @@ class Cliente{
     method generarPedido() {
       const ingredientePrincipal = self.ingredientePrincipalRandom()
 
-      pedidoQueEspero = #{"salsa", "queso"} + #{ingredientePrincipal}
+      pedidoQueEspero = ["salsa", "queso"] + [ingredientePrincipal]
 
     }
 
     method ingredientePrincipalRandom() {
-      return ["aceitunas", "queso", "atun", "hongos"].randomized().head()
+      return ["aceitunas", "queso", "atun", "hongos"].randomize().head()
     }
 
     method recibirPedido(pedido) {
@@ -45,7 +45,7 @@ class Cliente{
         nivelDePaciencia = nivelDePaciencia - 20
         emocion = decepcionado
       }
-    }
+    } //esto es mejor que lo haga el estado
 
     method esLoQueEsperaba(pedido){  //puede recibir un ingrediente solo pero eso lo va a hacer enojar.
       return self.esUnaPiza(pedido) and self.esLaPizzaQuePedi(pedido)
@@ -85,10 +85,16 @@ object decepcionado {
   }
 }
 
-class ClienteNormal inherits Cliente(nivelDePaciencia = 100, image = "image_clieneNormal.png"){}
+class ClienteNormal inherits Cliente(nivelDePaciencia = 100, image = "image_cliente-normal.png"){}
+//normal se queda depende del pedido si paga.
 
 class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 80, image = "image_clieneQuisquilloso.png"){}
+//se enoja y se va sin pagar y te roba plata 
 
 class ClientePaciente inherits Cliente(nivelDePaciencia = 110, image = "image_clienePaciente.png"){}
+//no hace nada
 
 const cliente = new ClienteNormal() //lo agrego para probar en la consola al cliente
+
+//"image_cliente-" + estado.imagen() + ".png"
+//ver algoritmos para las imagenes. asi se sobreescribe solo un metodo.
