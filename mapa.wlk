@@ -4,7 +4,7 @@ import comestibles.*
 import objetosCocina.*
 import posiciones.*
 import objetosParaTests.*
-import game.*
+import wollok.game.*
 
 
 object dimension {
