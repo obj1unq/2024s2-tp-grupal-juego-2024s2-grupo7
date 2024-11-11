@@ -1,3 +1,4 @@
+import objetosCocina.*
 import restaurante.*
 import comestibles.*
 import posiciones.*
@@ -148,6 +149,22 @@ describe "chefs test" {
     
     assert.equals(preparacion, remy.bandeja())
     
+  }
+
+  test "remy va a la canaste de tomates  y toma uno en su bandeja"{
+   
+   estacionTomate.position(game.at(4,4))
+   remy.position(game.at(2,2))
+   remy.mover(derecha)
+   remy.recogerIngrediente()
+
+   assert.equals(tomate,remy.bandeja())
+
+  // el test da  0 passing eso  esta mal, no le encontre la vuelta 
+  
+
+  
+
   }
 
 

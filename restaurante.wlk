@@ -5,9 +5,9 @@ import objetosParaTests.*
 //HACER UNA CLASE POSICION DE OBJETO?
 object restaurante {
 
-    const property muebles = [tacho3, mesada1, mesada2] //los muebles saben su clasificacion 
+    const property muebles = [tacho3, mesada1, mesada2,estacionTomate,estacionQueso,estacionMasa,estacionAceituna,estacionAtun,estacionHongo,estacionHuevo] //los muebles saben su clasificacion 
     //entonces poner la pila de ingredientes como un mueble y en ingredientes se manejan todos los ingredientes sueltos que esta moviendo el chef
-    const property ingredientes = [tomate, queso, masa] //cambiar nombre a ingredientes sueltos -> porque acá guarda solo los ingredientes sueltos. NO TODOS 
+    const property ingSueltos = [tomate, queso, masa] // ya cambie  el nombre   si les gusta  descomenten esto porfis 
     const property hornos = [horno] //excusa : después compras más hornos y los agregas y es el unico mueble que agregas
     const property filasDeClientes = []
 //  
@@ -15,17 +15,27 @@ object restaurante {
       return lista.any({objeto => objeto.position() == position})
     }
 
-    method objetoDeListaAqui(lista, position) {
-      return lista.filter({objeto => objeto.position() == position}).head()
+ 
+   method objetoDeListaAqui(lista, position) {
+      return lista.filter({objeto => objeto.position() == position}).head() // el error  marca aca por no puede usar head en una lista vacia
+      // abajo intente  usar un find  para no agregar una excepcion y el problema deberia  Hacer que cuando se crea  un ingrediente 
+      // este deberia  agregarse en la lista ingSueltos
+      
+
+      //lista.find({objeto => objeto.position() == position})
     }
 
 //
     method hayIngredienteAqui(position){
-        return self.hayObjetoDeListaAqui(ingredientes, position) || self.hayPilaDeIngredientesAqui(position)
+        return self.hayObjetoDeListaAqui(ingSueltos, position) || self.hayPilaDeIngredientesAqui(position)
+        
+        //self.hayObjetoDeListaAqui(ingredientes, position) || self.hayPilaDeIngredientesAqui(position)
     }
 
     method ingredienteAqui(position) {
-        return self.objetoDeListaAqui(ingredientes, position)
+        return  self.objetoDeListaAqui(ingSueltos,position)
+        
+        //self.objetoDeListaAqui(ingredientes, position)
     }
 
     method hayPilaDeIngredientesAqui(position){
@@ -57,7 +67,7 @@ object restaurante {
     }
 
     method seDejaIngredienteAqui(ingrediente, position){
-      ingredientes.add(ingrediente)
+      ingSueltos.add(ingrediente)
       self.muebleAqui(position).recibirIngrediente(ingrediente)
     }
 
@@ -70,7 +80,7 @@ object restaurante {
     }
 
     method masaAqui(position) {
-      return ingredientes.filter({ingrediente => ingrediente.aceptaIngredientesEncima()}).head()
+      return ingSueltos.filter({ingrediente => ingrediente.aceptaIngredientesEncima()}).head()
     }
 
     method hayEstacionDeProcesamientoAqui(position) {
@@ -86,7 +96,7 @@ object restaurante {
     }
 
     method hayMasaAqui(position) {
-      return not ingredientes.filter({ingrediente => ingrediente.aceptaIngredientesEncima()}).isEmpty()
+      return not ingSueltos.filter({ingrediente => ingrediente.aceptaIngredientesEncima()}).isEmpty()
     }
 //probar:
     method hayClienteAqui(position) {

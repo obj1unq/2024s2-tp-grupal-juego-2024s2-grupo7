@@ -67,7 +67,7 @@ class Horno {
 }
 
 class Mueble {
-  const property position = game.center()
+  var property position = game.center()
   const property image = ""
   
 
@@ -125,6 +125,8 @@ class Mesada inherits Mueble{
     //cosasEncima.remove(self.cosaEncima())
     cosasEncima = bandejaVacia
   }
+
+  override method image() = "mesada_ph.png"
 }
 
 class Tacho inherits Mueble{
@@ -168,20 +170,86 @@ class PilaIngrediente inherits Mueble {
 
    override method esPilaDeIngredientes() = true
 
+   method serSostenido(chef)
+
 }
 
 object estacionTomate  inherits PilaIngrediente{
 
-  override method position() = game.at(3, 5)
+  override method position() = game.at(2, 2)
 
   override method image() = "tomate_inicial.png"
 
-  method recogerIngrediente(chef){
+  override method serSostenido(chef){
 
-    
+    return new Tomate(position= chef.position())
+  
   }
 
 
+}
+
+object estacionMasa inherits PilaIngrediente{
+
+    override method position() = game.at(4,2)
+
+    override method image() = "masa_inicial.png"
+
+    override method serSostenido(chef){
+
+      return new Masa(position= chef.position())
+    }
+}
+
+object estacionQueso inherits PilaIngrediente {
+
+  override method position() = game.at(6,2)
+
+  override method image() = "queso_inicial.png"
+
+  override method serSostenido(chef){
+
+    return new Queso(position = chef.position())
+  }
+}
+
+object estacionAceituna inherits PilaIngrediente {
+
+  override method position() = game.at(9,5)
+
+  override method image() = "aceituna_factory.png"
+
+  override method serSostenido(chef){
+
+    return new Aceituna(position = chef.position())
+  }
+}
+
+object estacionHongo inherits PilaIngrediente{
+
+  override method position() = game.at(9,7)
+
+  override method image() = "hongo_factory.png"
+
+  override method serSostenido(chef) = new Hongo(position=chef.position())
+}
+
+object estacionHuevo inherits PilaIngrediente{
+
+  override method position() = game.at(9,3)
+
+  override method image() = "huevos_factory.png"
+
+  override method serSostenido(chef)= new Huevo(position=chef.position())
+}
+
+object estacionAtun inherits PilaIngrediente {
+
+  override method position() = game.at(9,1)
+
+  override method image() = "atun_factory.png"
+
+  override method serSostenido(chef) = new Atun(position = chef.position())
 }
 
 /*

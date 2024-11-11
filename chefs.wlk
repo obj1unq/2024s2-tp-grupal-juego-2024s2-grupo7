@@ -42,17 +42,22 @@ class Chef {
   method recogerIngrediente(){
     self.validarRecogerIngrediente()
     const ingredienteAqui = restaurante.ingredienteAqui(self.dondeEstoyApuntando())
+    
+    // restaurante.ingredienteAqui(self.dondeEstoyApuntando())
     self.recibirIngrediente(ingredienteAqui)
     
   }
 
   method recibirIngrediente(ingrediente){
     bandeja = ingrediente
+    game.addVisual(ingrediente)
+
     ingrediente.serSostenido(self)
+    //ingrediente.serSostenido(self)
   }
 
   method validarRecogerIngrediente(){
-    if (not restaurante.hayIngredienteAqui(self.dondeEstoyApuntando())){
+    if (not restaurante.hayIngredienteAqui(self.dondeEstoyApuntando()) and not restaurante.hayPilaDeIngredientesAqui(self.dondeEstoyApuntando() )){
       self.error("no hay nada que agarrar")
     } else if(not self.tengoBandejaVacia()){
       self.error("tengo las manos llenas")

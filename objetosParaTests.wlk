@@ -36,9 +36,11 @@ const mesada1 = new Mesada(position = game.at(2, 5)) //1
 const mesada2 = new Mesada(position = game.at(2, 4)) //2
 const tacho3 = new Tacho(position = game.at(2, 7)) //3
 
-const remy = new Chef( position = game.at(0,0), image = "chefPrueba.png", nombre = "remy" ) //r
+const remy = new Chef( position = game.at(0,0), image = "chef_down.png", nombre = "remy" ) //r
 
 const cliente1 = new ClienteNormal()
 const cliente2 = new ClienteQuisquilloso()
 const cliente3 = new ClientePaciente()
+
+
 
