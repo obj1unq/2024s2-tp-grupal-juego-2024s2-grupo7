@@ -24,12 +24,13 @@ class Cliente inherits Persona(position = game.at(0,7) /*o donde esté la puerta
     method generarPedido() {
       const ingredientePrincipal = self.ingredientePrincipalRandom()
 
-      pedidoQueEspero = [saborTomate, saborQueso] + [ingredientePrincipal]
+      pedidoQueEspero = [ingredienteTomate, ingredienteQueso] + [ingredientePrincipal]
 
     }
 
     method ingredientePrincipalRandom() {
-      return [saborAceituna, saborQueso, saborAtun, saborHongo].randomize().head()
+      const ingredientesAElegir = [ingredienteAceituna, ingredienteQueso, ingredienteAtun, ingredienteHongo]
+      return ingredientesAElegir.randomized().head()
     }
 
     method recibirPedido(pedido) {
@@ -93,7 +94,7 @@ class ClientePaciente inherits Cliente(nivelDePaciencia = 110, image = "image_cl
 
 //HACER UN MEJOR ALGORITMO PARA DAR LAS IMAGENES DE LOS CLIENTES.
 
-//const cliente = new ClienteNormal() //lo agrego para probar en la consola al cliente
+const cliente = new ClienteNormal() //lo agrego para probar en la consola al cliente
 
 /*
   la paciencia no debe ser lo unico diferente entre los diferentes tipos de clientes, hay que agregar que tengan un comportamiento/ respuesta diferente a cosas

@@ -10,7 +10,7 @@ class Ingrediente {
     var property image = null 
     var property precio = null
 
-    method sabor()
+    method tipoIngrediente()
 
    method esVacio(){
     return false
@@ -90,8 +90,8 @@ class Masa inherits Ingrediente( image = "masa_inicial.png", precio = 100 ) {
         }
     }
 
-    override method sabor(){
-        return saborMasa
+    override method tipoIngrediente(){
+        return ingredienteMasa
     }
 
 }
@@ -134,8 +134,8 @@ class Queso inherits Ingrediente( image = "queso_inicial.png", precio = 200) {
             return "queso_final.png"
         }
 
-        override method sabor(){
-        return saborQueso
+        override method tipoIngrediente(){
+        return ingredienteQueso
     }
 }
 
@@ -151,8 +151,8 @@ class Tomate inherits Ingrediente( image = "tomate_inicial.png", precio = 200) {
         return "tomate_final.png"
       }
 
-      override method sabor(){
-        return saborTomate
+      override method tipoIngrediente(){
+        return ingredienteTomate
     }
 }
 
@@ -166,8 +166,8 @@ class Aceituna inherits Ingrediente( image = "aceituna_factory.png", precio = 20
             return "aceituna_final.png"
         }
 
-    override method sabor(){
-        return saborAceituna
+    override method tipoIngrediente(){
+        return ingredienteAceituna
     }
 }
 
@@ -181,8 +181,8 @@ class Huevo inherits Ingrediente( image = "huevo_inicial.png", precio = 200) {
             return "huevo_final.png"
         }
 
-    override method sabor(){
-        return saborHuevo
+    override method tipoIngrediente(){
+        return ingredienteHuevo
     }
 }
 
@@ -196,8 +196,8 @@ class Atun inherits Ingrediente( image = "atun_factory.png", precio = 200) {
             return "atun_final.png"
         }
 
-    override method sabor(){
-        return saborAtun
+    override method tipoIngrediente(){
+        return ingredienteAtun
     }
 }
 
@@ -211,18 +211,18 @@ class Hongo inherits Ingrediente( image = "hongo_inicial.png", precio = 200) {
             return "hongo_final.png"
         }
 
-    override method sabor(){
-        return saborHongo
+    override method tipoIngrediente(){
+        return ingredienteHongo
     }
 }
 
-object saborMasa {}
-object saborQueso {}
-object saborTomate {}
-object saborAceituna {}
-object saborHuevo {}
-object saborAtun {}
-object saborHongo {}
+object ingredienteMasa {}
+object ingredienteQueso {}
+object ingredienteTomate {}
+object ingredienteAceituna {}
+object ingredienteHuevo {}
+object ingredienteAtun {}
+object ingredienteHongo {}
 
 
 
