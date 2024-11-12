@@ -6,7 +6,7 @@ import clientes.*
 //HACER UNA CLASE POSICION DE OBJETO?
 object restaurante {
 
-    const property muebles = [tacho3, mesada1, mesada2, horno] 
+    const property muebles = [tacho3, mesada1, mesada2, horno,estacionTomate,estacionQueso,estacionMasa,estacionHuevo,estacionAtun,estacionAceituna,estacionHongo] 
     const property ingredientesSueltos = [tomate, queso, masa] //acá guarda solo los ingredientes sueltos. NO TODOS -> los que tiene en la mano no los guarda, las factories no son ingredientes son muebles 
     const property filasDeClientes = []
 //  
@@ -15,14 +15,21 @@ object restaurante {
     }
 
     method objetoDeListaAqui(lista, position) {
-      return lista.find({objeto => objeto.position() == position})
+      return lista.findOrElse({objeto => objeto.position() == position},{self.error("No Hay Nada aqui")})
     }
-
+  //  estaba como Find, puse findElse para que no sale un error  raro cuando no hay nada  en esa posicion, ahora deberia decir ese mensaje
 //
 
     method muebleAqui(position) {
+
+        
           return self.objetoDeListaAqui(muebles, position)
         }
+
+    method objetosAqui(chef){
+
+      return muebles.find({mueble => mueble.position() == chef.dondeEstoyApuntando()})
+    }
 
     method hayMuebleAqui(position){
       return self.hayObjetoDeListaAqui(muebles, position)

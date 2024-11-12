@@ -19,6 +19,7 @@ program wollocook {
 
     //teclas
     teclas.movimiento()
+    teclas.accion()
 
 
     //chef
@@ -27,6 +28,9 @@ program wollocook {
    imagenes.ingredientesImg()
    // hornos
    imagenes.hornoImg()
+   
+    // mesadas
+    imagenes.mesadaImg()
 
     game.start()
 }
