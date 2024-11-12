@@ -87,7 +87,7 @@ object bandejaVacia {
     return true
   }
   method aceptaIngredientesEncima(){ //tal vez cambiar el nombre porque no tiene mucho sentido para la bandeja
-  //es más que anda para que tenga polimorfismo con los ingredientes
+  //es más que nada para que tenga polimorfismo con los ingredientes
     return false
   }
 }

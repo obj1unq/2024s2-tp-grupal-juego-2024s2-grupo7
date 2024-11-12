@@ -8,7 +8,7 @@ import wollok.game.*
 
 describe "horno" {
   test "el horno recibe pizzas porque esta libre y luego devuelve la pizza porque el chef tiene las manos vacias" { 
-    remy.bandeja(preparacion)
+    remy.bandeja(masa)
     horno.usarse(remy)
     
     assert.that(horno.tieneAlgo())
@@ -22,7 +22,7 @@ describe "horno" {
   }
 
   test "ocurre un fallo porque el horno no puede recibir más de 1 pizza" { 
-    remy.bandeja(preparacion)
+    remy.bandeja(masa)
     horno.usarse(remy)
     
     assert.that(horno.tieneAlgo())
@@ -47,38 +47,38 @@ describe "horno" {
 describe "mesada" {
   test "mesada vacia recibe un ingredinte y luego lo entrega" {
     remy.bandeja(tomate)
-    mesada1.usarse(remy)
+    mesada3.usarse(remy)
     
-    assert.equals(tomate, mesada1.contenido())
+    assert.equals(tomate, mesada3.contenido())
 
-    mesada1.usarse(remy)
+    mesada3.usarse(remy)
 
-    assert.that(mesada1.estaLibre())
+    assert.that(mesada3.estaLibre())
   }
 
-  test "mesada recibe una preparacion y los ingredientes que van hacia la mesada se agregan a la preparacion en vez de a la mesada y modifican la preparacion" { 
+  test "mesada recibe una masa y los ingredientes que van hacia la mesada se agregan a la masa en vez de a la mesada y modifican la masa" { 
     
-    remy.bandeja(preparacion)
-    mesada1.usarse(remy)
+    remy.bandeja(masa)
+    mesada3.usarse(remy)
     
-    assert.equals(preparacion, mesada1.contenido())
+    assert.equals(masa, mesada3.contenido())
     
     remy.bandeja(tomate)
-    mesada1.usarse(remy)
+    mesada3.usarse(remy)
 
     
-    assert.equals(preparacion, mesada1.contenido())
+    assert.equals(masa, mesada3.contenido())
     
-    assert.that(mesada1.tienePiza())
+    assert.that(mesada3.tienePiza())
     
-    assert.that(preparacion.tieneIngredientes()) 
+    assert.that(masa.tieneIngredientes()) 
 
     
-    mesada1.usarse(remy)
+    mesada3.usarse(remy)
     
-    assert.that(mesada1.estaLibre())
+    assert.that(mesada3.estaLibre())
     
-    assert.that(preparacion.tieneIngredientes())
+    assert.that(masa.tieneIngredientes())
   }
   test "remy va a la canaste de tomates  y toma uno en su bandeja"{ //rarisimo que sigue fallando 
    
