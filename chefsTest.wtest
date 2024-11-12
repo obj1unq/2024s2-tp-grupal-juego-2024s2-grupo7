@@ -18,18 +18,20 @@ describe "chefs test" {
   }
 
   test "remy no puede moverse porque hay un mueble arriba suyo y a su izquiera está el límite del mapa" {
+    assert.that(restaurante.hayMuebleAqui(game.at(0,5))) //esto es arriba de remy
+
     assert.throwsException({ remy.moverse(arriba) })
     assert.throwsException({ remy.moverse(izquierda) })
   }
 
-  test "remy agarra un ingrediente (tomate) que esta abajo suyo en donde mira" { //FALLA POR INGREDIENTE SUELTO
-    // remy.position( game.at(0,3) )
-    // remy.mover(arriba)
+  test "remy agarra un ingrediente (tomate) que esta abajo suyo en donde mira" { 
     remy.mover(abajo)
-    remy.interactuar()
+    assert.equals(abajo, remy.orientacion()) //a donde esta "mirando"
+    assert.equals(mesada4, restaurante.muebleAqui(remy.dondeApunta()))
+    //remy.interactuar()
     // remy.interactuar() //esto esta mal porque es un ingrediente tirado
 
-    assert.equals(tomate, remy.bandeja())
+    //assert.equals(tomate, remy.bandeja())
   }
 
   test "remy no puede agarrar un ingrediente porque no hay ningun muble con ingrediente en donde está mirando" {

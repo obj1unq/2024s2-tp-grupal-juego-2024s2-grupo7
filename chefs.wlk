@@ -37,7 +37,7 @@ class Persona {
     // hay que hacer los place holder del chef con bandeja
   }
 
-    method dondeEstoyApuntando() { 
+    method dondeApunta() { 
     return orientacion.moverse(self.position())
   }
 
@@ -53,7 +53,7 @@ class Chef inherits Persona {
 
    method interactuar() {
       
-        const mueble = restaurante.muebleAqui(self.dondeEstoyApuntando())
+        const mueble = restaurante.muebleAqui(self.dondeApunta())
         mueble.usarse(self)
     }
 
@@ -71,11 +71,11 @@ class Chef inherits Persona {
 //probar:
   method preguntarPedido() {
     self.validarPreguntarPedido()
-    restaurante.clienteAqui(self.dondeEstoyApuntando()).decirPedido()
+    restaurante.clienteAqui(self.dondeApunta()).decirPedido()
   }
 
   method validarPreguntarPedido(){
-    if(not restaurante.hayClienteAqui(self.dondeEstoyApuntando())){
+    if(not restaurante.hayClienteAqui(self.dondeApunta())){
       self.error("no hay ningun cliente aqui")
     }
   }

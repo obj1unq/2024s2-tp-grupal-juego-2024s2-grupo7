@@ -72,6 +72,12 @@ class Mueble {
 
 }
 
+object muebleFantasma inherits Mueble {
+  override method usarse(chef){
+    game.say(self, "no hay nada aqui")
+  }
+}
+
 class Horno inherits Mueble{
   var property temperatura = 0
 
