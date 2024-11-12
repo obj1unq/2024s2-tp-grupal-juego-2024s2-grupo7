@@ -24,12 +24,12 @@ class Cliente inherits Persona(position = game.at(0,7) /*o donde esté la puerta
     method generarPedido() {
       const ingredientePrincipal = self.ingredientePrincipalRandom()
 
-      pedidoQueEspero = #{"salsa", "queso"} + #{ingredientePrincipal}
+      pedidoQueEspero = [saborTomate, saborQueso] + [ingredientePrincipal]
 
     }
 
     method ingredientePrincipalRandom() {
-      return ["aceitunas", "queso", "atun", "hongos"].randomized().head()
+      return [saborAceituna, saborQueso, saborAtun, saborHongo].randomize().head()
     }
 
     method recibirPedido(pedido) {
@@ -52,7 +52,7 @@ class Cliente inherits Persona(position = game.at(0,7) /*o donde esté la puerta
     }
 
     method esLaPizzaQuePedi(pedido){
-      return pedido.ingredientes().map({ingrediente => ingrediente.id()}) == pedidoQueEspero //fijarse en la comparacion si lo pasa a set el map
+      return pedido.ingredientes().map({ingrediente => ingrediente.sabor()}) == pedidoQueEspero 
     }
 
     method esUnaPiza(pedido){
@@ -90,6 +90,8 @@ class ClienteNormal inherits Cliente(nivelDePaciencia = 100, image = "image_clie
 class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 80, image = "image_clieneQuisquilloso.png", nombre = "clienteQuisquilloso"){}
 
 class ClientePaciente inherits Cliente(nivelDePaciencia = 110, image = "image_clienePaciente.png", nombre = "clientePaciente"){}
+
+//HACER UN MEJOR ALGORITMO PARA DAR LAS IMAGENES DE LOS CLIENTES.
 
 //const cliente = new ClienteNormal() //lo agrego para probar en la consola al cliente
 
