@@ -86,7 +86,7 @@ describe "mesada" {
    estacionTomate.usarse(remy)
    assert.notThat(remy.tengoBandejaVacia())
 
-   assert.equals(saborTomate, remy.bandeja().sabor()) //es mejor forma de comparar
+   assert.equals(ingredienteTomate, remy.bandeja().tipoIngrediente()) //es mejor forma de comparar
 
   }
 }
