@@ -6,7 +6,7 @@ import clientes.*
 //HACER UNA CLASE POSICION DE OBJETO?
 object restaurante {
 
-    const property muebles = [tacho3, mesada1, mesada2, horno,estacionTomate,estacionQueso,estacionMasa,estacionHuevo,estacionAtun,estacionAceituna,estacionHongo] 
+    const property muebles = [mesada, tacho, mesada2, horno, mesada3, horno2, mesada4, mesada5, mesada6, estacionTomate, estacionQueso, estacionMasa, estacionHuevo, estacionAtun, estacionAceituna,estacionHongo] 
     const property ingredientesSueltos = [tomate, queso, masa] //acá guarda solo los ingredientes sueltos. NO TODOS -> los que tiene en la mano no los guarda, las factories no son ingredientes son muebles 
     const property filasDeClientes = []
 //  
@@ -21,15 +21,13 @@ object restaurante {
 //
 
     method muebleAqui(position) {
-
-        
           return self.objetoDeListaAqui(muebles, position)
         }
 
-    method objetosAqui(chef){
+    // method objetosAqui(chef){ -> no se usa en nada 
 
-      return muebles.find({mueble => mueble.position() == chef.dondeEstoyApuntando()})
-    }
+    //   return muebles.find({mueble => mueble.position() == chef.dondeEstoyApuntando()})
+    // }
 
     method hayMuebleAqui(position){
       return self.hayObjetoDeListaAqui(muebles, position)

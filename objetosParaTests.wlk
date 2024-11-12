@@ -7,39 +7,44 @@ import clientes.*
 
 import wollok.game.*
 
-//temporal hasta tener todo en el lugar que se debe -> ir cambiando las cosas como se deben para probar en clienteTest
 
 /*
 
-[m,_,3,_,_,_,_,_],
-[_,_,_,_,_,_,_,_],
-[t,_,1,_,_,q,_,_],
-[_,_,_,2,_,_,_,_],
-[_,_,_,_,_,_,_,_],
-[g,_,_,_,_,_,_,_],
-[h,_,_,_,_,_,_,_],
-[r,H,_,_,_,_,_,_]
+[t,_,_,_,_],
+[_,_,_,_,_],
+[_,_,_,_,_],
+[_,_,_,_,_],
+[_,_,_,_,_],
+[_,_,_,_,_],
+[_,_,_,_,_]
 
 */
 
-// no tienen que haber ingredientes tirados, tiene que estar en un mueble para que remy pueda interactuar con los muebles y de ahí agarrar y dejar las cosas en los tests -> cambiar mapa para los tests
+const remy = new Chef( position = game.at(0,4), image = "remy_abajo.png", nombre = "remy" ) //r
 
-const tomate = new Tomate(position= game.at(0, 5)) //T
-const queso = new Queso (position = game.at(5, 5)) //Q
-const masa = new Masa (position = game.at(0, 7)) //M
+//tomates factory 
+//masas factory 
+const mesada = new Mesada(position = game.at(2,5), contenido = masa)
+const tacho = new Tacho(position = game.at(3,5))
+const mesada2 = new Mesada(position = game.at(4,5), contenido = queso)
+const horno = new Horno(position = game.at(5,5)) 
+const mesada3 = new Mesada(position = game.at(6,5))
+const horno2 = new Horno(position = game.at(7,5)) 
 
-const preparacion = new Masa(position = game.at(0, 2)) //g
-const preparacion2 = new Masa(position = game.at(0, 2)) 
+const mesada4 = new Mesada(position = game.at(0,5), contenido = tomate)
+//aceitunas factory
+//queso factory
+//hongos factory
+//huevos factory
+const mesada5 = new Mesada(position = game.at(5,2))
+const mesada6 = new Mesada(position = game.at(6,2))
+//atun factory
 
-const horno = new Horno(position = game.at(1, 0)) //H
-const horno2 = new Horno(position = game.at(1, 0)) //h
-const mesada1 = new Mesada(position = game.at(2, 5)) //1
-const mesada2 = new Mesada(position = game.at(2, 4)) //2
-const tacho3 = new Tacho(position = game.at(2, 7)) //3
 
-const remy = new Chef( position = game.at(0,0), image = "remy_abajo.png", nombre = "remy" ) //r
+const masa = new Masa()
+const queso = new Queso()
+const tomate = new Tomate()
 
 const cliente1 = new ClienteNormal()
 const cliente2 = new ClienteQuisquilloso()
 const cliente3 = new ClientePaciente()
-

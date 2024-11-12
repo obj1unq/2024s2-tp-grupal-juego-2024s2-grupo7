@@ -152,7 +152,7 @@ class PilaIngrediente inherits Mueble {
 
 }
 
-object estacionTomate  inherits PilaIngrediente(image = "tomate_inicial.png", position = game.at(2, 2)){
+object estacionTomate  inherits PilaIngrediente(image = "tomate_inicial.png", position = game.at(0, 5)){
 
   override method nuevoIngrediente(chef){
     return new Tomate(position= chef.position()) //debería aparecer dentro de la bandeja del chef
@@ -161,7 +161,7 @@ object estacionTomate  inherits PilaIngrediente(image = "tomate_inicial.png", po
 
 }
 
-object estacionMasa inherits PilaIngrediente(image = "masa_inicial.png", position = game.at(4,2)){
+object estacionMasa inherits PilaIngrediente(image = "masa_inicial.png", position = game.at(0,5)){
 
     override method nuevoIngrediente(chef){
       return new Masa(position= chef.position())
@@ -169,7 +169,7 @@ object estacionMasa inherits PilaIngrediente(image = "masa_inicial.png", positio
 
 }
 
-object estacionQueso inherits PilaIngrediente(image = "queso_inicial.png", position = game.at(6,2)) {
+object estacionQueso inherits PilaIngrediente(image = "queso_inicial.png", position = game.at(2,2)) {
 
   override method nuevoIngrediente(chef){
     return new Queso(position = chef.position())
@@ -177,14 +177,14 @@ object estacionQueso inherits PilaIngrediente(image = "queso_inicial.png", posit
 
 }
 
-object estacionAceituna inherits PilaIngrediente(image = "aceituna_factory.png", position = game.at(9,5)) {
+object estacionAceituna inherits PilaIngrediente(image = "aceituna_factory.png", position = game.at(1,2)) {
 
     override method nuevoIngrediente(chef){
       return new Aceituna(position = chef.position())
     }
   }
 
-object estacionHongo inherits PilaIngrediente(image = "hongo_factory.png", position = game.at(9,7)){
+object estacionHongo inherits PilaIngrediente(image = "hongo_factory.png", position = game.at(3,2)){
 
   override method nuevoIngrediente(chef){
     return new Hongo(position=chef.position())
@@ -192,7 +192,7 @@ object estacionHongo inherits PilaIngrediente(image = "hongo_factory.png", posit
 
 }
 
-object estacionHuevo inherits PilaIngrediente(image = "huevos_factory.png", position = game.at(9,3)){
+object estacionHuevo inherits PilaIngrediente(image = "huevos_factory.png", position = game.at(4,2)){
 
   override method nuevoIngrediente(chef){
     return new Huevo(position=chef.position())
@@ -200,7 +200,7 @@ object estacionHuevo inherits PilaIngrediente(image = "huevos_factory.png", posi
 
 }
 
-object estacionAtun inherits PilaIngrediente(image = "atun_factory.png", position = game.at(9,1)) {
+object estacionAtun inherits PilaIngrediente(image = "atun_factory.png", position = game.at(7,2)) {
 
   override method nuevoIngrediente(chef){
     return new Atun(position = chef.position())
@@ -208,4 +208,4 @@ object estacionAtun inherits PilaIngrediente(image = "atun_factory.png", positio
 
 }
 
-class Dispencer inherits Mueble{} //hacer => opcional, para el final
+class Dispencer inherits Mueble{} //hacer => opcional, para el final -> estos implican seleccionar un numero también
