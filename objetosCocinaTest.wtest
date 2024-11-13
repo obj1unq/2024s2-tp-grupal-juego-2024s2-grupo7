@@ -6,7 +6,7 @@ import comestibles.*
 
 import wollok.game.*
 
-describe "horno" {
+describe "funcionalidad horno" {
   test "el horno recibe pizzas porque esta libre y luego devuelve la pizza porque el chef tiene las manos vacias" { 
     remy.bandeja(masa)
     horno.usarse(remy)
