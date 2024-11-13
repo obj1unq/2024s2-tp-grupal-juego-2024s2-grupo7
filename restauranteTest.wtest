@@ -1,3 +1,4 @@
+import objetosCocina.*
 import restaurante.*
 import chefs.*
 import objetosParaTests.*
@@ -8,25 +9,19 @@ import wollok.game.*
 
 describe "restaurante" {
   test "busca objetos que hay y te devuelve el objeto en esa dirección" {
-    assert.that(restaurante.hayMuebleAqui( game.at(1, 0) ))
-    assert.equals(horno, restaurante.muebleAqui( game.at(1, 0) ))
+    assert.notThat(restaurante.hayMuebleAqui( game.at(1, 0) ))
+    assert.equals(horno, restaurante.muebleAqui( game.at(5, 5) ))
 
     assert.that(restaurante.hayMuebleAqui( game.at(2, 5) ))
-    assert.equals(mesada1, restaurante.muebleAqui( game.at(2, 5) ))
+    assert.equals(mesada, restaurante.muebleAqui( game.at(2, 5) ))
 
-    assert.that(restaurante.hayMuebleAqui( game.at(2, 4) ))
-    assert.equals(mesada2, restaurante.muebleAqui( game.at(2, 4) ))
+    assert.that(restaurante.hayMuebleAqui( game.at(4, 5) ))
+    assert.equals(mesada2, restaurante.muebleAqui( game.at(4, 5) ))
   }
 
-  test "busca objetos que no hay entonces da error cuando te devuelve los objetos en esa dirección" {
+  test "busca objetos que no hay entonces no da error cuando te devuelve los objetos en esa dirección sino que te devuelve el mueble fantasma" {
     assert.notThat(restaurante.hayMuebleAqui( game.at(0, 0) ))
-    assert.throwsException({ restaurante.muebleAqui( game.at(0, 0) ) })
-
-    assert.notThat(restaurante.hayMuebleAqui( game.at(4, 5) ))
-    assert.throwsException({ restaurante.muebleAqui( game.at(4, 5) ) })
-
-    assert.notThat(restaurante.hayMuebleAqui( game.at(5, 6) ))
-    assert.throwsException({ restaurante.muebleAqui( game.at(6, 6) ) })
+    assert.equals(muebleFantasma, restaurante.muebleAqui( game.at(0, 0) ))
   }
 }
 
