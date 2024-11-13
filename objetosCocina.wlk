@@ -78,7 +78,7 @@ object muebleFantasma { //no es un mueble en realidad, como la bandeja represent
   }
 }
 
-class Horno inherits Mueble{
+class Horno inherits Mueble{ //ahora el horno recibe todo tipo de cosas que le quieras meter
   var property temperatura = 0
 
   override method accionRecibir(chef){
