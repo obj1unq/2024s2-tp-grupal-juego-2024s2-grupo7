@@ -23,10 +23,14 @@ class Mueble {
   }
 
   method validarRecibir(chef){
-    if(not self.estaLibre()){ //template method ya que en todos los muebles se le puede agregar ingredientes a la pizza menos en el horno, en el horno ya no se puede interactuar más con la piza por lo que lo unicop que acepta recibir es una pizza
+    if(not self.puedeRecibir()){ //template method ya que en todos los muebles se le puede agregar ingredientes a la pizza menos en el horno, en el horno ya no se puede interactuar más con la piza por lo que lo unicop que acepta recibir es una pizza
       self.error("no hay espacio para dejar algo aqui")  //esta bien o mejor que lo diga el mueble?
       //chef
     }
+  }
+
+  method puedeRecibir(){
+    return self.estaLibre()
   }
 
   method estaLibre(){ //para poder recibir es que no tiene nada encima o si tiene una pizza ya que estas aceptan ingredientes encima
@@ -85,10 +89,13 @@ class Horno inherits Mueble{ //ahora el horno recibe todo tipo de cosas que le q
     super(chef)
     self.cocinar()
   }
-
-  override method estaLibre(){ //para poder recibir el horno solo tiene que estar completamente vacio
+  override  method puedeRecibir(){ //para poder recibir el horno solo tiene que estar completamente vacio
     return not self.tieneAlgo()
   }
+
+  // override method estaLibre(){ 
+  //   return not self.tieneAlgo()
+  // }
 
   method cocinar() { 
     game.onTick(2500, self, {contenido.serCocinada()})
