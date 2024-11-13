@@ -24,7 +24,7 @@ describe "chefs test" {
     assert.throwsException({ remy.moverse(izquierda) })
   }
 
-  test "remy agarra un ingrediente (tomate) que esta abajo suyo en donde mira" { 
+  test "remy agarra un ingrediente (tomate) que esta abajo suyo en donde mira, en la mesada4" { 
     remy.mover(abajo)
     assert.that(remy.tengoBandejaVacia())
     assert.equals(abajo, remy.orientacion()) //a donde esta "mirando"
@@ -35,64 +35,60 @@ describe "chefs test" {
     assert.equals(tomate, remy.bandeja())
   }
 
-  test "remy no puede agarrar un ingrediente porque no hay ningun muble con ingrediente en donde está mirando" {
-    // remy.mover(arriba)
+  test "remy no puede agarrar un ingrediente porque no hay ningun muble con ingrediente en donde está mirando, a su derecha, no falla pero se da el aviso de que no hay nada allí y su bandeja sigue igual" {
+    remy.mover(derecha)
+    assert.that(remy.tengoBandejaVacia())
 
-    // assert.equals(game.at(0,1), remy.position())
-    // assert.equals(game.at(0,2), remy.dondeEstoyApuntando())
-    // assert.throwsException({ remy.interactuar() })
+    assert.equals(derecha, remy.orientacion()) //a donde esta "mirando"
+    assert.equals(game.at(1,4), remy.position())
+    assert.equals(game.at(2,4), remy.dondeApunta())
+
+    assert.notThat(restaurante.hayMuebleAqui(remy.dondeApunta()))
+    assert.that(remy.tengoBandejaVacia())
+  
   }
 
-  test "remy no puede agarrar un ingrediente porque tiene algo en las manos ya" { //FALLA POR INGREDIENTE SUELTO
-  //   remy.position( game.at(0,3) )
-  //   remy.mover(arriba)
+  test "remy no puede agarrar un ingrediente porque tiene algo en las manos ya" { 
+     remy.bandeja(queso)
+     remy.mover(abajo)
 
-  //   assert.equals(game.at(0,5), remy.dondeEstoyApuntando())
+    assert.that(restaurante.hayMuebleAqui(remy.dondeApunta()))
+    assert.equals(tomate, restaurante.muebleAqui(remy.dondeApunta()).contenido())
 
-  //   remy.interactuar() //esto esta mal porque es un ingrediente tirado
-  //   remy.mover(arriba)
+    assert.throwsException({ remy.interactuar() })
 
-  //   //assert.notThat(restaurante.hayIngredienteAqui(remy.position()))
-  //   assert.notThat(restaurante.hayMuebleAqui(remy.position()))
-  //   assert.equals(tomate, restaurante.muebleAqui(remy.position()).primerIngrediente()) //fijarse si es eso lo que tenia el mueble
+    assert.equals(queso, remy.bandeja())
+    assert.equals(tomate, restaurante.muebleAqui(remy.dondeApunta()).contenido())
 
-  //   assert.notThat(remy.tengoBandejaVacia())
-  //   assert.throwsException({ remy.interactuar() })
-  // }
+ }
 
-  test "remy puede soltar ingrediente porque hay una mesada en donde esta mirando" { //FALLA POR INGREDIENTE SUELTO
-  //   remy.position( game.at(3,5) )
-  //   remy.mover(derecha)
+  test "remy puede soltar ingrediente porque hay una mesada en donde esta mirando" { 
+     remy.position( game.at(5,4) )
+     remy.bandeja(tomate)
+     assert.notThat(remy.tengoBandejaVacia())
+     remy.mover(abajo)
 
-  //   assert.equals(game.at(5,5), remy.dondeEstoyApuntando())
+     assert.that(restaurante.hayMuebleAqui(remy.dondeApunta()))
+     assert.that(restaurante.muebleAqui(remy.dondeApunta()).estaLibre())
 
-  //   remy.interactuar() //esto esta mal porque es un ingrediente tirado
-  //   assert.notThat(remy.tengoBandejaVacia())
+     remy.interactuar()
 
-  //   remy.mover(izquierda)
-  //   remy.soltarIngrediente()
-
-  //   assert.that(remy.tengoBandejaVacia())
-
-  //   assert.equals(mesada1, restaurante.muebleAqui(game.at(2,5)))
-  //   assert.equals(queso, mesada1.cosasEncima())
+     assert.that(remy.tengoBandejaVacia())
+     assert.equals(tomate, restaurante.muebleAqui(remy.dondeApunta()).contenido())
     
-  // }
-
-  test "remy no puede soltar el ingrediente porque no hay ninguna mesada aqui" { //FALLA POR INGREDIENTE SUELTO
-    // remy.position( game.at(3,5) )
-    // remy.mover(derecha)
-
-    // assert.equals(game.at(5,5), remy.dondeEstoyApuntando())
-
-    // remy.interactuar() //esto esta mal porque es un ingrediente tirado
-    // assert.notThat(remy.tengoBandejaVacia())
-    // assert.notThat(restaurante.hayMuebleAqui(remy.position()))
-
-    // assert.throwsException({ remy.interactuar() })
   }
 
-  test "remy puede procesar el tomate porque hay una mesada" { //FALLA POR INGREDIENTE SUELTO
+  test "remy no puede soltar el ingrediente porque no hay ninguna mesada aqui, intenta soltar el ingrediente, no tira error pero no pasa nada y sigue teniendo su queso" { 
+    remy.bandeja(queso)
+    assert.equals(queso, remy.bandeja())
+    assert.notThat(restaurante.hayMuebleAqui(remy.dondeApunta()))
+
+    remy.interactuar()
+
+    assert.equals(queso, remy.bandeja())
+  }
+
+  test "remy puede procesar el tomate porque hay una mesada" { //FALTA EL PROCESAR
     // remy.position( game.at(3,5) )
     // remy.mover(derecha)
     // remy.interactuar()
@@ -102,8 +98,8 @@ describe "chefs test" {
     // assert.equals("tomate_inicial.png", tomate.image())
   }
 
-  test "remy no puede procesar porque hay un mueble pero no es una mesada, es un tacho" { //FALLA POR INGREDIENTE SUELTO
-  //   remy.position( game.at(5,6) )
+  test "remy no puede procesar porque hay un mueble pero no es una mesada, es un tacho" { //FALTA EL PROCESAR
+    //   remy.position( game.at(5,6) )
   //   remy.interactuar()
   //   assert.notThat(remy.tengoBandejaVacia())
 
@@ -112,9 +108,10 @@ describe "chefs test" {
   //   remy.mover(izquierda)
 
   //   assert.throwsException({ remy.procesarIngrediente() })
-  // }
+  // 
+  }
 
-  test "remi va a tirar el queso que agarro a la basura y se puede porque hay un tacho" { //FALLA POR INGREDIENTE SUELTO
+  test "remi va a tirar el queso que agarro a la basura y se puede porque hay un tacho" { //HACER
     // remy.position( game.at(5,6) )
     // remy.interactuar()
     // assert.notThat(remy.tengoBandejaVacia())
@@ -128,7 +125,7 @@ describe "chefs test" {
     // remy.interactuar()
   }
 
-  test "remy va a tirar el queso que agarro pero no puede porque no hay un tacho" { //FALLA POR INGREDIENTE SUELTO
+  test "remy va a tirar el queso que agarro pero no puede porque no hay un tacho" { //HACER
   //   remy.position( game.at(5,6) )
   //   remy.recogerIngrediente()
   //   assert.notThat(remy.tengoBandejaVacia())
@@ -137,7 +134,7 @@ describe "chefs test" {
   //   assert.throwsException({ remy.interactuar() })
   // }
 
-  test "remy agarra una masa con queso y la mete al horno y luego la saca del horno" { //FALLA POR INGREDIENTE SUELTO
+  test "remy agarra una masa con queso y la mete al horno y luego la saca del horno" { //HACER
     // remy.position( game.at(1,2) )
     // preparacion.recibirIngrediente(queso)
     // remy.bandeja(preparacion)
