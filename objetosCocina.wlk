@@ -108,11 +108,13 @@ class Horno inherits Mueble{ //ahora el horno recibe todo tipo de cosas que le q
     //esto sería mejor que hagamos que aparezca dibujos de humo arriba del horno y ya está
   }
 
-  override method image() = "oven_0.png"
+  override method image() {
+    return "oven_0.png"
+    }
 
 }
 
-class Mesada inherits Mueble (){
+class Mesada inherits Mueble{
 
   override method accionRecibir(chef){
     const ingrediente = chef.bandeja()
@@ -124,7 +126,9 @@ class Mesada inherits Mueble (){
     ingrediente.serDejadoAqui(self.position()) //REVISAR SI ESTO SIRVE DE ALGO
   }
 
-  override method image() = "mesada_ph.png"
+  override method image() {
+    return  "mesada_ph.png"
+    }
 
 }
 
