@@ -72,8 +72,8 @@ class Mueble {
 
 }
 
-object muebleFantasma inherits Mueble {
-  override method usarse(chef){
+object muebleFantasma { //no es un mueble en realidad, como la bandeja representa ser nada -> no se que tan bien estaría igual, creo que si tendría que ser un mueble
+  method usarse(chef){
     game.say(self, "no hay nada aqui")
   }
 }

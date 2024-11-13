@@ -15,7 +15,7 @@ object restaurante {
     }
 
     method objetoDeListaAqui(lista, position) {
-      return lista.findOrElse({objeto => objeto.position() == position}, muebleFantasma)
+      return lista.findOrElse({objeto => objeto.position() == position}, {muebleFantasma})
     }
     // return lista.find({objeto => objeto.position() == position}) -> no
 

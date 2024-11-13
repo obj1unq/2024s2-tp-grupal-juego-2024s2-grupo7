@@ -27,10 +27,6 @@ class Persona {
       self.error("no me puedo mover ahí")
     }
   }
-  // tuve que comentar este metodo  y ponerlo como property  para que no coque el setter con la img 
-  //method image(_image){
-   // image = _image
-  //}
 
   method nuevaImagen(){
     image = orientacion.imagen(nombre)

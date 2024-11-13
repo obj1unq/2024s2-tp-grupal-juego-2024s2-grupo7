@@ -31,7 +31,7 @@ const horno = new Horno(position = game.at(5,5))
 const mesada3 = new Mesada(position = game.at(6,5))
 const horno2 = new Horno(position = game.at(7,5)) 
 
-const mesada4 = new Mesada(position = game.at(0,5), contenido = tomate)
+const mesada4 = new Mesada(position = game.at(0,2), contenido = tomate)
 //aceitunas factory
 //queso factory
 //hongos factory
