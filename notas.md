@@ -2,19 +2,12 @@
 
     -CHEFS: 
         *alguna animacion para cuando procesas algun ingrediente
-        *imagen placeholder de remy mirando en las diferentes direcciones // completo 
         *agregarle un timer al procesar elemento
+        *falta hacer el procesar elemento en los chefs
 
     -COMESTIBLES:
-        *imagenes placeholder para los ingredintes// completo
         *imagenes placeholder de los ingredientes después de ser procesados
         *hacer las bebidas y postres (si hay tiempo)
-
-    -HORNO:
-        *imagenes placeholder para la animacion del humo
-
-    -MESADAS:
-        *imagenes placeholder para las mesadas
 
 
     -FACTORY DE CLIENTES:
@@ -28,14 +21,13 @@
     -CAJA:
         *hacer la caja
 
-    -MUEBLES:
-        *refactorizar para tener mayor polimorfismo
-        *agregar el ser accionado polimorfico
-
-    -RESTAURANTE: -> PRIORIZAR
-        *juntar los muebles
-        -cambiar las consultas a solo las necesarias con polimorfismo en los muebles.
 
     -INGREDIENTES: -> PRIORIZAR
-        *agregar los estados de procesamiento y los de estar sostenido o no
+        *agregar los estados de procesamiento y los de estar sostenido o no estar sostenidos
+
+##COSAS A TENER EN CUENTA:
+
+-el horno acepta todos los ingredientes, todos los ingredientes tiene que saber que es el "cocinarse" que el horno les va a mandar una vez esten dentro
+
+-si el chef se choca contra un objeto se corta el flujo (a tener en cuenta en los tests)-> cambiarlo y que simplement no pase nada cuando choque y que siempre cambie la direccion en la que mira y después depende si se mueve en realidad o no?
         
