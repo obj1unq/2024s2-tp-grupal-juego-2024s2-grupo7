@@ -83,33 +83,30 @@ describe "chefs test" {
     assert.equals(queso, remy.bandeja())
     assert.notThat(restaurante.hayMuebleAqui(remy.dondeApunta()))
 
-    remy.interactuar()
+    assert.throwsException({ remy.interactuar() })
 
     assert.equals(queso, remy.bandeja())
   }
 
-  // test "remy puede procesar el tomate porque hay una mesada" { //FALTA EL PROCESAR
-  //   // remy.position( game.at(3,5) )
-  //   // remy.mover(derecha)
-  //   // remy.interactuar()
-  //   // assert.notThat(remy.tengoBandejaVacia())
-  //   // remy.mover(izquierda)
-  //   // remy.interactuar()
-  //   // assert.equals("tomate_inicial.png", tomate.image())
-  // }
+  test "remy puede procesar el tomate porque hay una mesada allí" {
+    remy.mover(abajo)
 
-  // test "remy no puede procesar porque hay un mueble pero no es una mesada, es un tacho" { //FALTA EL PROCESAR
-  //   //   remy.position( game.at(5,6) )
-  // //   remy.interactuar()
-  // //   assert.notThat(remy.tengoBandejaVacia())
+    assert.equals(tomate, restaurante.muebleAqui(remy.dondeApunta()).contenido())
+    assert.notThat(restaurante.muebleAqui(remy.dondeApunta()).contenido().fueProcesado())
 
-  // //   remy.mover(arriba)
-  // //   remy.mover(izquierda)
-  // //   remy.mover(izquierda)
+    remy.procesar()
 
-  // //   assert.throwsException({ remy.procesarIngrediente() })
-  // // 
-  // }
+    assert.that(restaurante.muebleAqui(remy.dondeApunta()).contenido().fueProcesado())
+  }
+
+  test "remy no puede procesar porque no hay nada que procesar en el mueble" {
+    remy.position(game.at(5,3))
+    assert.that(restaurante.hayMuebleAqui(remy.dondeApunta()))
+    assert.that(restaurante.muebleAqui(remy.dondeApunta()).estaLibre())
+
+    assert.throwsException({ remy.procesar() })
+
+  }
 
   test "remi va a tirar el queso que agarro a la basura y se puede porque hay un tacho" {
     remy.position(game.at(3,3))

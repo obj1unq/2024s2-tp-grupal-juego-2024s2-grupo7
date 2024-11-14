@@ -59,7 +59,6 @@ object imagenes {
 
         game.addVisual(mesada)
         game.addVisual(mesada2)
-        game.addVisual(muebleFantasma)
     }
 
 }
