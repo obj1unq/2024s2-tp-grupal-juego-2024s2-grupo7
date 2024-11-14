@@ -40,7 +40,7 @@ class Ingrediente {
 
     method serDejadoAqui(nuevaPosition){
         position = nuevaPosition
-        game.addVisual(position)
+        game.addVisual(self) 
         sostenido = false
     }
 
