@@ -50,6 +50,7 @@ describe "mesada" {
     mesada3.usarse(remy)
     
     assert.equals(tomate, mesada3.contenido())
+    assert.that(remy.tengoBandejaVacia())
 
     mesada3.usarse(remy)
 

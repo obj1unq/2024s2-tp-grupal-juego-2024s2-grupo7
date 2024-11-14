@@ -55,7 +55,9 @@ class Mueble {
   }
 
   method accionDar(chef){
-    chef.recibir(self.objetoADar(chef))
+    const ingrediente = self.objetoADar(chef)
+    chef.recibir(ingrediente)
+    ingrediente.serSostenido(chef)
     self.eliminarLoDado() //que ahora el mueble tiene de nuevo una bandeja vacia = nada
   }
 

@@ -59,7 +59,7 @@ class Chef inherits Persona {
 
     method recibir(ingrediente) {
       bandeja = ingrediente
-      game.addVisual(ingrediente)
+      //game.addVisual(ingrediente) -> sería mejor cambiar la imagen del chef para no tener tanto lio con que se actualice en frente del chef?
     }
 
    
