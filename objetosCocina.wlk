@@ -138,7 +138,6 @@ class Mesada inherits Mueble{
     } else { 
       super(chef) //sino, el ingrediente se agrega arriba del mueble y listo, se tiene que ver ahí la imagen
     }  
-    ingrediente.serDejadoAqui(self.position()) //REVISAR SI ESTO SIRVE DE ALGO
   }
 
   override method image() {
