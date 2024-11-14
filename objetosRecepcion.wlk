@@ -1,3 +1,7 @@
+/* NOTA:
+  *esto es solo si nos alcanza el tiempo, son extras
+*/
+
 object dispenserBebidas {
 /*
     tiene que tener posición e imagen

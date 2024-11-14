@@ -10,7 +10,6 @@ class Mueble {
   const property position = game.center() 
   const property image = "" 
   var contenido = bandejaVacia //es un objeto que representa el no tener nada
-  //var property maxCapacidad = 1
 
   method usarse(chef){ //para que con 1 solo boton "interactuar" sea algo general y el mueble ve como se arregla en la interaccion
     if(not chef.tengoBandejaVacia()){ //si el chef tiene algo en su bandeja asume que tiene que recibir algo
@@ -34,11 +33,15 @@ class Mueble {
   }
 
   method estaLibre(){ //para poder recibir es que no tiene nada encima o si tiene una pizza ya que estas aceptan ingredientes encima
-    return not self.tieneAlgo() || self.tienePiza()
-  } //tiene algo puede ser mejor un tiene igrediente
+    return not self.tieneIngrediente() || self.tienePiza()
+  }
 
   method tieneAlgo() { //que tiene algo significa que tiene cualquier cosa -> podría ser un tiene ingrediente
-     return not contenido.esVacio()  //esto es que no tiene nada = falso
+     return not contenido.esVacio()  //esto es que no tiene nada 
+  }
+
+  method tienePiza(){
+    return contenido.integraIngredintes() 
   }
 
   method tieneIngrediente(){
@@ -55,30 +58,26 @@ class Mueble {
   method accionRecibir(chef){
     contenido = chef.bandeja()
     chef.soltar() //esto en el chef hace que tenga una bandeja vacia otra vez
-    contenido.serDejadoAqui(position) //esto en el horno debería cambiar y no verse el ingediente encima del horno
+    contenido.serDejadoAqui(position) //esto en el horno debería cambiar y no verse el ingediente encima del horno, tampoco en el tacho de basura
   }
 
   method accionDar(chef){
     const ingrediente = self.objetoADar(chef)
-    chef.recibir(ingrediente)
+    chef.recibir(ingrediente) //tal vez se podría delegar al chef que le diga al ingrediente que debe ser sostenido por el
     ingrediente.serSostenido(chef)
     self.eliminarLoDado() //que ahora el mueble tiene de nuevo una bandeja vacia = nada
   }
 
-  method objetoADar(chef){ //es diferente para las factories
+  method objetoADar(chef){ //es diferente para las factories por eso tenerlo como template
     return contenido
   }
 
-   method eliminarLoDado(){ //template method para las factories -> no hace nada eso ya que no tiene "contenido"
+   method eliminarLoDado(){ //también para las factories -> no hace nada eso ya que no tiene "contenido"
     contenido = bandejaVacia
    }
 
   method contenido(){
     return contenido
-  }
-
-    method tienePiza(){
-    return contenido.aceptaIngredientesEncima()
   }
 
    method procesarIngredientes(){
@@ -89,26 +88,22 @@ class Mueble {
    method validarProcesarIngrediente(){
     if(not self.tieneIngrediente()){
       self.error("no hay ingrediente que procesar")
+      //chef
     }
    }
 
 }
 
-class Horno inherits Mueble{ //ahora el horno recibe todo tipo de cosas que le quieras meter
+class Horno inherits Mueble{ //ahora el horno recibe todo tipo de cosas que le quieras meter -> habrá que hacer una imagen para los ingrediente de "quemado" que puede ser la misma para todos o cambiar que el horno solo reciba pizzas
   var property temperatura = 0
 
   override method accionRecibir(chef){
     super(chef)
-    //game.removeVisual(contenido)
     self.cocinar()
   }
   override  method puedeRecibir(){ //para poder recibir el horno solo tiene que estar completamente vacio
     return not self.tieneAlgo()
   }
-
-  // override method estaLibre(){ 
-  //   return not self.tieneAlgo()
-  // }
 
   method cocinar() { 
     game.onTick(2500, "cocinarContenido", {contenido.serCocinada()})
@@ -154,7 +149,6 @@ class Mesada inherits Mueble{
 class Tacho inherits Mueble{
 
   override method accionRecibir(chef){
-    //mandarle un mensaje al chef de que si tiro la basura entonces cambie su imagen?
     chef.bandeja(bandejaVacia) 
     //remove visual acá? -> deja de existir, se elimina lo dado
   }
@@ -167,17 +161,17 @@ class PilaIngrediente inherits Mueble {
     self.accionDar(chef)
   }
 
-  override method eliminarLoDado(){}
+  override method eliminarLoDado(){} //no se usa porque tiene infinitos elementos encima la pila, no solo 1 contenido
 
   override method objetoADar(chef){
     return self.nuevoIngrediente(chef)
   }
 
-  override method tieneAlgo() {
+  override method puedeRecibir() { //no recive nada a diferencia de otros muebles, solo da
     return false
   }
 
-  method nuevoIngrediente(chef)
+  method nuevoIngrediente(chef) //depende de la pila de ingredientes
 
 }
 
@@ -236,5 +230,8 @@ object estacionAtun inherits PilaIngrediente(image = "atun_factory.png", positio
   }
 
 }
+
+
+//solo si alcanza el tiempo: 
 
 class Dispencer inherits Mueble{} //hacer => opcional, para el final -> estos implican seleccionar un numero también

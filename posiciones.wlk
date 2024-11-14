@@ -41,11 +41,3 @@ object derecha {
 	  return namePosition.right(1)
 	}
 }
-
-/*
-se necesita:
--(nombre).derecha.png
--(nombre).izquierda.png
--(nombre).arriba.png
--(nombre).abajo.png
-*/

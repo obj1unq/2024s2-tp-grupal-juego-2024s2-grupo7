@@ -4,17 +4,21 @@ import objetosParaTests.*
 
 import wollok.game.*
 
-//falta como hacer que lo que este en bandeja la imagen aparezca en frente del chef, sino lo que se podría hacer que es más trabajo creo era lo de una imagen para cada cosa que puede sostener, eso también haría que ver como implementarlo
+/*
+NOTA:
+  *falta como hacer que lo que este en bandeja la imagen aparezca en frente del chef, sino lo que se podría hacer que es más trabajo creo era lo de una imagen para cada cosa que puede sostener, eso también haría que ver como implementarlo
+*/
+
 
 class Persona {
     var property orientacion = abajo //en donde está mirando
-    var property position = game.at(0,0) //la posicion es placeholder por ahora
-    var property image = null //por default le ponemos una imagen a cada cliente y a cada chef
+    var property position = game.at(0,0) //la posicion es placeholder por ahora -> cambiar para el juego
+    var property image = "" 
     //const property ubicacion = restaurante -> preguntar si conviene más guardarlo en variable o tener referencia global
     const nombre = null //para los clientes sería tipo cliente, para el chef tenemos nombre jaja
 
     method mover(direccion) {
-      orientacion = direccion //es importante que primero cambie a donde mira y después se mueva (o no)
+      orientacion = direccion //es importante que primero cambie a donde mira y su imagen de mirar, después se mueva o no
       self.nuevaImagen()
 
       const nuevaPosition = direccion.moverse(self.position())
@@ -31,7 +35,6 @@ class Persona {
 
   method nuevaImagen(){
     image = orientacion.imagen(nombre)
-    // hay que hacer los place holder del chef con bandeja
   }
 
     method dondeApunta() { 
@@ -66,12 +69,12 @@ class Chef inherits Persona {
     }
 
     method soltar(){
-      bandeja = bandejaVacia //la bandeja representa el no tener nada, es un objeto vacio
+      bandeja = bandejaVacia //la bandeja representa el no tener nada
     }
 
     method recibir(ingrediente) {
       bandeja = ingrediente
-      //game.addVisual(ingrediente) -> sería mejor cambiar la imagen del chef para no tener tanto lio con que se actualice en frente del chef?
+      //game.addVisual(ingrediente) -> hacer un sprite diferente para cada ingrediente que el chef puede agarrar o hacer una buena logica de que se vea el ingrediente en frente del chef -> ojo con las posiciones
     }
 
     method procesar(){
@@ -83,14 +86,14 @@ class Chef inherits Persona {
 
    
 
-//probar:
+//probar: 
   method preguntarPedido() {
     self.validarPreguntarPedido()
     restaurante.clienteAqui(self.dondeApunta()).decirPedido()
   }
 
   method validarPreguntarPedido(){
-    if(not restaurante.hayClienteAqui(self.dondeApunta())){
+    if(not restaurante.hayClienteAqui(self.dondeApunta())){ 
       self.error("no hay ningun cliente aqui")
     }
   }
@@ -101,8 +104,11 @@ object bandejaVacia {
   method esVacio(){
     return true
   }
-  method aceptaIngredientesEncima(){ //tal vez cambiar el nombre porque no tiene mucho sentido para la bandeja
-  //es más que nada para que tenga polimorfismo con los ingredientes
+  method integraIngredintes(){ 
+    return false
+  }
+
+  method puedeIntegrarse(){
     return false
   }
 }

@@ -4,15 +4,21 @@ import comestibles.*
 
 import wollok.game.*
 
-/*SE NECESITA UN RETOQUE MAS PROLIJO PARA LOS CLIENTES Y DARLES VERDADERAMETE UN COMPORTAMIENTO DIFERENTE A LOS DIFERENTES TIPOS DE CLIENTES*/
+/* NOTA:
+  *SE NECESITA UN RETOQUE MAS PROLIJO PARA LOS CLIENTES Y DARLES VERDADERAMETE UN COMPORTAMIENTO DIFERENTE A LOS DIFERENTES TIPOS DE CLIENTES
+  *hacer el objeto caja
+  *HACER UN MEJOR ALGORITMO PARA DAR LAS IMAGENES DE LOS CLIENTES.
+  *la paciencia no debe ser lo unico diferente entre los diferentes tipos de clientes, hay que agregar que tengan un comportamiento/ respuesta diferente a cosas
+  -> por ejemplo el cliente quisquilloso puede enojarse entonces se va sin pagar y te roba plata (de la caja)
+*/
 
-class Cliente inherits Persona(position = game.at(0,7) /*o donde esté la puerta*/, image = ""){
+class Cliente inherits Persona(position = game.at(0,0) , image = ""){ //la position esa es un placeholder -> la posicion en la que se inician debería ser en donde estaría la "puerta" -> para el gestor de clientes
     var property pedidoQueEspero = []
     var property emocion = neutral //las emocines son estados
     var nivelDePaciencia = null //depende del tipo de cliente
 
     method avanzarAHacerPedido() {
-      //podría ser un tipo de animación donde avanza paso por paso hasta llegar a la mesa de recepción para hacer el pedido
+      //podría ser un tipo de animación donde avanza paso por paso hasta llegar a la mesa de recepción para hacer el pedido -> como persona hereda el poder moverse
       self.generarPedido()
       self.decirPedido()
     }
@@ -22,8 +28,7 @@ class Cliente inherits Persona(position = game.at(0,7) /*o donde esté la puerta
     }
 
     method generarPedido() {
-      pedidoQueEspero = [ingredienteTomate, ingredienteQueso] + [self.ingredientePrincipalRandom()]
-
+      pedidoQueEspero = [ingredienteSalsa, ingredienteQueso] + [self.ingredientePrincipalRandom()] 
     }
 
     method ingredientePrincipalRandom() {
@@ -31,19 +36,27 @@ class Cliente inherits Persona(position = game.at(0,7) /*o donde esté la puerta
     }
 
     method recibirPedido(pedido) {
-      self.reaccionarAPedido(pedido)
-      emocion.mostrarse(self)
+      self.reaccionarAPedido(pedido) //aca es donde debería cambiar según el tipo de cliente -> cada tipo tiene su set de acciones unicas al reaccionar
+      emocion.mostrarse(self) 
       self.pagarPedido(pedido)
     }
 
     method reaccionarAPedido(pedido) {
       if(self.esLoQueEsperaba(pedido)){
-        emocion = feliz 
+        self.reaccionBuena()
       } else{
         nivelDePaciencia = nivelDePaciencia - 20
-        emocion = decepcionado
+        self.reaccionMala()
       }
     }
+
+    method reaccionBuena(){ //-> o sino que esto se defina por cliente -> por ejemplo el impaciente no se pone feliz sino que no sigue impaciente
+      emocion = feliz 
+    }
+ 
+    method reaccionMala(){ //-> o sino que esto se defina por cliente -> ejemplo el impaciente se enoajo y es otra emocion
+      emocion = decepcionado
+    } 
 
     method esLoQueEsperaba(pedido){  //puede recibir un ingrediente solo pero eso lo va a hacer enojar.
       return self.esUnaPiza(pedido) and self.esLaPizzaQuePedi(pedido)
@@ -54,7 +67,7 @@ class Cliente inherits Persona(position = game.at(0,7) /*o donde esté la puerta
     }
 
     method esUnaPiza(pedido){
-        return  pedido.aceptaIngredientesEncima()
+        return  pedido.integraIngredintes() 
     }
 
     method plataAPagarPorPedido(pedido) {
@@ -63,19 +76,20 @@ class Cliente inherits Persona(position = game.at(0,7) /*o donde esté la puerta
 
     method pagarPedido(pedido) {
       //caja.recibir(self.plataAPagarPorPedido(pedido))
-      //hacer caja.
     }
 }
 
 object neutral {
   method mostrarse(cliente){}
 }
+
 object feliz {
   const property image = "imagen emotion feliz"
   method mostrarse(cliente){
     //game.addVisual(cliente.position().up()) //no sé como hacer que dure solo un rato la imagen
   }
 }
+
 object decepcionado {
   const property image = "imagen emotion decepcionado/ enojado/ triste"
   method mostrarse(cliente){
@@ -83,17 +97,13 @@ object decepcionado {
   }
 }
 
+//hacer mas emociones? -> enojado?
+
 class ClienteNormal inherits Cliente(nivelDePaciencia = 100, image = "image_clieneNormal.png", nombre = "clienteNormal"){}
 
 class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 80, image = "image_clieneQuisquilloso.png", nombre = "clienteQuisquilloso"){}
 
 class ClientePaciente inherits Cliente(nivelDePaciencia = 110, image = "image_clienePaciente.png", nombre = "clientePaciente"){}
 
-//HACER UN MEJOR ALGORITMO PARA DAR LAS IMAGENES DE LOS CLIENTES.
-
 const cliente = new ClienteNormal() //lo agrego para probar en la consola al cliente
 
-/*
-  la paciencia no debe ser lo unico diferente entre los diferentes tipos de clientes, hay que agregar que tengan un comportamiento/ respuesta diferente a cosas
-  por ejemplo el cliente quisquilloso puede enojarse entonces se va sin pagar y te roba plata (de la caja)
-*/
