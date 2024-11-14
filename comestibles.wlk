@@ -34,13 +34,13 @@ class Ingrediente {
    }
 
     method serSostenido(chef) {
-        game.removeVisual(self)
+        //game.removeVisual(self)
         sostenido = true
     }
 
     method serDejadoAqui(nuevaPosition){
         position = nuevaPosition
-        game.addVisual(self) 
+       // game.addVisual(self) 
         sostenido = false
     }
 

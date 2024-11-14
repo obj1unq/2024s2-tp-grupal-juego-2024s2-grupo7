@@ -96,7 +96,7 @@ class Horno inherits Mueble{ //ahora el horno recibe todo tipo de cosas que le q
 
   override method accionRecibir(chef){
     super(chef)
-    game.removeVisual(contenido)
+    //game.removeVisual(contenido)
     self.cocinar()
   }
   override  method puedeRecibir(){ //para poder recibir el horno solo tiene que estar completamente vacio
