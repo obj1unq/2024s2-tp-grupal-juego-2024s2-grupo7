@@ -3,7 +3,6 @@
     -CHEFS: 
         *alguna animacion para cuando procesas algun ingrediente
         *agregarle un timer al procesar elemento
-        *falta hacer el procesar elemento en los chefs
 
     -COMESTIBLES:
         *imagenes placeholder de los ingredientes después de ser procesados
