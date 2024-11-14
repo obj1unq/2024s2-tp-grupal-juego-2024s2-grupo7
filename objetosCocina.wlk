@@ -50,8 +50,8 @@ class Mueble {
 
   method accionRecibir(chef){
     contenido = chef.bandeja()
-    contenido.serDejadoAqui(position) //esto en el horno debería cambiar y no verse el ingediente encima del horno
     chef.soltar() //esto en el chef hace que tenga una bandeja vacia otra vez
+    contenido.serDejadoAqui(position) //esto en el horno debería cambiar y no verse el ingediente encima del horno
   }
 
   method accionDar(chef){
@@ -93,8 +93,8 @@ class Horno inherits Mueble{ //ahora el horno recibe todo tipo de cosas que le q
   var property temperatura = 0
 
   override method accionRecibir(chef){
-    game.removeVisual(contenido)
     super(chef)
+    game.removeVisual(contenido)
     self.cocinar()
   }
   override  method puedeRecibir(){ //para poder recibir el horno solo tiene que estar completamente vacio
