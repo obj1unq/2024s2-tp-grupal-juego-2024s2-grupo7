@@ -35,10 +35,14 @@ class Mueble {
 
   method estaLibre(){ //para poder recibir es que no tiene nada encima o si tiene una pizza ya que estas aceptan ingredientes encima
     return not self.tieneAlgo() || self.tienePiza()
+  } //tiene algo puede ser mejor un tiene igrediente
+
+  method tieneAlgo() { //que tiene algo significa que tiene cualquier cosa -> podría ser un tiene ingrediente
+     return not contenido.esVacio()  //esto es que no tiene nada = falso
   }
 
-  method tieneAlgo() { //que tiene algo significa que tiene cualquier cosa
-     return not contenido.esVacio()  //esto es que no tiene nada = falso
+  method tieneIngrediente(){
+    return contenido.puedeIntegrarse()
   }
 
   method validarDar(chef){ //que el chef tenga espacio ya se cumple en la rama del if de usarse
@@ -74,18 +78,17 @@ class Mueble {
     return contenido.aceptaIngredientesEncima()
   }
 
-}
+   method procesarIngredientes(){
+    self.validarProcesarIngrediente()
+    contenido.serProcesado()
+   }
 
-object muebleFantasma { //no es un mueble en realidad, como la bandeja representa ser nada -> no se que tan bien estaría igual, creo que si tendría que ser un mueble
-  method usarse(chef){
-    //game.say(chef, "no hay nada aqui") //se pone a buscar un visual de chef en vez de aceptar el parametro de cheff y no esta bueno hardcodear a remy ahí, no se que hacer asi que queda vacio que no pasa nada
-  }
-  method position(){
-    return game.at(50,50)
-  }
-  method image(){
-    return "mueble_fantasma.png" //imagen de nada, tener un png transparente tal vez? -> esta bien tener el mueble fantasma igual?
-  }
+   method validarProcesarIngrediente(){
+    if(not self.tieneIngrediente()){
+      self.error("no hay ingrediente que procesar")
+    }
+   }
+
 }
 
 class Horno inherits Mueble{ //ahora el horno recibe todo tipo de cosas que le quieras meter

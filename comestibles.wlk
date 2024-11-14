@@ -9,8 +9,13 @@ class Ingrediente {
     var property position = game.center()    
     var property image = null 
     var property precio = null
+    var fueProcesado = false
 
     method tipoIngrediente()
+
+    method puedeIntegrarse(){
+        return true
+    }
 
    method esVacio(){
     return false
@@ -22,9 +27,9 @@ class Ingrediente {
 
    method recibirIngrediente(ingrediente){}
 
-   method tieneIngredientes(){
-    return false
-   }
+//    method tieneIngredientes(){ //esto podría eliminarse porque es solo para la masa
+//     return false
+//    }
 
     method serSostenido(chef) {
         game.removeVisual(self)
@@ -46,6 +51,11 @@ class Ingrediente {
         if(self.image() == self.imagenIngredienteInicial()){
             image = self.imagenIngredienteFinal()
         }
+        fueProcesado = true
+    }
+
+    method fueProcesado(){
+        return fueProcesado
     }
 }
 
@@ -58,12 +68,16 @@ class Masa inherits Ingrediente( image = "masa_inicial.png", precio = 100 ) {
       return true
     }
 
+    override method puedeIntegrarse(){
+        return false
+    }
+
     override method recibirIngrediente(ingrediente){
         ingredientes.add(ingrediente)
         precio = precio + ingrediente.precio()
     }
 
-    override method tieneIngredientes() {
+    method tieneIngredientes() {
       return not ingredientes.isEmpty()
     }
 

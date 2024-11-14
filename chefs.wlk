@@ -11,14 +11,15 @@ class Persona {
     var property position = game.at(0,0) //la posicion es placeholder por ahora
     var property image = null //por default le ponemos una imagen a cada cliente y a cada chef
     //const property ubicacion = restaurante -> preguntar si conviene más guardarlo en variable o tener referencia global
-    var property nombre = null //para los clientes sería tipo cliente, para el chef tenemos nombre jaja
+    const nombre = null //para los clientes sería tipo cliente, para el chef tenemos nombre jaja
 
     method mover(direccion) {
       orientacion = direccion //es importante que primero cambie a donde mira y después se mueva (o no)
+      self.nuevaImagen()
+
       const nuevaPosition = direccion.moverse(self.position())
 
       self.validarMoverseHacia(nuevaPosition)
-      self.nuevaImagen()
       position = nuevaPosition
 	}
 
@@ -37,6 +38,10 @@ class Persona {
     return orientacion.moverse(self.position())
   }
 
+  method nombre(){
+    return nombre
+  }
+
 
 }
 
@@ -48,9 +53,16 @@ class Chef inherits Persona {
   }
 
    method interactuar() {
-      
+        self.validarMueble() 
         const mueble = restaurante.muebleAqui(self.dondeApunta())
+      
         mueble.usarse(self)
+    }
+
+    method validarMueble(){
+      if(not restaurante.hayMuebleAqui(remy.dondeApunta())){
+        self.error("no hay ningun mueble aqui para hacer lo que quiero hacer")
+      }
     }
 
     method soltar(){
@@ -60,6 +72,13 @@ class Chef inherits Persona {
     method recibir(ingrediente) {
       bandeja = ingrediente
       game.addVisual(ingrediente)
+    }
+
+    method procesar(){
+     self.validarMueble()
+     const mueble = restaurante.muebleAqui(self.dondeApunta())
+
+     mueble.procesarIngredientes()
     }
 
    

@@ -21,7 +21,7 @@ describe "restaurante" {
 
   test "busca objetos que no hay entonces no da error cuando te devuelve los objetos en esa dirección sino que te devuelve el mueble fantasma" {
     assert.notThat(restaurante.hayMuebleAqui( game.at(0, 0) ))
-    assert.equals(muebleFantasma, restaurante.muebleAqui( game.at(0, 0) ))
+    assert.notThat(restaurante.hayMuebleAqui( game.at(0, 4) ))
   }
 }
 
