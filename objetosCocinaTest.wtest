@@ -47,6 +47,7 @@ describe "funcionalidad horno" {
 describe "mesada" {
   test "mesada vacia recibe un ingredinte y luego lo entrega" {
     remy.bandeja(tomate)
+    tomate.serProcesado()
     mesada3.usarse(remy)
     
     assert.equals(tomate, mesada3.contenido())
@@ -60,11 +61,13 @@ describe "mesada" {
   test "mesada recibe una masa y los ingredientes que van hacia la mesada se agregan a la masa en vez de a la mesada y modifican la masa" { 
     
     remy.bandeja(masa)
+    masa.serProcesado()
     mesada3.usarse(remy)
     
     assert.equals(masa, mesada3.contenido())
     
     remy.bandeja(tomate)
+    tomate.serProcesado()
     mesada3.usarse(remy)
 
     
