@@ -22,13 +22,7 @@ class Ingrediente {
 
     method imagenIngredienteFinal()
 
-    //method recibirIngrediente(ingrediente){} //esto debería estar solo en la masa
-
-    method sostenido(){
-        return sostenido
-    }
-
-   method esVacio(){
+    method esVacio(){
     return false
    }
 
@@ -36,8 +30,17 @@ class Ingrediente {
      return false
    }
 
+    method sostenido(){
+        return sostenido
+    }
+
+    method fueProcesado() {
+        return procesado
+    }
+
     method serSostenido(chef) {
         //game.removeVisual(self) -> aca depende de como se manejen las visuals del chef al agarrar ingrediente
+        //podría hacerse que aparezca siempre en frente del chef (en su vadeja) pero entonces acá el chef le tendría que mandar constantemente su ubicación para que sepa estar 1 paso en frente del chef siempre
         sostenido = true
     }
 
@@ -47,18 +50,11 @@ class Ingrediente {
         sostenido = false
     }
 
-    method serProcesado(){
+    method serProcesado(){ //el ser precesado podría ser hecho por un objeto?
         image = self.imagenIngredienteFinal()
         procesado = true
     }
 
-    method fueProcesado() {
-        return procesado
-    }
-
-    method puedeIntegrarse(){
-        return true
-    }
 }
 
 
@@ -68,10 +64,6 @@ class Masa inherits Ingrediente( image = "masa_inicial.png", precio = 100 ) {
 
     override method integraIngredintes(){ 
       return true
-    }
-
-    override method puedeIntegrarse(){
-        return false
     }
 
     method recibirIngrediente(ingrediente){ //override

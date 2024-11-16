@@ -107,8 +107,4 @@ object bandejaVacia {
   method integraIngredintes(){ 
     return false
   }
-
-  method puedeIntegrarse(){
-    return false
-  }
 }

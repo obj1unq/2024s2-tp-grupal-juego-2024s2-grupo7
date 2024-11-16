@@ -45,7 +45,7 @@ class Mueble {
   }
 
   method tieneIngrediente(){
-    return contenido.puedeIntegrarse()
+    return not contenido.integraIngredintes() and not contenido.esVacio() //si no es vacio y no integraIngredientes es un ingrediente en sí
   }
 
   method validarDar(chef){ //que el chef tenga espacio ya se cumple en la rama del if de usarse
