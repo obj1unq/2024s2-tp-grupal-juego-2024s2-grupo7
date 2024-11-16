@@ -12,7 +12,7 @@ class Ingrediente {
     var property position = game.center()    
     var property image = null 
     const imgProcesadoFinal = null
-    var precio = null //realmnente solo el var para la masa
+    const property precio = null //preguntas dejarla var o cons
     var sostenido = false
     var procesado = false
 
@@ -73,11 +73,14 @@ class Masa inherits Ingrediente( image = "masa_inicial.png", imgProcesadoFinal =
     method recibirIngrediente(ingrediente){
         self.validarRecibirIngrediente(ingrediente)
         ingredientes.add(ingrediente)
-        self.actualizarPrecio(ingrediente)
     }
 
-    method actualizarPrecio(ingrediente){
-        precio = precio + ingrediente.precio()
+    override method precio(){
+        return precio + self.totalIngredientes()
+    }
+
+    method totalIngredientes(){
+        return ingredientes.sum({i => i.precio()})
     }
 
     method validarRecibirIngrediente(ingrediente){ //para poder recibir un ingrediente la masa tuvo que haber sido amasada (procesada) y el ingrediente también tuvo que haber sido cortado (procesado)
@@ -145,7 +148,7 @@ object quemada inherits Coccion(imgCoccion = "") {
 }
 
 class Queso inherits Ingrediente( image = "queso_inicial.png", imgProcesadoFinal = "queso_final.png", precio = 200) {
-    
+
         override method tipoIngrediente(){
         return ingredienteQueso
     }
