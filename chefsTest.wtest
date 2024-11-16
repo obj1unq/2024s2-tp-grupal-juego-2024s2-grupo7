@@ -124,6 +124,9 @@ describe "chefs test" {
 
   test "remy agarra una masa con queso y la mete al horno y luego la saca del horno" {
      remy.position( game.at(5,3) )
+     masa.serProcesado() //es importante primero procesar todos los ingredientes para poder integrarlos todos :)
+     queso.serProcesado()
+
      masa.recibirIngrediente(queso)
      remy.bandeja(masa)
      remy.mover(arriba)
@@ -139,6 +142,22 @@ describe "chefs test" {
 
      assert.that(horno.estaLibre())
     
+  }
+
+  test "no se puede agregar un tomate a la masa porque la masa no fue procesada y despues porque el queso no fue procesado pero una vez son procesados ambos si se puede" {
+     remy.position( game.at(5,3) ) //esta en una estacion de procesamiento 
+     assert.notThat(tomate.fueProcesado())
+     assert.throwsException({ masa.recibirIngrediente(tomate) }) //no lo accepta porque ninguno fue procesado
+     
+     masa.serProcesado() 
+     assert.throwsException({ masa.recibirIngrediente(tomate) }) //no lo accepta porque el tomate no fue procesado
+     
+     tomate.serProcesado()
+     
+     masa.recibirIngrediente(tomate)
+
+     assert.equals([tomate], masa.ingredientes())
+
   }
 
 }
