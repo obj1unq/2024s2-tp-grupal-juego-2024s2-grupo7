@@ -18,10 +18,6 @@ class Ingrediente {
 
     method tipoIngrediente()
 
-    method imagenIngredienteInicial()  //Eliminar -> esta va a ser la imagen base del ingrediente
-
-    method imagenIngredienteFinal() //cambiar el nombre por procesadoFinal
-
     method esVacio(){
     return false
    }
@@ -55,7 +51,7 @@ class Ingrediente {
     }
 
     method serProcesado(){ //el ser procesado podría ser hecho por un objeto? -> PREGUNTAR A UN PROFE
-        image = self.imagenIngredienteFinal()
+        image = imgProcesadoFinal
         procesado = true
     }
 
@@ -105,10 +101,6 @@ class Masa inherits Ingrediente( image = "masa_inicial.png", imgProcesadoFinal =
       return not ingredientes.isEmpty()
     }
 
-    override method imagenIngredienteFinal(){
-        return "masa_final.png" //imagen de masa amazada
-    }
-
     method serCocinada(){
         estado.cocinarseMas(self)
         estado.actualizarImagen(self)
@@ -123,35 +115,37 @@ class Masa inherits Ingrediente( image = "masa_inicial.png", imgProcesadoFinal =
 class Coccion{
     const imgCoccion = null
 
+    method cocinarseMas(masa){
+        self.actualizarImagen(masa)
+        self.pasarDeEstado(masa)
+    } 
+
+    method pasarDeEstado(masa)
+    
     method actualizarImagen(masa) {
       masa.image(imgCoccion)
     }
 
-    method cocinarseMas(masa) 
 } 
 
 object cruda inherits Coccion(imgCoccion = ""){ //cruda no hace falta que tenga imagen -> nunca se va a ver
-    override method cocinarseMas(masa){
+    override method pasarDeEstado(masa){
         masa.estado(dorada) 
     }
 }
 
 object dorada inherits Coccion(imgCoccion = ""){
-    override method cocinarseMas(masa){
+    override method pasarDeEstado(masa){
         masa.estado(quemada)    
     }
 }
 
 object quemada inherits Coccion(imgCoccion = "") {
-    override method cocinarseMas(masa){} //no hace nada porque es el último estado
+    override method pasarDeEstado(masa){} //no hace nada porque es el último estado
 }
 
-class Queso inherits Ingrediente( image = "queso_inicial.png", precio = 200) {
-
-        override method imagenIngredienteFinal(){
-            return "queso_final.png"
-        }
-
+class Queso inherits Ingrediente( image = "queso_inicial.png", imgProcesadoFinal = "queso_final.png", precio = 200) {
+    
         override method tipoIngrediente(){
         return ingredienteQueso
     }
@@ -160,10 +154,6 @@ class Queso inherits Ingrediente( image = "queso_inicial.png", precio = 200) {
 class Tomate inherits Ingrediente( image = "tomate_inicial.png", imgProcesadoFinal = "tomate_final.png", precio = 200) { 
 
     var tipo = ingredienteTomate
-
-      override method imagenIngredienteFinal(){
-        return "tomate_final.png"
-      }
 
       method imagenIngredienteIntermedio(){
         return "" //imagen de salsa de tomate
@@ -192,20 +182,12 @@ class Tomate inherits Ingrediente( image = "tomate_inicial.png", imgProcesadoFin
 
 class Aceituna inherits Ingrediente( image = "aceituna_factory.png", imgProcesadoFinal = "aceituna_final.png", precio = 200) {
 
-        override method imagenIngredienteFinal(){
-            return "aceituna_final.png"
-        }
-
     override method tipoIngrediente(){
         return ingredienteAceituna
     }
 }
 
 class Huevo inherits Ingrediente( image = "huevo_inicial.png", imgProcesadoFinal = "huevo_final.png", precio = 200) {
-
-        override method imagenIngredienteFinal(){
-            return "huevo_final.png"
-        }
 
     override method tipoIngrediente(){
         return ingredienteHuevo
@@ -214,20 +196,12 @@ class Huevo inherits Ingrediente( image = "huevo_inicial.png", imgProcesadoFinal
 
 class Atun inherits Ingrediente( image = "atun_factory.png", imgProcesadoFinal = "atun_final.png", precio = 200) {
 
-        override method imagenIngredienteFinal(){
-            return "atun_final.png"
-        }
-
     override method tipoIngrediente(){
         return ingredienteAtun
     }
 }
 
 class Hongo inherits Ingrediente( image = "hongo_inicial.png", imgProcesadoFinal = "hongo_final.png", precio = 200) {
-
-        override method imagenIngredienteFinal(){
-            return "hongo_final.png"
-        }
 
     override method tipoIngrediente(){
         return ingredienteHongo
