@@ -179,6 +179,12 @@ class PilaIngrediente inherits Mueble {
 
   method nuevoIngrediente(chef) //depende de la pila de ingredientes
 
+  /*entonces las pilas deberían ya instanciar el estado de ser agarrado -> en clase 2 p/ obje 1 p
+    -como para 1 chef basta con tener 1 objeto de estado , si fuesen 2 no
+
+    -> ver la version de pepita y silvestre con los estados
+  */
+
 }
 
 object estacionTomate  inherits PilaIngrediente(image = "tomate_inicial.png", position = game.at(0, 5)){
@@ -186,7 +192,14 @@ object estacionTomate  inherits PilaIngrediente(image = "tomate_inicial.png", po
   override method nuevoIngrediente(chef){
     return new Tomate(position= chef.position()) //debería aparecer dentro de la bandeja del chef -> esta bien pasarle la position asi?
   }
+/*
+  para que los objetos se muevan junto al chef : 
+  como pepita y silvestre : tiene un estado que referencia a lo que sigue y otro que es su posicion.
 
+  -un estado independiente y otro estado dominada
+
+  -el estado sabe a quien sigue.
+*/
 
 }
 

@@ -4,17 +4,18 @@ import chefs.*
 
 import wollok.game.*
 
-/* NOTAS:
-    *hay cierto parecido en el procesar ingrediente con las imagenes -> PREGUNTAS AL PROFE
-*/
-
 class Ingrediente { 
     var property position = game.center()    
     var property image = null 
     const imgProcesadoFinal = null
-    const property precio = null //preguntas dejarla var o cons
+    const property precio = null //esta bien dejarlo así -> eliminarlo como const
     var sostenido = false
     var procesado = false
+    //tener el estado que conozca al chef que lo sostenga
+    //var quienLoSostenga = null
+
+    //combiene más tenerlo como abstracto y con overrides
+    //method precio()
 
     method tipoIngrediente()
 
@@ -41,7 +42,8 @@ class Ingrediente {
     method serSostenido(chef) {
         //game.removeVisual(self) -> aca depende de como se manejen las visuals del chef al agarrar ingrediente
         //podría hacerse que aparezca siempre en frente del chef (en su vadeja) pero entonces acá el chef le tendría que mandar constantemente su ubicación para que sepa estar 1 paso en frente del chef siempre
-        sostenido = true
+        sostenido = true //esto estaría mal pq se esta delegando al estado
+        //quienLoSostenga = chef
     }
 
     method serDejadoAqui(nuevaPosition){
@@ -50,29 +52,34 @@ class Ingrediente {
         sostenido = false
     }
 
-    method serProcesado(){ //el ser procesado podría ser hecho por un objeto? -> PREGUNTAR A UN PROFE
+    method serProcesado(){ 
         image = imgProcesadoFinal
         procesado = true
     }
 
 }
 
+/*
+entonces conviene hacer un objeto de sostener
+*/
+
 
 class Masa inherits Ingrediente( image = "masa_inicial.png", imgProcesadoFinal = "masa_final.png", precio = 100 ) { //imagen de masa redondita y despues amasada
     const property ingredientes = [] //la masa debe saber sus ingredientes
-    var estado = cruda 
+    var estado = cruda  
 
     override method integraIngredintes(){ 
       return true
     }
 
-    method estado(){
+    method estado(){ //para los tests -> ver si eliminar
         return estado
     }
 
     method recibirIngrediente(ingrediente){
         self.validarRecibirIngrediente(ingrediente)
         ingredientes.add(ingrediente)
+        //modificar la img
     }
 
     override method precio(){
@@ -123,9 +130,9 @@ class Coccion{
         self.pasarDeEstado(masa)
     } 
 
-    method pasarDeEstado(masa)
+    method pasarDeEstado(masa) //ponerle nombre generico -> quemarseUnPoquito()
     
-    method actualizarImagen(masa) {
+    method actualizarImagen(masa) { //ponerle otro nombre
       masa.image(imgCoccion)
     }
 
@@ -155,6 +162,8 @@ class Queso inherits Ingrediente( image = "queso_inicial.png", imgProcesadoFinal
 }
 
 class Tomate inherits Ingrediente( image = "tomate_inicial.png", imgProcesadoFinal = "tomate_final.png", precio = 200) { 
+    //se puede hacer un estado como en la masa -> hacer con estado.
+    //tener lista con image en donde vaya en orden hasta que no tenga más -> pero debe tener max para no quedarse vacia
 
     var tipo = ingredienteTomate
 
@@ -173,7 +182,7 @@ class Tomate inherits Ingrediente( image = "tomate_inicial.png", imgProcesadoFin
             image = self.imagenIngredienteIntermedio()
         } else {
             super()
-            self.cambiarTipo()
+            self.cambiarTipo() //conviene más tenerlo con estados como la masa
         }
     }
 
