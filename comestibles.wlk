@@ -11,13 +11,14 @@ import wollok.game.*
 class Ingrediente { 
     var property position = game.center()    
     var property image = null 
+    const imgProcesadoFinal = null
     var precio = null //realmnente solo el var para la masa
     var sostenido = false
     var procesado = false
 
     method tipoIngrediente()
 
-    method imagenIngredienteInicial()  //Eliminar
+    method imagenIngredienteInicial()  //Eliminar -> esta va a ser la imagen base del ingrediente
 
     method imagenIngredienteFinal() //cambiar el nombre por procesadoFinal
 
@@ -61,7 +62,7 @@ class Ingrediente {
 }
 
 
-class Masa inherits Ingrediente( image = "masa_inicial.png", precio = 100 ) {
+class Masa inherits Ingrediente( image = "masa_inicial.png", imgProcesadoFinal = "masa_final.png", precio = 100 ) { //imagen de masa redondita y despues amasada
     const property ingredientes = [] //la masa debe saber sus ingredientes
     var estado = cruda 
 
@@ -102,10 +103,6 @@ class Masa inherits Ingrediente( image = "masa_inicial.png", precio = 100 ) {
 
     method tieneIngredientes() {
       return not ingredientes.isEmpty()
-    }
-
-    override method imagenIngredienteInicial(){
-        return "masa_inicial.png" //imagen de masa redondita
     }
 
     override method imagenIngredienteFinal(){
@@ -151,10 +148,6 @@ object quemada inherits Coccion(imgCoccion = "") {
 
 class Queso inherits Ingrediente( image = "queso_inicial.png", precio = 200) {
 
-        override method imagenIngredienteInicial(){
-            return "queso_inicial.png"
-        }
-
         override method imagenIngredienteFinal(){
             return "queso_final.png"
         }
@@ -164,13 +157,9 @@ class Queso inherits Ingrediente( image = "queso_inicial.png", precio = 200) {
     }
 }
 
-class Tomate inherits Ingrediente( image = "tomate_inicial.png", precio = 200) { 
+class Tomate inherits Ingrediente( image = "tomate_inicial.png", imgProcesadoFinal = "tomate_final.png", precio = 200) { 
 
     var tipo = ingredienteTomate
-  
-      override method imagenIngredienteInicial(){
-        return "tomate_inicial.png"
-      }
 
       override method imagenIngredienteFinal(){
         return "tomate_final.png"
@@ -201,11 +190,7 @@ class Tomate inherits Ingrediente( image = "tomate_inicial.png", precio = 200) {
 
 }
 
-class Aceituna inherits Ingrediente( image = "aceituna_factory.png", precio = 200) {
-
-    override method imagenIngredienteInicial(){
-            return "aceituna_factory.png"
-        }
+class Aceituna inherits Ingrediente( image = "aceituna_factory.png", imgProcesadoFinal = "aceituna_final.png", precio = 200) {
 
         override method imagenIngredienteFinal(){
             return "aceituna_final.png"
@@ -216,11 +201,7 @@ class Aceituna inherits Ingrediente( image = "aceituna_factory.png", precio = 20
     }
 }
 
-class Huevo inherits Ingrediente( image = "huevo_inicial.png", precio = 200) {
-
-    override method imagenIngredienteInicial(){
-            return "huevo_inicial.png"
-        }
+class Huevo inherits Ingrediente( image = "huevo_inicial.png", imgProcesadoFinal = "huevo_final.png", precio = 200) {
 
         override method imagenIngredienteFinal(){
             return "huevo_final.png"
@@ -231,11 +212,7 @@ class Huevo inherits Ingrediente( image = "huevo_inicial.png", precio = 200) {
     }
 }
 
-class Atun inherits Ingrediente( image = "atun_factory.png", precio = 200) {
-
-    override method imagenIngredienteInicial(){
-            return "atun_factory.png"
-        }
+class Atun inherits Ingrediente( image = "atun_factory.png", imgProcesadoFinal = "atun_final.png", precio = 200) {
 
         override method imagenIngredienteFinal(){
             return "atun_final.png"
@@ -246,11 +223,7 @@ class Atun inherits Ingrediente( image = "atun_factory.png", precio = 200) {
     }
 }
 
-class Hongo inherits Ingrediente( image = "hongo_inicial.png", precio = 200) {
-
-    override method imagenIngredienteInicial(){
-            return "hongo_inicial.png"
-        }
+class Hongo inherits Ingrediente( image = "hongo_inicial.png", imgProcesadoFinal = "hongo_final.png", precio = 200) {
 
         override method imagenIngredienteFinal(){
             return "hongo_final.png"
