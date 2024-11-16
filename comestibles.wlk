@@ -6,7 +6,6 @@ import wollok.game.*
 
 /* NOTAS:
     *hay cierto parecido en el procesar ingrediente con las imagenes -> PREGUNTAS AL PROFE
-    *hay que cambiar que la masa misma sepa cual es su siguiente estado de coccion y que la masa mista te actualice la imagen por ejemplo cruda sabe que al ser cocinada va a pasar a dorada
 */
 
 class Ingrediente { 
@@ -130,7 +129,7 @@ class Coccion{
     method cocinarseMas(masa) 
 } 
 
-object cruda inherits Coccion(imgCoccion = ""){ //cruda no hace falta que tenga imagen
+object cruda inherits Coccion(imgCoccion = ""){ //cruda no hace falta que tenga imagen -> nunca se va a ver
     override method cocinarseMas(masa){
         masa.estado(dorada) 
     }
@@ -161,21 +160,39 @@ class Queso inherits Ingrediente( image = "queso_inicial.png", precio = 200) {
     }
 }
 
-class Tomate inherits Ingrediente( image = "tomate_inicial.png", precio = 200) { //va a necesitar un condicional para primero ser cortado y después pasado a ser salsa de tomate
+class Tomate inherits Ingrediente( image = "tomate_inicial.png", precio = 200) { 
+
+    var tipo = ingredienteTomate
   
       override method imagenIngredienteInicial(){
-
         return "tomate_inicial.png"
       }
 
       override method imagenIngredienteFinal(){
-
         return "tomate_final.png"
       }
 
+      method imagenIngredienteIntermedio(){
+        return "" //imagen de salsa de tomate
+      }
+
       override method tipoIngrediente(){
-        return 
-        if(self.fueProcesado()) ingredienteSalsa else ingredienteTomate
+        return  tipo
+        //if(self.fueProcesado()) ingredienteSalsa else ingredienteTomate
+    }
+
+    override method serProcesado(){ //preguntar si este proccesado para el tomate esta bien
+        if(not procesado){
+            procesado = true //siento que acá hay codigo repetido
+            image = self.imagenIngredienteIntermedio()
+        } else {
+            super()
+            self.cambiarTipo()
+        }
+    }
+
+    method cambiarTipo(){
+        tipo = ingredienteSalsa
     }
 
 }
