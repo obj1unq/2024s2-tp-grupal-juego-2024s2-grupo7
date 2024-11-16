@@ -17,9 +17,9 @@ class Ingrediente {
 
     method tipoIngrediente()
 
-    method imagenIngredienteInicial() 
+    method imagenIngredienteInicial()  //Eliminar
 
-    method imagenIngredienteFinal()
+    method imagenIngredienteFinal() //cambiar el nombre por procesadoFinal
 
     method esVacio(){
     return false
@@ -76,6 +76,10 @@ class Masa inherits Ingrediente( image = "masa_inicial.png", precio = 100 ) {
     method recibirIngrediente(ingrediente){
         self.validarRecibirIngrediente(ingrediente)
         ingredientes.add(ingrediente)
+        self.actualizarPrecio(ingrediente)
+    }
+
+    method actualizarPrecio(ingrediente){
         precio = precio + ingrediente.precio()
     }
 
