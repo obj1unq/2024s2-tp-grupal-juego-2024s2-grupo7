@@ -15,17 +15,20 @@ program wollocook {
    // tamaño mapa
     dimension.tamanioMapa()
     
- 
 
     //teclas
     teclas.movimiento()
     teclas.accion()
 
+    //restaurante
+    imagenes.restauranteIng()
 
     //chef
     imagenes.chefImg()
     //ingredientes
    imagenes.ingredientesImg()
+
+   //muebles
    // hornos
    imagenes.hornoImg()
    
