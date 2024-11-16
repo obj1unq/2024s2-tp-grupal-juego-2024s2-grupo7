@@ -5,14 +5,14 @@ import chefs.*
 import wollok.game.*
 
 /* NOTAS:
-    *hay cierto parecido en el procesar ingrediente con las imagenes -> después entender ese algoritmo y simplificarlo tal vez con un objeto estado que solo cambie la palabra, no se me ocurre como por ahora
+    *hay cierto parecido en el procesar ingrediente con las imagenes -> PREGUNTAS AL PROFE
     *hay que cambiar que la masa misma sepa cual es su siguiente estado de coccion y que la masa mista te actualice la imagen por ejemplo cruda sabe que al ser cocinada va a pasar a dorada
 */
 
 class Ingrediente { 
     var property position = game.center()    
     var property image = null 
-    var property precio = null
+    var precio = null //realmnente solo el var para la masa
     var sostenido = false
     var procesado = false
 
@@ -38,6 +38,10 @@ class Ingrediente {
         return procesado
     }
 
+    method precio(){
+        return precio
+    }
+
     method serSostenido(chef) {
         //game.removeVisual(self) -> aca depende de como se manejen las visuals del chef al agarrar ingrediente
         //podría hacerse que aparezca siempre en frente del chef (en su vadeja) pero entonces acá el chef le tendría que mandar constantemente su ubicación para que sepa estar 1 paso en frente del chef siempre
@@ -50,7 +54,7 @@ class Ingrediente {
         sostenido = false
     }
 
-    method serProcesado(){ //el ser precesado podría ser hecho por un objeto?
+    method serProcesado(){ //el ser procesado podría ser hecho por un objeto? -> PREGUNTAR A UN PROFE
         image = self.imagenIngredienteFinal()
         procesado = true
     }
@@ -60,15 +64,37 @@ class Ingrediente {
 
 class Masa inherits Ingrediente( image = "masa_inicial.png", precio = 100 ) {
     const property ingredientes = [] //la masa debe saber sus ingredientes
-    var property estado = cruda //pasar a siguiente lo entiende cada estado -> polimorfismo el cruda sabe que debe pasar a dorada
+    var estado = cruda 
 
     override method integraIngredintes(){ 
       return true
     }
 
-    method recibirIngrediente(ingrediente){ //override
+    method estado(){
+        return estado
+    }
+
+    method recibirIngrediente(ingrediente){
+        self.validarRecibirIngrediente(ingrediente)
         ingredientes.add(ingrediente)
         precio = precio + ingrediente.precio()
+    }
+
+    method validarRecibirIngrediente(ingrediente){ //para poder recibir un ingrediente la masa tuvo que haber sido amasada (procesada) y el ingrediente también tuvo que haber sido cortado (procesado)
+        self.validarRecibirProcesado(ingrediente)
+        self.validarPoderRecibir()
+    }
+
+    method validarRecibirProcesado(ingrediente){
+        if(not ingrediente.fueProcesado()){
+            self.error("no se puede agregar a la masa un ingrediente sin procesar")
+        }
+    }
+    
+    method validarPoderRecibir(){
+        if(not procesado){
+            self.error("no puedo recibir ingredientes si no fui amazada")
+        }
     }
 
     method tieneIngredientes() {
@@ -84,16 +110,8 @@ class Masa inherits Ingrediente( image = "masa_inicial.png", precio = 100 ) {
     }
 
     method serCocinada(){
-        self.actualizarEstado()
+        estado.cocinarseMas(self)
         estado.actualizarImagen(self)
-    }
-
-    method actualizarEstado() { //esto debería hacerlo el estado en sí
-        if (self.estado().esCrudo()) {
-             estado = dorada
-    } else {
-            estado = quemada
-        }
     }
 
     override method tipoIngrediente(){
@@ -102,31 +120,30 @@ class Masa inherits Ingrediente( image = "masa_inicial.png", precio = 100 ) {
 
 }
 
-object cruda {
-    method actualizarImagen(pizza){
-        pizza.image("")
+class Coccion{
+    const imgCoccion = null
+
+    method actualizarImagen(masa) {
+      masa.image(imgCoccion)
     }
-    method esCrudo() {
-      return true
+
+    method cocinarseMas(masa) 
+} 
+
+object cruda inherits Coccion(imgCoccion = ""){ //cruda no hace falta que tenga imagen
+    override method cocinarseMas(masa){
+        masa.estado(dorada) 
     }
 }
 
-object dorada {
-    method actualizarImagen(pizza){
-        pizza.image("")
-    }
-    method esCrudo() {
-      return false
+object dorada inherits Coccion(imgCoccion = ""){
+    override method cocinarseMas(masa){
+        masa.estado(quemada)    
     }
 }
 
-object quemada {
-    method actualizarImagen(pizza){
-        pizza.image("")
-    }
-    method esCrudo() {
-      return false
-    }
+object quemada inherits Coccion(imgCoccion = "") {
+    override method cocinarseMas(masa){} //no hace nada porque es el último estado
 }
 
 class Queso inherits Ingrediente( image = "queso_inicial.png", precio = 200) {
@@ -144,7 +161,7 @@ class Queso inherits Ingrediente( image = "queso_inicial.png", precio = 200) {
     }
 }
 
-class Tomate inherits Ingrediente( image = "tomate_inicial.png", precio = 200) {
+class Tomate inherits Ingrediente( image = "tomate_inicial.png", precio = 200) { //va a necesitar un condicional para primero ser cortado y después pasado a ser salsa de tomate
   
       override method imagenIngredienteInicial(){
 
@@ -225,7 +242,7 @@ class Hongo inherits Ingrediente( image = "hongo_inicial.png", precio = 200) {
 
 object ingredienteMasa {}
 object ingredienteQueso {}
-object ingredienteTomate {}
+object ingredienteTomate {} 
 object ingredienteSalsa{}
 object ingredienteAceituna {}
 object ingredienteHuevo {}
