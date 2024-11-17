@@ -31,16 +31,12 @@ class Ingrediente {
     }
 //corregir
     method serSostenido(chef) {
-        //game.removeVisual(self) -> aca depende de como se manejen las visuals del chef al agarrar ingrediente
-        //podría hacerse que aparezca siempre en frente del chef (en su vadeja) pero entonces acá el chef le tendría que mandar constantemente su ubicación para que sepa estar 1 paso en frente del chef siempre
-        sostenido = true //esto estaría mal pq se esta delegando al estado
-        //quienLoSostenga = chef
+        //hacer bien
     }
 
     method serDejadoAqui(nuevaPosition){
         position = nuevaPosition
-       // game.addVisual(self) -> solo se puede ver la visual sobre un mueble si este no es un horno o la basura, delegar al mueble si hace el add visual?
-        sostenido = false
+       //hacer bien
     }
 
     method serProcesado(){ 
