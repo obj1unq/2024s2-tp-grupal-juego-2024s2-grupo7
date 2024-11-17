@@ -12,7 +12,7 @@ class Ingrediente {
     var procesado = false
     //tener el estado que conozca al chef que lo sostenga
     //corregir
-    const quienLoSostiene = managerSostenerIngrediente
+    var quienLoSostiene = managerSostenerIngrediente
 
     method precio()
 
@@ -32,11 +32,16 @@ class Ingrediente {
 //corregir
     method serSostenido(chef) {
         //hacer bien
+        managerSostenerIngrediente.sujeta(chef)
     }
 
     method serDejadoAqui(nuevaPosition){
-        position = nuevaPosition
+       managerSostenerIngrediente.serDejadoEn(nuevaPosition)
        //hacer bien
+    }
+
+    method position(){
+        return managerSostenerIngrediente.position()
     }
 
     method serProcesado(){ 
@@ -52,10 +57,16 @@ object managerSostenerIngrediente{
 //corregir
     method sujeta(chef){
         //no me salió
+        sujetador = chef
+        self.seguirChef(chef)
+    }
+    method seguirChef(chef){
+        position = chef.dondeApunta()
     }
 //corregir
     method serDejadoEn(nuevaPosition){
         //no me salió
+        position = nuevaPosition
     }
 
 }
@@ -63,7 +74,7 @@ object managerSostenerIngrediente{
 
 class Masa inherits Ingrediente( image = "masa_inicial.png", imgProcesadoFinal = "masa_final.png") { //imagen de masa redondita y despues amasada
     const property ingredientes = [] //la masa debe saber sus ingredientes
-    var estado = cruda  
+    var property estado = cruda  
 
     override method integraIngredintes(){ 
       return true
@@ -106,7 +117,7 @@ class Masa inherits Ingrediente( image = "masa_inicial.png", imgProcesadoFinal =
 
     method serCocinada(){
         estado.cocinarseMas(self)
-        estado.actualizarImagen(self)
+        //estado.actualizarImagen(self)
     }
 
     override method tipoIngrediente(){

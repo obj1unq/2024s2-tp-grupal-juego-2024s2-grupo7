@@ -74,7 +74,6 @@ class Chef inherits Persona {
 
     method recibir(ingrediente) {
       bandeja = ingrediente
-      //game.addVisual(ingrediente) -> hacer un sprite diferente para cada ingrediente que el chef puede agarrar o hacer una buena logica de que se vea el ingrediente en frente del chef -> ojo con las posiciones
     }
 
     method procesar(){
@@ -86,7 +85,7 @@ class Chef inherits Persona {
 
    
 
-//probar: 
+//probar: -> se necesitan los clientes
   method preguntarPedido() {
     self.validarPreguntarPedido()
     restaurante.clienteAqui(self.dondeApunta()).decirPedido()
