@@ -180,7 +180,7 @@ class Tomate inherits Ingrediente( image = "tomate_inicial.png", imgProcesadoFin
     }
 
     override method serProcesado(){
-        estadoTomate.serProcesado()
+        estadoTomate.serProcesado(self)
         procesado = true 
     }
 
