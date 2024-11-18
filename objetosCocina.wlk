@@ -8,7 +8,7 @@ import wollok.game.*
 
 class Mueble {
   const property position = game.center() 
-  const image = "" 
+  const property image = "" 
   var contenido = bandejaVacia //es un objeto que representa el no tener nada
 
   method usarse(chef){ //para que con 1 solo boton "interactuar" sea algo general y el mueble ve como se arregla en la interaccion

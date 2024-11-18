@@ -1,3 +1,4 @@
+import objetosCocina.*
 import restaurante.*
 import chefs.*
 
@@ -5,13 +6,13 @@ import chefs.*
 import wollok.game.*
 
 class Ingrediente { 
-    //corregir
-    var property position = game.center() //placeholder de la direccion
+
+    //var position = game.center() //placeholder de la direccion
     var property image = null 
     const imgProcesadoFinal = null
     var procesado = false
+//reviewing:
     //tener el estado que conozca al chef que lo sostenga
-    //corregir
     var quienLoSostiene = managerSostenerIngrediente
 
     method precio()
@@ -25,24 +26,26 @@ class Ingrediente {
    method integraIngredintes() { 
      return false
    }
-
+//reviewing:
     method fueProcesado() {
         return procesado
     }
-//corregir
+//reviewing:
     method serSostenido(chef) {
-        //hacer bien
-        managerSostenerIngrediente.sujeta(chef)
+       quienLoSostiene.sujeta(chef)
+       game.addVisual(self.position())
     }
-
+//reviewing:
     method serDejadoAqui(nuevaPosition){
-       managerSostenerIngrediente.serDejadoEn(nuevaPosition)
-       //hacer bien
+       game.removeVisual(self) //ya no sigue al cheff
+       quienLoSostiene.serDejadoEn(nuevaPosition)
+       game.addVisual(self.position())
     }
 
     method position(){
-        return managerSostenerIngrediente.position()
+        return quienLoSostiene.position() //dejar esto -> que el manager le pase la posicion con un if si es persona o mueble
     }
+
 
     method serProcesado(){ 
         image = imgProcesadoFinal
@@ -50,26 +53,31 @@ class Ingrediente {
     }
 
 }
-//corregir
+//reviewing:
 object managerSostenerIngrediente{
-    var sujetador = null
-    var property position = null
-//corregir
+    var sujetaIngredietne = null
+    var position = game.at(0, 0)
+    var base = mueble
+
     method sujeta(chef){
-        //no me salió
-        sujetador = chef
-        self.seguirChef(chef)
+        sujetaIngredietne = chef
+        base = persona
     }
-    method seguirChef(chef){
-        position = chef.dondeApunta()
-    }
-//corregir
+
     method serDejadoEn(nuevaPosition){
-        //no me salió
         position = nuevaPosition
+        base = mueble
+    }
+
+    method position(){ //mejorar como reconoce la base -> tal vez con identity
+        return 
+        if(base == persona) sujetaIngredietne.dondeApunta() else sujetaIngredietne.position()
     }
 
 }
+
+const persona = new Persona(nombre = "nn")
+const mueble = new Mueble()
 
 
 class Masa inherits Ingrediente( image = "masa_inicial.png", imgProcesadoFinal = "masa_final.png") { //imagen de masa redondita y despues amasada
