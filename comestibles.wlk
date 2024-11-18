@@ -7,13 +7,13 @@ import wollok.game.*
 
 class Ingrediente { 
 
-    //var position = game.center() //placeholder de la direccion
+    var property position = game.center() //placeholder de la direccion
     var property image = null 
     const imgProcesadoFinal = null
     var procesado = false
-//reviewing:
+//revisar:
     //tener el estado que conozca al chef que lo sostenga
-    var quienLoSostiene = managerSostenerIngrediente
+    // var quienLoSostiene = managerSostenerIngrediente
 
     method precio()
 
@@ -26,25 +26,29 @@ class Ingrediente {
    method integraIngredintes() { 
      return false
    }
-//reviewing:
+//revisar:
     method fueProcesado() {
         return procesado
     }
-//reviewing:
+//revisar:
     method serSostenido(chef) {
-       quienLoSostiene.sujeta(chef)
-       game.addVisual(self.position())
+    //    quienLoSostiene.sujeta(chef)
+    //    game.addVisual(self.position())
     }
-//reviewing:
+//revisar:
     method serDejadoAqui(nuevaPosition){
-       game.removeVisual(self) //ya no sigue al cheff
-       quienLoSostiene.serDejadoEn(nuevaPosition)
-       game.addVisual(self.position())
+    //    game.removeVisual(self) //ya no sigue al cheff
+    //    quienLoSostiene.serDejadoEn(nuevaPosition)
+    //    game.addVisual(self.position())
     }
 
-    method position(){
-        return quienLoSostiene.position() //dejar esto -> que el manager le pase la posicion con un if si es persona o mueble
-    }
+    // method position(){
+    //     return quienLoSostiene.position() //dejar esto -> que el manager le pase la posicion con un if si es persona o mueble
+    // }
+
+    // method position(newPosition){
+    //     position = newPosition
+    // }
 
 
     method serProcesado(){ 
@@ -53,10 +57,10 @@ class Ingrediente {
     }
 
 }
-//reviewing:
+
+//revisar:
 object managerSostenerIngrediente{
     var sujetaIngredietne = null
-    var position = game.at(0, 0)
     var base = mueble
 
     method sujeta(chef){
@@ -65,13 +69,11 @@ object managerSostenerIngrediente{
     }
 
     method serDejadoEn(nuevaPosition){
-        position = nuevaPosition
         base = mueble
     }
 
     method position(){ //mejorar como reconoce la base -> tal vez con identity
-        return 
-        if(base == persona) sujetaIngredietne.dondeApunta() else sujetaIngredietne.position()
+        return if(base == persona) sujetaIngredietne.dondeApunta() else sujetaIngredietne.position()
     }
 
 }
