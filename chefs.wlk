@@ -11,6 +11,11 @@ class Chef inherits Persona(ubicacion = restaurante) {
     return bandeja.esVacio()
   }
 
+  //para eliminar 
+  method llevoAlgo(){
+    return not self.tengoBandejaVacia()
+  }
+
    method interactuar() {
         self.validarMueble() 
         const mueble = ubicacion.muebleAqui(self.dondeApunta())

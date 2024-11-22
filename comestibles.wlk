@@ -10,7 +10,8 @@ class Masa inherits Ingrediente( image = "masa_inicial.png", imgProcesadoFinal =
     var property estado = cruda  
 
     override method integraIngredintes(){ 
-      return true
+      return procesado //-> asi la masa no recibe ingredientes hasta ser procesada
+      //true
     }
 
     method recibirIngrediente(ingrediente){
