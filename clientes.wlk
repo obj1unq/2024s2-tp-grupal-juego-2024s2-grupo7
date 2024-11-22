@@ -2,7 +2,7 @@ import personaBase.*
 import recepcion.*
 import comestibles.*
 import objetosRecepcion.*
-import adminClientes.* //TODO!!!!
+//import adminClientes.* //TODO!!!!
 
 import wollok.game.*
 
