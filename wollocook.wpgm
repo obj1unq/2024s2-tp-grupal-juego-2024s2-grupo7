@@ -1,8 +1,13 @@
 import restaurante.*
+import personaBase.*
+import posiciones.*
+import clientes.*
 import chefs.*
 import comestibles.*
+import ingredientesBase.*
+import factoryIngredientes.*
 import objetosCocina.*
-import posiciones.*
+import mueblesBase.*
 import objetosParaTests.*
 import mapa.*
  

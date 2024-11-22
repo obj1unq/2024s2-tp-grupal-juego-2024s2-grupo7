@@ -1,43 +1,77 @@
-object arriba {
+import personaBase.*
+import chefs.*
+import clientes.*
 
-	method imagen(name) {
-		return "" + name +"_up.png" 
+class Direccion{
+
+	method imageOrientacion(name)
+
+	method dondeMoverse(positionPersona)
+
+	method moverse(persona){
+		self.newImagen(persona)
+		self.validarMoverse(persona)
+		self.mover(persona)
 	}
 
-	method moverse(namePosition) {
-	  return namePosition.up(1)
+	method validarMoverse(persona){
+		if(persona.ubicacion().hayMuebleAqui(self.dondeMoverse(persona.position()))){
+			self.error("no se puede mover ahí")	
+		}
 	}
+
+	method mover(persona){
+		persona.position(self.dondeMoverse(persona.position()))
+	}
+
+	method newImagen(persona){
+		persona.image(self.imageOrientacion(persona.name()))
+	}
+
 }
 
-object abajo {
+object arriba inherits Direccion {
 
-	method imagen(name) {
+	override method imageOrientacion(name){
+		return "" + name + "_up.png" 
+	}
+
+	override method dondeMoverse(positionPersona){
+		return positionPersona.up(1)
+	}
+  
+}
+
+
+object abajo inherits Direccion {
+
+	override method imageOrientacion(name) {
 		return "" + name + "_down.png" 
 	}
 	
-	method moverse(namePosition) {
-	  return namePosition.down(1)
+	override method dondeMoverse(positionPersona) {
+	  return positionPersona.down(1)
 	}
 }
 
-object izquierda {
+object izquierda inherits Direccion {
 
-	method imagen(name) {
+	override method imageOrientacion(name) {
 		return "" + name + "_left.png" 
 	}
 
-	method moverse(namePosition) {
-	  return namePosition.left(1)
+	override method dondeMoverse(positionPersona) {
+	  return positionPersona.left(1)
 	}
 }
 
-object derecha {
+object derecha inherits Direccion {
 
-	method imagen(name) {
+	override method imageOrientacion(name) {
 		return "" + name + "_right.png"
 	}
 
-	method moverse(namePosition) {
-	  return namePosition.right(1)
+	override method dondeMoverse(positionPersona) {
+	  return positionPersona.right(1)
 	}
 }

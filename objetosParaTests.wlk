@@ -1,4 +1,6 @@
+import personaBase.*
 import chefs.*
+import posiciones.*
 import objetosCocina.*
 import comestibles.*
 import clientes.*
@@ -6,7 +8,7 @@ import clientes.*
 import wollok.game.*
 
 
-const remy = new Chef( position = game.at(0,4), image = "remy_abajo.png", nombre = "remy" ) //r
+const remy = new Chef( name = "remy", position = game.at(0,4), image = "remy_abajo.png") //r
 
 //tomates factory 
 //masas factory 

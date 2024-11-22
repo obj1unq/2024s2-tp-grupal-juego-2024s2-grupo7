@@ -1,4 +1,5 @@
 import personaBase.*
+import posiciones.*
 import restaurante.*
 
 import wollok.game.*
