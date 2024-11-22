@@ -10,30 +10,32 @@ import wollok.game.*
 describe "funcionalidad horno" {
   test "el horno recibe pizzas porque esta libre y luego devuelve la pizza porque el chef tiene las manos vacias" { 
     remy.bandeja(masa)
+    masa.serProcesado()
     horno.usarse(remy)
     
-    assert.that(horno.tieneAlgo())
+    assert.notThat(horno.estoyLibre())
     
-    assert.that(remy.tengoBandejaVacia())
-    horno.usarse(remy)
+     assert.that(remy.tengoBandejaVacia())
+     horno.usarse(remy)
     
-    assert.notThat(horno.tieneAlgo())
-    assert.notThat(remy.tengoBandejaVacia())
+     assert.that(horno.estoyLibre())
+     assert.notThat(remy.tengoBandejaVacia())
     
   }
 
   test "ocurre un fallo porque el horno no puede recibir más de 1 pizza" { 
     remy.bandeja(masa)
+    masa.serProcesado()
     horno.usarse(remy)
     
-    assert.that(horno.tieneAlgo())
+    assert.notThat(horno.estoyLibre())
     
     assert.that(remy.tengoBandejaVacia())
 
     remy.bandeja(tomate)
     assert.notThat(remy.tengoBandejaVacia())
 
-    assert.that(horno.tieneAlgo())
+    assert.notThat(horno.estoyLibre())
 
     assert.throwsException({ horno.usarse(remy) })
   }
@@ -56,7 +58,7 @@ describe "mesada" {
 
     mesada3.usarse(remy)
 
-    assert.that(mesada3.estaLibre())
+    assert.that(mesada3.estoyLibre())
   }
 
   test "mesada recibe una masa y los ingredientes que van hacia la mesada se agregan a la masa en vez de a la mesada y modifican la masa" { 
@@ -74,14 +76,14 @@ describe "mesada" {
     
     assert.equals(masa, mesada3.contenido())
     
-    assert.that(mesada3.tienePiza())
+    assert.notThat(mesada3.estoyLibre())
     
     assert.that(masa.tieneIngredientes()) 
 
     
     mesada3.usarse(remy)
     
-    assert.that(mesada3.estaLibre())
+    assert.that(mesada3.estoyLibre())
     
     assert.that(masa.tieneIngredientes())
   }
