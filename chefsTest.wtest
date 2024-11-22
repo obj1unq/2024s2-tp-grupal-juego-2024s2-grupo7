@@ -115,6 +115,7 @@ describe "chefs test" {
     remy.position(game.at(3,3))
     remy.mover(arriba)
     remy.bandeja(queso)
+    game.addVisualCharacter(queso)
 
     assert.notThat(remy.tengoBandejaVacia())
     remy.interactuar()
