@@ -17,6 +17,13 @@ object caja {
     return plata
   }
 
+  method recibirTip(tip){
+    self.alertarTip()
+    self.recibir(tip)
+  }
+//que aparezca arriba de la caja un cartelito o imagen de "tip!!"
+  method alertarTip(){} //aparece cartel de "tip"
+
 }
 
 /* NOTA:

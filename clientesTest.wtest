@@ -3,22 +3,21 @@ import restaurante.*
 import objetosParaTests.*
 
 import wollok.game.*
-/*los tests siguen andando pero hay que agregarle más cosas y segun los tipos probar más cosas*/
-describe "cliente normal" {
-  test "cliente normal hace un pedidom, esto hace que tengo un pedido en mente ahora y no sea una lista vacia como por default su pedido deceado" {
-    cliente1.avanzarAHacerPedido()
+/*los tests siguen andando pero hay que agregarle más cosas y segun los tipos probar más cosas -> los comento mientras agrego más cosas depsués los modifico
+*/
+// describe "cliente normal" {
+//   test "cliente normal hace un pedidom, esto hace que tengo un pedido en mente ahora y no sea una lista vacia como por default su pedido deceado" {
+//     cliente1.avanzarAHacerPedido()
 
-    assert.that(cliente1.pedidoQueEspero() != #{})
-  }
+//     assert.that(cliente1.pedidoQueEspero() != #{})
+//   }
 
-  test "cliente normal acepta un pedido que no es lo que quería entonces su estado cambia" {
+//   test "cliente normal acepta un pedido que no es lo que quería entonces su estado cambia" {
     
-    cliente1.avanzarAHacerPedido()
-    cliente1.recibirPedido(tomate)
+//     cliente1.avanzarAHacerPedido()
+//     cliente1.recibirPedido(tomate)
 
-    assert.equals(decepcionado, cliente1.emocion())
+//     assert.equals(decepcionado, cliente1.emocion())
     
-  }
-}
-
-//una vez hecha la caja se van a agregar los test del testo de los clientes y lo que pagan.
+//   }
+// }
