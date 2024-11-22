@@ -8,33 +8,37 @@ class Mueble {
   
   method usarse(chef)
 
-  method procesar(){} //solo la mesada procesa
+  method procesarIngredientes(){} //solo la mesada procesa
   
 }
 
 class MuebleParaCocinar inherits Mueble{ //horno y mesada, la mesada procesa
-  var contenido = bandejaVacia
+  var property contenido = bandejaVacia
 
   override method usarse(chef){
-    if(not chef.tengoBandejaVacia()){
-      self.validarRecibir(chef)
-      self.recibir(chef)
-    } else {
+    if(chef.tengoBandejaVacia()){
       self.validarDar(chef)
       self.dar(chef)
+    } else {
+      self.validarRecibir(chef)
+      self.recibir(chef)
     }
   }
 //validaciones:
+  method validarDar(chef){
+    if(self.estoyLibre()){
+      self.error("no hay nada para dar")
+    }
+  }
+  
   method validarRecibir(chef){
-    if(self.cumpleCondicionRecibir(chef)){
-      self.error("ya hay algo en la mesada")
+    if(not self.cumpleCondicionRecibir(chef)){
+      self.error(self.mensajeErrorRecibir())
     }
   }
 
-  method validarDar(chef){
-    if(not self.tengoAlgo()){
-      self.error("no hay nada para dar en la mesada")
-    }
+  method mensajeErrorRecibir(){
+    return "no hay espacio para recibir eso"
   }
 
 //acciones:
@@ -49,17 +53,18 @@ class MuebleParaCocinar inherits Mueble{ //horno y mesada, la mesada procesa
   }
 
   method dar(chef){
-    chef.bandeja(contenido)
+    chef.recibir(contenido)
+    contenido.serSostenido(chef) //ver si esta bien ahí
     contenido = bandejaVacia
   }
 
 //condiciones:
   method cumpleCondicionRecibir(chef){
-    return not self.tengoAlgo()
+    return self.estoyLibre()
   }
 
-  method tengoAlgo(){
-    return not contenido.esVacio()
+  method estoyLibre(){
+    return contenido.esVacio()
   }
 
   method tengoPiza(){

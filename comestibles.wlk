@@ -17,7 +17,7 @@ class Masa inherits Ingrediente( image = "masa_inicial.png", imgProcesadoFinal =
     method recibirIngrediente(ingrediente){
         self.validarRecibirIngrediente(ingrediente)
         ingredientes.add(ingrediente)
-        //modificar la img
+        ingrediente.serDejadoAqui(self.position())
     }
 
     override method precio(){

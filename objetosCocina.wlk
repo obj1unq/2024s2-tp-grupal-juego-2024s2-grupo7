@@ -14,12 +14,13 @@ class Mesada inherits MuebleParaCocinar(image ="mesada_ph.png") {
   override method recibir(chef){
     if(self.tengoPiza()){
       contenido.recibirIngrediente(chef.bandeja())
+      chef.soltar()
     } else {
       super(chef)
     }
   }
 
-  override method procesar(){
+  override method procesarIngredientes(){
     self.validarProcesar()
     contenido.serProcesado()
   }
@@ -31,7 +32,7 @@ class Mesada inherits MuebleParaCocinar(image ="mesada_ph.png") {
   }
 
   method tieneIngrediente(){
-    return self.tengoAlgo() and not self.tengoPiza() //si tiene algo y no es una pizza es un ingrediente
+    return not self.estoyLibre() and not self.tengoPiza() //si tiene algo y no es una pizza es un ingrediente
   }
 }
 
@@ -40,6 +41,10 @@ class Horno inherits MuebleParaCocinar(image = "oven_0.png") {
 
   override method cumpleCondicionRecibir(chef){
     return super(chef) and self.esPiza(chef.bandeja()) //así solo acepta recibir pizzas
+  }
+
+  override method mensajeErrorRecibir(){
+    return "no puedo recibir algo que no sea una pizza y el horno tiene que estar vacio para recibir"
   }
 
   override method accionDeRecibir(){
@@ -78,5 +83,8 @@ class Tacho inherits Mueble(image = "") {
   }
 }
 
+class MuebleSeparador inherits Mueble(image = ""){
+  override method usarse(chef){}
+} 
 
 

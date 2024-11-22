@@ -2,6 +2,7 @@ import personaBase.*
 import chefs.*
 import posiciones.*
 import objetosCocina.*
+import ingredientesBase.*
 import comestibles.*
 import clientes.*
 
@@ -18,6 +19,7 @@ const mesada2 = new Mesada(position = game.at(4,5), contenido = queso)
 const horno = new Horno(position = game.at(5,5)) 
 const mesada3 = new Mesada(position = game.at(6,5))
 const horno2 = new Horno(position = game.at(7,5)) 
+const mesadaX = new Mesada(position = game.at(10,10))
 
 const mesada4 = new Mesada(position = game.at(0,2), contenido = tomate)
 //aceitunas factory
@@ -29,9 +31,11 @@ const mesada6 = new Mesada(position = game.at(6,2))
 //atun factory
 
 
-const masa = new Masa()
-const queso = new Queso()
-const tomate = new Tomate()
+const masa = new Masa(estadoPosition = apoyado1)
+const queso = new Queso(estadoPosition = apoyado1)
+const tomate = new Tomate(estadoPosition = apoyado1)
+
+const apoyado1 = new Apoyado(queLoSostiene = mesadaX)
 
 const cliente1 = new ClienteNormal()
 const cliente2 = new ClienteQuisquilloso()
