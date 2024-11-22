@@ -1,24 +1,10 @@
-import restaurante.*
 import chefs.*
 import objetosCocina.*
 import comestibles.*
-import objetosRecepcion.*
 import clientes.*
 
 import wollok.game.*
 
-
-/*
-
-[t,_,_,_,_],
-[_,_,_,_,_],
-[_,_,_,_,_],
-[_,_,_,_,_],
-[_,_,_,_,_],
-[_,_,_,_,_],
-[_,_,_,_,_]
-
-*/
 
 const remy = new Chef( position = game.at(0,4), image = "remy_abajo.png", nombre = "remy" ) //r
 

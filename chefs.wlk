@@ -1,54 +1,9 @@
-import posiciones.*
+import personaBase.*
 import restaurante.*
-import objetosParaTests.*
 
 import wollok.game.*
 
-/*
-NOTA:
-  *falta como hacer que lo que este en bandeja la imagen aparezca en frente del chef, sino lo que se podría hacer que es más trabajo creo era lo de una imagen para cada cosa que puede sostener, eso también haría que ver como implementarlo
-*/
-
-
-class Persona {
-    var property orientacion = abajo //en donde está mirando
-    var property position = game.at(0,0) //la posicion es placeholder por ahora -> cambiar para el juego
-    var property image = "" 
-    //const property ubicacion = restaurante -> preguntar si conviene más guardarlo en variable o tener referencia global
-    const nombre = null //para los clientes sería tipo cliente, para el chef tenemos nombre jaja
-
-    method mover(direccion) {
-      orientacion = direccion //es importante que primero cambie a donde mira y su imagen de mirar, después se mueva o no
-      self.nuevaImagen()
-
-      const nuevaPosition = direccion.moverse(self.position())
-
-      self.validarMoverseHacia(nuevaPosition)
-      position = nuevaPosition
-	}
-
-  method validarMoverseHacia(_position){
-    if(restaurante.hayMuebleAqui(_position)){
-      self.error("no me puedo mover ahí")
-    }
-  }
-
-  method nuevaImagen(){
-    image = orientacion.imagen(nombre)
-  }
-
-    method dondeApunta() { 
-    return orientacion.moverse(self.position())
-  }
-
-  method nombre(){
-    return nombre
-  }
-
-
-}
-
-class Chef inherits Persona {
+class Chef inherits Persona(ubicacion = restaurante) {
     var property bandeja = bandejaVacia
 
      method tengoBandejaVacia() {
@@ -57,13 +12,13 @@ class Chef inherits Persona {
 
    method interactuar() {
         self.validarMueble() 
-        const mueble = restaurante.muebleAqui(self.dondeApunta())
+        const mueble = ubicacion.muebleAqui(self.dondeApunta())
       
         mueble.usarse(self)
     }
 
     method validarMueble(){
-      if(not restaurante.hayMuebleAqui(remy.dondeApunta())){
+      if(not ubicacion.hayMuebleAqui(self.dondeApunta())){
         self.error("no hay ningun mueble aqui para hacer lo que quiero hacer")
       }
     }
@@ -78,32 +33,19 @@ class Chef inherits Persona {
 
     method procesar(){
      self.validarMueble()
-     const mueble = restaurante.muebleAqui(self.dondeApunta())
+     const mueble = ubicacion.muebleAqui(self.dondeApunta())
 
      mueble.procesarIngredientes()
     }
-
-   
-
-//probar: -> se necesitan los clientes
-  method preguntarPedido() {
+//PROBAR: -> esto se podría cambiar para preguntarle al admin de clientes
+    method preguntarPedido() {
     self.validarPreguntarPedido()
-    restaurante.clienteAqui(self.dondeApunta()).decirPedido()
+    ubicacion.clienteAqui(self.dondeApunta()).decirPedido()
   }
 
   method validarPreguntarPedido(){
-    if(not restaurante.hayClienteAqui(self.dondeApunta())){ 
+    if(not ubicacion.hayClienteAqui(self.dondeApunta())){ 
       self.error("no hay ningun cliente aqui")
     }
-  }
-}
-
-object bandejaVacia {
-  
-  method esVacio(){
-    return true
-  }
-  method integraIngredintes(){ 
-    return false
   }
 }

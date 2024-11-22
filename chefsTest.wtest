@@ -1,7 +1,8 @@
-import restaurante.*
-import comestibles.*
+import personaBase.*
 import posiciones.*
 import chefs.*
+import restaurante.*
+import comestibles.*
 
 import objetosParaTests.*
 

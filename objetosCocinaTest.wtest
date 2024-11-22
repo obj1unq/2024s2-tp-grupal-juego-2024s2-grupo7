@@ -2,6 +2,7 @@ import posiciones.*
 import chefs.*
 import objetosParaTests.*
 import objetosCocina.*
+import factoryIngredientes.*
 import comestibles.*
 
 import wollok.game.*

@@ -1,18 +1,19 @@
-import chefs.*
+import personaBase.*
+import recepcion.*
 import comestibles.*
 import objetosRecepcion.*
-
+import adminClientes.* //TODO!!!!
 
 import wollok.game.*
 
 
-class Cliente inherits Persona(position = game.at(0,0) , image = ""){ //la position esa es un placeholder -> la posicion en la que se inician debería ser en donde estaría la "puerta" -> para el gestor de clientes
+class Cliente inherits Persona(ubicacion = recepcion){ //la position esa es un placeholder -> la posicion en la que se inician debería ser en donde estaría la "puerta" -> para el gestor de clientes
     var pedidoQueEspero = []
     var emocion = neutral 
     var nivelDePaciencia = null //depende del tipo de cliente
 
     method avanzarAHacerPedido() {
-      //podría ser un tipo de animación donde avanza paso por paso hasta llegar a la mesa de recepción para hacer el pedido -> como persona hereda el poder moverse
+      //animacion avanzar a pedido -> lo maneja el gestor?
       self.generarPedido()
       self.decirPedido()
     }

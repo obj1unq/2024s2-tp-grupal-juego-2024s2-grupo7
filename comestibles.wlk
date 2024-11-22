@@ -1,85 +1,8 @@
-import objetosCocina.*
-import restaurante.*
-import chefs.*
+import ingredientesBase.*
+import personaBase.*
 
 
 import wollok.game.*
-
-class Ingrediente { 
-
-    var property position = game.center() //placeholder de la direccion
-    var property image = null 
-    const imgProcesadoFinal = null
-    var procesado = false
-//revisar:
-    //tener el estado que conozca al chef que lo sostenga
-    // var quienLoSostiene = managerSostenerIngrediente
-
-    method precio()
-
-    method tipoIngrediente()
-
-    method esVacio(){
-    return false
-   }
-
-   method integraIngredintes() { 
-     return false
-   }
-//revisar:
-    method fueProcesado() {
-        return procesado
-    }
-//revisar:
-    method serSostenido(chef) {
-    //    quienLoSostiene.sujeta(chef)
-    //    game.addVisual(self.position())
-    }
-//revisar:
-    method serDejadoAqui(nuevaPosition){
-    //    game.removeVisual(self) //ya no sigue al cheff
-    //    quienLoSostiene.serDejadoEn(nuevaPosition)
-    //    game.addVisual(self.position())
-    }
-
-    // method position(){
-    //     return quienLoSostiene.position() //dejar esto -> que el manager le pase la posicion con un if si es persona o mueble
-    // }
-
-    // method position(newPosition){
-    //     position = newPosition
-    // }
-
-
-    method serProcesado(){ 
-        image = imgProcesadoFinal
-        procesado = true
-    }
-
-}
-
-// //revisar:
-// object managerSostenerIngrediente{
-//     var sujetaIngredietne = null
-//     var base = mueble
-
-//     method sujeta(chef){
-//         sujetaIngredietne = chef
-//         base = persona
-//     }
-
-//     method serDejadoEn(nuevaPosition){
-//         base = mueble
-//     }
-
-//     method position(){ //mejorar como reconoce la base -> tal vez con identity
-//         return if(base == persona) sujetaIngredietne.dondeApunta() else sujetaIngredietne.position()
-//     }
-
-// }
-
-// const persona = new Persona(nombre = "nn")
-// const mueble = new Mueble()
 
 
 class Masa inherits Ingrediente( image = "masa_inicial.png", imgProcesadoFinal = "masa_final.png") { //imagen de masa redondita y despues amasada
@@ -127,7 +50,6 @@ class Masa inherits Ingrediente( image = "masa_inicial.png", imgProcesadoFinal =
 
     method serCocinada(){
         estado.cocinarseMas(self)
-        //estado.actualizarImagen(self)
     }
 
     override method tipoIngrediente(){
@@ -146,13 +68,13 @@ class Coccion{
 
     method quemarUnPoquito(masa)
     
-    method newImagen(masa) { //ponerle otro nombre
+    method newImagen(masa) {
       masa.image(imgCoccion)
     }
 
 } 
 
-object cruda inherits Coccion(imgCoccion = ""){ //cruda no hace falta que tenga imagen -> nunca se va a ver
+object cruda inherits Coccion(imgCoccion = ""){ //cruda no hace falta que tenga imagen -> nunca se va a ver CREO
     override method quemarUnPoquito(masa){
         masa.estado(dorada) 
     }
@@ -226,7 +148,7 @@ class EstadosTomate{
     method resultadoDeProcesamiento(tomate)
 }
 
-object entero inherits EstadosTomate(estadoImg = "") { //no necesita imagen realmente 
+object entero inherits EstadosTomate(estadoImg = "") { //no necesita imagen CREO
     override method resultadoDeProcesamiento(tomate){
         tomate.estadoTomate(cortado)
     }
@@ -248,7 +170,7 @@ object salsa inherits EstadosTomate(estadoImg = "") {
 class Aceituna inherits Ingrediente( image = "aceituna_factory.png", imgProcesadoFinal = "aceituna_final.png") {
 
     override method precio(){
-            return 200
+            return 150
         }
     
     override method tipoIngrediente(){
@@ -270,7 +192,7 @@ class Huevo inherits Ingrediente( image = "huevo_inicial.png", imgProcesadoFinal
 class Atun inherits Ingrediente( image = "atun_factory.png", imgProcesadoFinal = "atun_final.png") {
 
     override method precio(){
-            return 200
+            return 120
         }
     
     override method tipoIngrediente(){
@@ -297,18 +219,3 @@ object ingredienteAceituna {}
 object ingredienteHuevo {}
 object ingredienteAtun {}
 object ingredienteHongo {}
-
-
-//esto es solo si nos sobra el tiempo:
-
-/*
-    bebidas y postres: -> NO SON CLASE INGREDIENTE
-    tiene que tener posición e imagen
-    tiene que saber su precio
-    tiene que saber que opción de bebida son 
-        -> coca, sprite, fanta
-        -> helado, torta, etc?
-*/
-class Bebida {}
-
-class Postre {}

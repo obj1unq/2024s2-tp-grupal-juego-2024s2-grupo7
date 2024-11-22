@@ -25,14 +25,21 @@ program wollocook {
 
     //chef
     imagenes.chefImg()
+
     //ingredientes
    imagenes.ingredientesImg()
 
    //muebles
-   // hornos
+    //imagenes.muebles() -> todos los muebles
+
+
+
+
+
+    //horno
    imagenes.hornoImg()
    
-    // mesadas
+    //mesada
     imagenes.mesadaImg()
 
     game.start()

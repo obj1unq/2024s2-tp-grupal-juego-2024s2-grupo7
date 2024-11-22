@@ -1,7 +1,7 @@
 object arriba {
 
 	method imagen(name) {
-		return "" + name +"_up.png" // name + "" + ".arriba.png"
+		return "" + name +"_up.png" 
 	}
 
 	method moverse(namePosition) {
@@ -12,7 +12,7 @@ object arriba {
 object abajo {
 
 	method imagen(name) {
-		return "" + name + "_down.png" //name + "" + ".abajo.png"
+		return "" + name + "_down.png" 
 	}
 	
 	method moverse(namePosition) {
@@ -23,7 +23,7 @@ object abajo {
 object izquierda {
 
 	method imagen(name) {
-		return "" + name + "_left.png" //name + "" + ".izquierda.png"
+		return "" + name + "_left.png" 
 	}
 
 	method moverse(namePosition) {
@@ -34,7 +34,7 @@ object izquierda {
 object derecha {
 
 	method imagen(name) {
-		return "" + name + "_right.png"//name + "" + ".derecha.png"
+		return "" + name + "_right.png"
 	}
 
 	method moverse(namePosition) {
