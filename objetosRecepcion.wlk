@@ -1,3 +1,5 @@
+import wollok.game.*
+
 object caja { 
   var plata = 0
   method recibir(_plata){

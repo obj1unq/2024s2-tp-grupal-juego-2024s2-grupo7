@@ -1,5 +1,7 @@
 import posiciones.*
 
+import wollok.game.*
+
 class Persona {
     var property orientacion = abajo //en donde está mirando, property para los tests
     var property position = game.at(0,0) 

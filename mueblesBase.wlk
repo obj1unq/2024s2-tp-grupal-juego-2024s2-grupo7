@@ -1,5 +1,7 @@
 import personaBase.*
 
+import wollok.game.*
+
 class Mueble {
   const property position = game.center() 
   const property image = "" 

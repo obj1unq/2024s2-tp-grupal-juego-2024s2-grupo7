@@ -1,5 +1,8 @@
 import mueblesBase.*
 import comestibles.*
+
+import wollok.game.*
+
 class PilaIngrediente inherits Mueble {
 
 

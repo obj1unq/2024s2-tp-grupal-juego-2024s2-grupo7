@@ -5,7 +5,8 @@ import objetosCocina.*
 import posiciones.*
 import objetosParaTests.*
 import mapa.*
-
+ 
+//TODO : revisar
 
 import wollok.game.*
 

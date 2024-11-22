@@ -1,5 +1,7 @@
 import personaBase.*
 
+import wollok.game.*
+
 class Ingrediente { 
 
     var property position = game.center()
