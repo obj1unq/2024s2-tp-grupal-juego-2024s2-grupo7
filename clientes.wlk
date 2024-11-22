@@ -1,18 +1,56 @@
 import personaBase.*
-import recepcion.*
+import restaurante.*
 import comestibles.*
 import objetosRecepcion.*
-//import adminClientes.* //TODO!!!!
+import adminClientes.* 
 
 import wollok.game.*
 
 
-class Cliente inherits Persona(ubicacion = recepcion){ //la position esa es un placeholder -> la posicion en la que se inician debería ser en donde estaría la "puerta" -> para el gestor de clientes
+class Cliente inherits Persona(ubicacion = restaurante, position = game.at(8,4)){ //la position esa es un placeholder -> la posicion en la que se inician debería ser en donde estaría la "puerta" -> para el gestor de clientes
     var pedidoQueEspero = []
     var emocion = neutral 
     var nivelDePaciencia = null //depende del tipo de cliente
+    const manos = bandejaVacia
 
-    method avanzarAHacerPedido() {
+    method esperarPedido() {
+      game.onTick(10000, "anunciar", {self.anunciarPedido()})
+      game.onTick(1000, "recoger", {self.recogerPedido()})
+      game.schedule(nivelDePaciencia, {self.irseSinNada()})
+    }
+
+    method irseSinNada() {
+      if(manos.esVacio()) {
+        self.dejarDePedir()
+        game.removeVisual(self)
+      }
+    } 
+
+    method dejarDePedir() {
+      game.removeTickEvent("anunciar")
+      game.removeTickEvent("recoger")
+    }
+
+    method anunciarPedido() {
+      game.say(self, self.pedidoAString())
+    }
+
+    method pedidoAString() {
+      return "Quiero una pizza con " + pedidoQueEspero.sum({i => i.nombre()})
+    }
+    //Los ingredientes podrian tener un metodo que sea nombre o algo asi y que simplemente devuelva un string con
+    //el nombre del ingrediente como queremos que aparezca en el cartelito del pedido
+
+    method recogerPedido() {
+      if(manos.esVacio()) {
+        self.interactuar()
+      } else
+        self.dejarDePedir()
+        self.reaccionarAPedido()
+    }
+    
+
+    /*method avanzarAHacerPedido() {
       //animacion avanzar a pedido -> lo maneja el gestor?
       self.generarPedido()
       self.decirPedido()
@@ -20,11 +58,14 @@ class Cliente inherits Persona(ubicacion = recepcion){ //la position esa es un p
 
     method decirPedido(){ //el chef debería poder preguntarle el pedido al cliente al interactuar las veces que quiera.
       //decir pedido puede mostrar una por una las imagenes de los ingredientes que quiere en la pizza 
-    }
+    }*/
 
     method generarPedido() {
       pedidoQueEspero = [ingredienteSalsa, ingredienteQueso] + [self.ingredientePrincipalRandom()] 
     }
+
+    //Para mi que tenga solo un ingrediente random es muy poco, se va a volver muy repetitivo, para mi habria que dejar 
+    //fijo solo la salsa y despues 3 ingredientes random.
 /*
 CUANDO SE HAGA EL GESTIOR DE DESBLOQUEO TIENE QUE CAMBIAR LA LISTA DE INGREDIENTES DISPONIBLES 
 */
@@ -33,31 +74,32 @@ CUANDO SE HAGA EL GESTIOR DE DESBLOQUEO TIENE QUE CAMBIAR LA LISTA DE INGREDIENT
       return [ingredienteAceituna, ingredienteQueso, ingredienteAtun, ingredienteHongo].anyOne()
     }
 
-    method recibirPedido(pedido) {
+    /*method recibirPedido(pedido) {
       self.reaccionarAPedido(pedido)
       emocion.mostrarse(self) 
       self.pagarPedido(pedido)
-    }
+    }*/
 
-    method reaccionarAPedido(pedido) {
-      if(self.esLoQueEsperaba(pedido)){
+    method reaccionarAPedido() {
+      if(self.esLoQueEsperaba()){
         self.reaccionBuena()
       } else{
-        nivelDePaciencia = nivelDePaciencia - 20
+        //nivelDePaciencia = nivelDePaciencia - 20
         self.reaccionMala()
       }
     }
+    // Para mi lo de restar paciencia, pagar, irse, etc deberia estar todo dentro de las reacciones
 
-    method esLoQueEsperaba(pedido){  //puede recibir un ingrediente solo pero eso lo va a hacer enojar.
-      return self.esUnaPiza(pedido) and self.esLaPizzaQuePedi(pedido)
+    method esLoQueEsperaba(){  //puede recibir un ingrediente solo pero eso lo va a hacer enojar.
+      return self.esUnaPizza() and self.esLaPizzaQuePedi()
     }
 
-    method esLaPizzaQuePedi(pedido){
-      return pedido.ingredientes().map({ingrediente => ingrediente.sabor()}) == pedidoQueEspero 
+    method esLaPizzaQuePedi(){
+      return manos.ingredientes().map({ingrediente => ingrediente.sabor()}) == pedidoQueEspero 
     }
 
-    method esUnaPiza(pedido){
-        return  pedido.integraIngredintes() 
+    method esUnaPizza(){
+        return  manos.integraIngredintes() 
     }
 
     method reaccionBuena()
@@ -140,5 +182,3 @@ object feliz inherits Emotion( image = "") {}
 object decepcionado inherits Emotion( image = "") {}
 
 object enojado inherits Emotion( image = "") {}
-
-
