@@ -8,7 +8,7 @@ class Ingrediente {
     var property image = null 
     const imgProcesadoFinal = null
     var procesado = false
-    var estadoPosition = game.center()
+    var estadoPosition = null //game.center()
 //todo:
     //tener el estado que conozca al chef que lo sostenga
     // var quienLoSostiene = managerSostenerIngrediente
@@ -24,7 +24,7 @@ class Ingrediente {
    method integraIngredintes() { 
      return false
    }
-//todo:
+
     method fueProcesado() {
         return procesado
     }
@@ -59,7 +59,7 @@ class EstadoPositionIngrediente {
 class Sostenido inherits EstadoPositionIngrediente{
     override method position() {
         //return super().dondeApunta()
-        return queLoSostiene.adelante()
+        return queLoSostiene.dondeApunta()
     }
 }
 
