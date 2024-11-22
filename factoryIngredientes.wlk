@@ -4,26 +4,28 @@ import ingredientesBase.*
 
 import wollok.game.*
 
-class PilaIngrediente inherits Mueble {
-
+class PilaIngrediente inherits Mueble{
 
   override method usarse(chef){
-    self.accionDar(chef)
+    self.validarUsarse(chef)
+    self.darIngrediente(chef)
   }
 
-  override method eliminarLoDado(){} //no se usa porque tiene infinitos elementos encima la pila, no solo 1 contenido
-
-  override method objetoADar(chef){
-    return self.nuevoIngrediente(chef)
+  method validarUsarse(chef){
+    if(not chef.tengoBandejaVacia()){
+      chef.error("no puedo agarrar nada con las manos ocupadas")
+    }
   }
 
-  override method puedeRecibir(cosa) { //no recive nada a diferencia de otros muebles, solo da
-    return false
+  method darIngrediente(chef){
+    const ingrediente = self.nuevoIngrediente(chef)
+    game.addVisual(ingrediente)
+    chef.bandeja(ingrediente)
   }
 
-  method nuevoIngrediente(chef) //depende de la pila de ingredientes
-
+  method nuevoIngrediente(chef)
 }
+
 
 object estacionTomate  inherits PilaIngrediente(image = "tomate_inicial.png", position = game.at(0, 5)){
 
