@@ -26,13 +26,13 @@ class MuebleParaCocinar inherits Mueble{ //horno y mesada, la mesada procesa
   }
 //validaciones:
   method validarRecibir(chef){
-    if(self.tengoAlgo()){
+    if(self.cumpleCondicionRecibir(chef)){
       self.error("ya hay algo en la mesada")
     }
   }
 
   method validarDar(chef){
-    if(not self.cumpleCondicionRecibir()){
+    if(not self.tengoAlgo()){
       self.error("no hay nada para dar en la mesada")
     }
   }
@@ -54,7 +54,7 @@ class MuebleParaCocinar inherits Mueble{ //horno y mesada, la mesada procesa
   }
 
 //condiciones:
-  method cumpleCondicionRecibir(){
+  method cumpleCondicionRecibir(chef){
     return not self.tengoAlgo()
   }
 

@@ -7,8 +7,8 @@ import wollok.game.*
 
 class Mesada inherits MuebleParaCocinar{
 
-  override method cumpleCondicionRecibir(){ //o esta vacio o tiene una pizza
-    return super() || self.tengoPiza()
+  override method cumpleCondicionRecibir(chef){ //o esta vacio o tiene una pizza
+    return super(chef) || self.tengoPiza()
   }
 
   override method recibir(chef){
@@ -37,6 +37,10 @@ class Mesada inherits MuebleParaCocinar{
 
 class Horno inherits MuebleParaCocinar{
   var temperatura = 0
+
+  override method cumpleCondicionRecibir(chef){
+    return super(chef) and self.esPiza(chef.bandeja()) //así solo acepta recibir pizzas
+  }
 
   override method accionDeRecibir(){
     self.cocinar()
