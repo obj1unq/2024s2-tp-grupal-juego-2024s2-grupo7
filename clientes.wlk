@@ -73,7 +73,7 @@ CUANDO SE HAGA EL GESTIOR DE DESBLOQUEO TIENE QUE CAMBIAR LA LISTA DE INGREDIENT
 
 }
 
-class ClienteNormal inherits Cliente(nivelDePaciencia = 100, image = "image_clieneNormal.png", nombre = "clienteNormal"){
+class ClienteNormal inherits Cliente(nivelDePaciencia = 100, image = "image_clieneNormal.png", name = "clienteNormal"){
   //el cliente normal podría no hacer nada
   override method reaccionBuena(){
     emocion = feliz
@@ -94,7 +94,7 @@ class ClienteNormal inherits Cliente(nivelDePaciencia = 100, image = "image_clie
   }
 }
 
-class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 80, image = "image_clieneQuisquilloso.png", nombre = "clienteQuisquilloso"){
+class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 80, image = "image_clieneQuisquilloso.png", name = "clienteQuisquilloso"){
   
   override method reaccionBuena(){
     emocion = neutral
@@ -113,7 +113,7 @@ class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 80, image = "image
   }
 }
 
-class ClientePaciente inherits Cliente(nivelDePaciencia = 110, image = "image_clienePaciente.png", nombre = "clientePaciente"){
+class ClientePaciente inherits Cliente(nivelDePaciencia = 110, image = "image_clienePaciente.png", name = "clientePaciente"){
   override method reaccionBuena(){
     emocion = feliz
     //también deja tip
