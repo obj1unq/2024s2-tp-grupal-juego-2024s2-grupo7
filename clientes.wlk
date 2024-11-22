@@ -79,6 +79,7 @@ class Cliente inherits Persona(position = game.at(0,0) , image = ""){ //la posit
     }
 }
 
+
 object neutral {
   method mostrarse(cliente){}
 }
@@ -99,11 +100,27 @@ object decepcionado {
 
 //hacer mas emociones? -> enojado?
 
-class ClienteNormal inherits Cliente(nivelDePaciencia = 100, image = "image_clieneNormal.png", nombre = "clienteNormal"){}
+class ClienteNormal inherits Cliente(nivelDePaciencia = 100, image = "image_clieneNormal.png", nombre = "clienteNormal"){
+  //el cliente normal podría no hacer nada
+}
 
-class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 80, image = "image_clieneQuisquilloso.png", nombre = "clienteQuisquilloso"){}
+class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 80, image = "image_clieneQuisquilloso.png", nombre = "clienteQuisquilloso"){
+  
+  override method reaccionMala(){
+    super()
+    self.robarYMolestar()
+  }
 
-class ClientePaciente inherits Cliente(nivelDePaciencia = 110, image = "image_clienePaciente.png", nombre = "clientePaciente"){}
+  method robarYMolestar(){
+    //caja.gastar(100) //siempre roba 100 pesos cunado el pedido no es el que quería
+    //hace que se vaya el cliente de atras enojado también
+    //clienteAtras.reaccionMala() //se necesita algun metodo tal vez con el gestor de clientes que te de al cliente de atras y conozca también el de adelante -> tal vez con una lista
+  }
+}
+
+class ClientePaciente inherits Cliente(nivelDePaciencia = 110, image = "image_clienePaciente.png", nombre = "clientePaciente"){
+  //el clieunte paciente te puede ragalar plata y dejar flores en las mesas
+}
 
 const cliente = new ClienteNormal() //lo agrego para probar en la consola al cliente
 

@@ -58,28 +58,28 @@ class Ingrediente {
 
 }
 
-//revisar:
-object managerSostenerIngrediente{
-    var sujetaIngredietne = null
-    var base = mueble
+// //revisar:
+// object managerSostenerIngrediente{
+//     var sujetaIngredietne = null
+//     var base = mueble
 
-    method sujeta(chef){
-        sujetaIngredietne = chef
-        base = persona
-    }
+//     method sujeta(chef){
+//         sujetaIngredietne = chef
+//         base = persona
+//     }
 
-    method serDejadoEn(nuevaPosition){
-        base = mueble
-    }
+//     method serDejadoEn(nuevaPosition){
+//         base = mueble
+//     }
 
-    method position(){ //mejorar como reconoce la base -> tal vez con identity
-        return if(base == persona) sujetaIngredietne.dondeApunta() else sujetaIngredietne.position()
-    }
+//     method position(){ //mejorar como reconoce la base -> tal vez con identity
+//         return if(base == persona) sujetaIngredietne.dondeApunta() else sujetaIngredietne.position()
+//     }
 
-}
+// }
 
-const persona = new Persona(nombre = "nn")
-const mueble = new Mueble()
+// const persona = new Persona(nombre = "nn")
+// const mueble = new Mueble()
 
 
 class Masa inherits Ingrediente( image = "masa_inicial.png", imgProcesadoFinal = "masa_final.png") { //imagen de masa redondita y despues amasada
