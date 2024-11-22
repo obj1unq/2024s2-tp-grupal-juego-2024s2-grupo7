@@ -7,7 +7,7 @@ class Persona {
     var property position = game.at(0,0) 
     var property image = "" 
     const property ubicacion = null
-    const name = "remy"  //el default para todos
+    const name = "remy"  //el default para todos 
 
     method mover(direccion) {
       orientacion = direccion
