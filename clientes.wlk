@@ -92,6 +92,7 @@ class Cliente inherits Persona(ubicacion = restaurante, position = game.at(8,4))
         //nivelDePaciencia = nivelDePaciencia - 20
         self.reaccionMala()        
       }
+      self.irse()
     }
     // Para mi lo de restar paciencia, pagar, irse, etc deberia estar todo dentro de las reacciones -> no entiendo esto 
 
@@ -100,7 +101,7 @@ class Cliente inherits Persona(ubicacion = restaurante, position = game.at(8,4))
     }
 
     method esLaPizzaQuePedi(){
-      return manos.ingredientes().map({ingrediente => ingrediente.sabor()}) == pedidoQueEspero 
+      return manos.ingredientes().map({ingrediente => ingrediente.tipoIngrediente()}) == pedidoQueEspero 
     }
 
     method esUnaPizza(){
@@ -110,6 +111,8 @@ class Cliente inherits Persona(ubicacion = restaurante, position = game.at(8,4))
     method reaccionBuena()
 
     method reaccionMala()
+
+    method irse() //hacer
 
     method plataAPagarPorPedido(pedido) {
       return pedido.precio() * nivelDePaciencia / 100 
