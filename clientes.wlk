@@ -112,7 +112,10 @@ class Cliente inherits Persona(ubicacion = restaurante, position = game.at(8,4))
 
     method reaccionMala()
 
-    method irse() //hacer
+    method irse(){ //hacer -> 
+    //animacion dramatica que algo pase??? o solo
+    game.removeVisual(self)
+    } 
 
     method plataAPagarPorPedido(pedido) {
       return pedido.precio() * nivelDePaciencia / 100 
