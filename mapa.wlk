@@ -4,15 +4,15 @@ import comestibles.*
 import factoryIngredientes.*
 import objetosCocina.*
 import posiciones.*
-import objetosParaTests.*
+import mapaObjetos.*
 
 import wollok.game.*
 
 //revisar al final::
 object dimension {
 
-    const ancho = 10//120
-    const largo = 10//60
+    const ancho = 120 //10
+    const largo = 60 //10
 
 
     method tamanioMapa() {
@@ -33,16 +33,17 @@ object teclas{
 
     method accion(){
     keyboard.q().onPressDo({remy.interactuar()})
+    keyboard.w().onPressDo({remy.procesar()})
     }
 }
 
 object imagenes {
 
-    method restauranteIng(){
+    method restauranteImg(){
         game.boardGround("restaurante.png")
     }
 
-    method ingredientesImg(){
+    method ingredientesImg(){ //factories
         game.addVisual(estacionTomate)
         game.addVisual(estacionQueso)
         game.addVisual(estacionMasa)
@@ -52,19 +53,23 @@ object imagenes {
         game.addVisual(estacionHongo)
     }
 
-    method hornoImg(){ //hornos
-        game.addVisual(horno)
-        game.addVisual(horno2)
-    }
-
     method chefImg(){
         game.addVisual(remy)
+    }
+
+    method mueblesImg(){
+        //todos los muebles
     }
 
     method mesadaImg(){ //mesadas
 
         game.addVisual(mesada)
         game.addVisual(mesada2)
+    }
+
+    method hornoImg(){ //hornos
+        game.addVisual(horno)
+        game.addVisual(horno2)
     }
 
 }

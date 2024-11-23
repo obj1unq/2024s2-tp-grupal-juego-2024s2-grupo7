@@ -75,7 +75,7 @@ class Coccion{
 
 } 
 
-object cruda inherits Coccion(imgCoccion = ""){ //cruda no hace falta que tenga imagen -> nunca se va a ver CREO
+object cruda inherits Coccion(imgCoccion = "piza_cruda.png"){ //cruda no hace falta que tenga imagen -> nunca se va a ver CREO
     override method quemarUnPoquito(masa){
         masa.estado(dorada) 
     }
@@ -149,26 +149,26 @@ class EstadosTomate{
     method resultadoDeProcesamiento(tomate)
 }
 
-object entero inherits EstadosTomate(estadoImg = "") { //no necesita imagen CREO
+object entero inherits EstadosTomate(estadoImg = "tomate_inicial.png") { //no necesita imagen CREO
     override method resultadoDeProcesamiento(tomate){
         tomate.estadoTomate(cortado)
     }
 }
 
-object cortado inherits EstadosTomate(estadoImg = "")  {
+object cortado inherits EstadosTomate(estadoImg = "tomate_cortado.png")  {
     override method resultadoDeProcesamiento(tomate){
         tomate.estadoTomate(salsa)
     }
 }
 
-object salsa inherits EstadosTomate(estadoImg = "") {
+object salsa inherits EstadosTomate(estadoImg = "tomate_final.png") {
     override method resultadoDeProcesamiento(tomate){
         tomate.tipo(ingredienteSalsa)
     }
 }
 
 
-class Aceituna inherits Ingrediente( image = "aceituna_factory.png", imgProcesadoFinal = "aceituna_final.png") {
+class Aceituna inherits Ingrediente( image = "aceituna_inicial.png", imgProcesadoFinal = "aceituna_final.png") {
 
     override method precio(){
             return 150
@@ -190,7 +190,7 @@ class Huevo inherits Ingrediente( image = "huevo_inicial.png", imgProcesadoFinal
     }
 }
 
-class Atun inherits Ingrediente( image = "atun_factory.png", imgProcesadoFinal = "atun_final.png") {
+class Atun inherits Ingrediente( image = "atun_inicial.png", imgProcesadoFinal = "atun_final.png") {
 
     override method precio(){
             return 120

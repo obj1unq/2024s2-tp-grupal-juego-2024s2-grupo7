@@ -1,14 +1,14 @@
-import restaurante.*
-import personaBase.*
-import posiciones.*
-import clientes.*
-import chefs.*
-import comestibles.*
-import ingredientesBase.*
-import factoryIngredientes.*
-import objetosCocina.*
-import mueblesBase.*
-import objetosParaTests.*
+// import restaurante.*
+// import personaBase.*
+// import posiciones.*
+// import clientes.*
+// import chefs.*
+// import comestibles.*
+// import ingredientesBase.*
+// import factoryIngredientes.*
+// import objetosCocina.*
+// import mueblesBase.*
+import mapaObjetos.*
 import mapa.*
  
 //TODO : revisar
@@ -27,7 +27,7 @@ program wollocook {
     teclas.accion()
 
     //restaurante
-    imagenes.restauranteIng()
+    imagenes.restauranteImg()
 
     //chef
     imagenes.chefImg()
