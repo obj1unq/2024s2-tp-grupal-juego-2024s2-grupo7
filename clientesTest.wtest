@@ -5,12 +5,12 @@ import objetosParaTests.*
 
 import wollok.game.*
 
-describe "adminClientes" {
-  test "El admin crea un cliente" {
-    //adminClientes.crearCliente()
+// describe "adminClientes" {
+//   test "El admin crea un cliente" {
+//     //adminClientes.crearCliente()
 
-  }
-}
+//   }
+// }
 /*los tests siguen andando pero hay que agregarle más cosas y segun los tipos probar más cosas -> los comento mientras agrego más cosas depsués los modifico
 */
 // describe "cliente normal" {
