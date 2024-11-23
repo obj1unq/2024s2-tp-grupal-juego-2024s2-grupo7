@@ -8,8 +8,7 @@ import clientes.*
 object restaurante {
 
     const property muebles = [mesada, tacho, mesada2, horno, mesada3, horno2, mesada4, mesada5, mesada6, estacionTomate, estacionQueso, estacionMasa, estacionHuevo, estacionAtun, estacionAceituna,estacionHongo] 
-    const property ingredientesSueltos = [tomate, queso, masa] //acá guarda solo los ingredientes sueltos. NO TODOS -> los que tiene en la mano no los guarda, las factories no son ingredientes son muebles 
-    const property filasDeClientes = []
+    //const property ingredientesSueltos = [tomate, queso, masa] //acá guarda solo los ingredientes sueltos. NO TODOS -> los que tiene en la mano no los guarda, las factories no son ingredientes son muebles  -> creo que se puede eliminar porque no es usado esto
     const property clientes = []
   
     method hayObjetoDeListaAqui(lista, position){
@@ -32,12 +31,12 @@ object restaurante {
 //probar:
     method hayClienteAqui(position) { //cambiarlo por "hayFila()" tal vez
       return 
-      self.hayObjetoDeListaAqui(filasDeClientes, position) //creo que debería ser position + 1 porque esta el mueble (en donde esta mirando remi) y después el cliente- o ver otra forma
+      self.hayObjetoDeListaAqui(clientes, position) //creo que debería ser position + 1 porque esta el mueble (en donde esta mirando remi) y después el cliente- o ver otra forma
       //la factory de clientes tiene que agregar los clientes a la fila del restaurante
     }
     
     method clienteAqui(position) { //igual que hayClienteAqui(p)
-      return self.objetoDeListaAqui(filasDeClientes, position)
+      return self.objetoDeListaAqui(clientes, position)
     }
     
 }
