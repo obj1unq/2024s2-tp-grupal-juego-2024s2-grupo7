@@ -1,13 +1,3 @@
-// import restaurante.*
-// import personaBase.*
-// import posiciones.*
-// import clientes.*
-// import chefs.*
-// import comestibles.*
-// import ingredientesBase.*
-// import factoryIngredientes.*
-// import objetosCocina.*
-// import mueblesBase.*
 import mapaObjetos.*
 import mapa.*
  
@@ -20,7 +10,6 @@ program wollocook {
     
    // tamaño mapa
     dimension.tamanioMapa()
-    
 
     //teclas
     teclas.movimiento()
@@ -36,17 +25,8 @@ program wollocook {
    imagenes.ingredientesImg()
 
    //muebles
-    //imagenes.muebles() -> todos los muebles
+    imagenes.mueblesImg()
 
-
-
-
-
-    //horno
-   imagenes.hornoImg()
-   
-    //mesada
-    imagenes.mesadaImg()
 
     game.start()
 }

@@ -16,8 +16,9 @@ object dimension {
 
 
     method tamanioMapa() {
-    game.height(largo)
-    game.width(ancho)
+        game.height(largo)
+        game.width(ancho)
+        game.cellSize(10)
     }
 }
 
@@ -58,16 +59,17 @@ object imagenes {
     }
 
     method mueblesImg(){
-        //todos los muebles
+        self.mesadasImg()
+        self.hornosImg()
     }
 
-    method mesadaImg(){ //mesadas
+    method mesadasImg(){ //mesadas
 
         game.addVisual(mesada)
         game.addVisual(mesada2)
     }
 
-    method hornoImg(){ //hornos
+    method hornosImg(){ //hornos
         game.addVisual(horno)
         game.addVisual(horno2)
     }

@@ -26,6 +26,7 @@ class PilaIngrediente inherits Mueble{
   method nuevoIngrediente(chef)
 }
 
+/*object estacionTomate  inherits PilaIngrediente(image = "pila_tomates.png", position = game.at(5.5, 51)){*/
 
 object estacionTomate  inherits PilaIngrediente(image = "tomate_factory.png", position = game.at(0, 5)){
 
