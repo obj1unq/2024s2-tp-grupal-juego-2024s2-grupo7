@@ -38,8 +38,8 @@ class Cliente inherits Persona(ubicacion = restaurante, position = game.at(8,4))
       game.say(self, self.pedidoAString())
     }
 
-    method pedidoAString() {
-      return "Quiero una pizza con_" + pedidoQueEspero.sum({i => i.tipoIngrediente().toString()}) 
+    method pedidoAString() { //FALLA POR LA SALSA -> YA ES UN TIPO
+      return "Quiero una pizza con_" //+ pedidoQueEspero.sum({i => i.tipoIngrediente().toString()}) 
       //-> la suma de strings así es valida??
     }
     //Los ingredientes podrian tener un metodo que sea nombre o algo asi y que simplemente devuelva un string con
