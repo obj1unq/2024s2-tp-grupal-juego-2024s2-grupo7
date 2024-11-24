@@ -57,4 +57,16 @@ class Sostenido inherits Apoyado{
     }
 }
 
+//agregar el donde apunta al ingrediente solo masa tal vez, para que siga a la masa
+/*
+method dondeApunta() { 
+    return orientacion.dondeMoverse(self.position()) -> esto debería ser masa position 
+  }
+
+  override method dondeMoverse(positionPersona){
+		return positionPersona.up(1) -> positionMasa (SIN EL UP NI NINGUNA MODIFICACION DEBE SER IGUAL)
+	}
+
+*/
+
 
