@@ -167,7 +167,8 @@ class EstadosTomate{
     }
 
     method imgEstado(tomate){
-        return estadoImg
+        return tomate.image(estadoImg)
+        //estadoImg
     }
 
     method resultadoDeProcesamiento(tomate)
