@@ -1,8 +1,4 @@
-// import restaurante.*
-// import chefs.*
-// import comestibles.*
- import factoryIngredientes.*
-// import objetosCocina.*
+import factoryIngredientes.*
 import posiciones.*
 import mapaObjetos.*
 

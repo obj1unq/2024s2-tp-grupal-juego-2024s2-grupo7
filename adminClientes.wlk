@@ -1,8 +1,8 @@
 import posiciones.*
 import clientes.*
-import wollok.game.*
-//import restaurante.*
 import mapaObjetos.*
+
+import wollok.game.*
 
 
 object adminClientes {

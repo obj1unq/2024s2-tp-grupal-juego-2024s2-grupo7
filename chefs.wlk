@@ -1,7 +1,6 @@
 import personaBase.*
 import posiciones.*
-//import restaurante.*
-import mapaObjetos.*
+//import mapaObjetos.*
 
 import wollok.game.*
 

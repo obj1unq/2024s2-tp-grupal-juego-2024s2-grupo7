@@ -1,11 +1,5 @@
-import personaBase.*
 import posiciones.*
-import chefs.*
-
-import comestibles.*
-
 import objetosParaTests.*
-
 
 import wollok.game.*
 
