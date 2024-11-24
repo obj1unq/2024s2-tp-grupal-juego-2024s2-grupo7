@@ -8,7 +8,7 @@ import wollok.game.*
 object adminClientes {
     const factories = #{factoryNormal, factoryPaciente, factoryQuisquilloso}
     const hayCliente = false //solo puede haber 1 cliente a la vez
-    const ubicacion = restaurante
+    const ubicacion = restaurante1
 
     method iniciarClientes() {
         game.onTick(2000, "iniciar", {self.crearCliente()})
