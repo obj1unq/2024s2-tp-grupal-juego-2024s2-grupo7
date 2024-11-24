@@ -13,7 +13,10 @@ import adminClientes.*
 
 import wollok.game.*
 
-const restaurante = new Restaurante(muebles= [estacionTomate,estacionMasa,estacionQueso,estacionAceituna,estacionHongo,estacionHuevo,estacionAtun,mesada1,mesada2,mesada3,mesada4,mesada5,mesada6,horno1,horno2,tacho])
+const restaurante1 = new Restaurante(muebles= [estacionTomate,estacionMasa,estacionQueso,estacionAceituna,estacionHongo,estacionHuevo,estacionAtun,mesada1,mesada2,mesada3,mesada4,mesada5,mesada6,horno1,horno2,tacho])
+
+//chef principal:
+const remy = new Chef( name = "Remy", position = game.at(9.5,48), image = "Remy_down.png", ubicacion = restaurante1) 
 
 
 //hacer paredes invisibles solo a los cosatados de la cocina???
@@ -37,6 +40,3 @@ const mesada5 = new Mesada(position = game.at(21.7,44))
 //huevos factory game.at(62,44)
 const mesada6 = new Mesada(position = game.at(75.2,44)) 
 //atun factory 
-
-//chef principal:
-const remy = new Chef( name = "Remy", position = game.center()/*position = game.at(9.5,48)*/, image = "Remy_down.png", ubicacion = restaurante) 
