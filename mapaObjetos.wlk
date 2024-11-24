@@ -17,7 +17,7 @@ const restaurante = new Restaurante(muebles= [estacionTomate,estacionMasa,estaci
 
 
 //hacer paredes invisibles solo a los cosatados de la cocina???
-//game.at(x, y), distancias de 15,2
+//game.at(x, y), distancias de 15,2 aprox
 
 //tomates factory  game.at(6.5, 63.5)
 //masas factory game.at(21.7,63.5)

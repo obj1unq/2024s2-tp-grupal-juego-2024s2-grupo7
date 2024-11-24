@@ -40,41 +40,32 @@ object imagenes {
         game.boardGround("restaurante.png")
     }
 
-    method ingredientesImg(){ //factories
-        game.addVisual(estacionTomate)
-        game.addVisual(estacionMasa)
-        game.addVisual(estacionQueso)
-        game.addVisual(estacionAceituna)
-        game.addVisual(estacionAtun)
-        game.addVisual(estacionHuevo)
-        game.addVisual(estacionHongo)
-    }
-
     method chefImg(){
         game.addVisual(remy)
     }
 
     //separar mejor en mubles parte arriba y muebles parte abajo por el tema de sobreposicion de imagenes con el chef
 
-    method mueblesImg(){
-        self.mesadasImg()
-        self.hornosImg()
-        self.ingredientesImg()
-        game.addVisual(tacho)
-    }
-
-    method mesadasImg(){ //mesadas
+    method mueblesArribaImg(){
+        game.addVisual(estacionTomate)
+        game.addVisual(estacionMasa)
         game.addVisual(mesada1)
         game.addVisual(mesada2)
+        game.addVisual(tacho)
+        game.addVisual(horno1)
         game.addVisual(mesada3)
-        game.addVisual(mesada4)
-        game.addVisual(mesada5)
-        game.addVisual(mesada6)
+        game.addVisual(horno2)
+        game.addVisual(estacionQueso)
     }
 
-    method hornosImg(){ //hornos
-        game.addVisual(horno1)
-        game.addVisual(horno2)
+    method mueblesAbajoImg(){
+        game.addVisual(mesada4)
+        game.addVisual(mesada5)
+        game.addVisual(estacionAceituna)
+        game.addVisual(estacionHuevo)
+        game.addVisual(estacionHongo)
+        game.addVisual(mesada6)
+        game.addVisual(estacionAtun)
     }
 
 }

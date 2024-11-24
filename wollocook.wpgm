@@ -19,12 +19,14 @@ program wollocook {
     //restaurante
     imagenes.restauranteImg()
 
-   //muebles
-    imagenes.mueblesImg()
+   //muebles de arriba
+    imagenes.mueblesArribaImg()
 
     //chef
     imagenes.chefImg()
 
+    //muebles de abajo
+    imagenes.mueblesAbajoImg()
 
     game.start()
 }
