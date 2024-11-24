@@ -2,6 +2,8 @@ import personaBase.*
 import chefs.*
 import clientes.*
 
+//PONER UN LIMITE AL EJE X PORQUE EL EJE Y ES BLOQUEADO POR MUEBLES
+
 class Direccion{
 
 	method imageOrientacion(name)

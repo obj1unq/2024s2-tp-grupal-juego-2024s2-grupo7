@@ -8,7 +8,6 @@ import clientes.*
 class Restaurante {
 
     var property muebles = [] //lo pongo en var para tests
-    //const property ingredientesSueltos = [tomate, queso, masa] //acá guarda solo los ingredientes sueltos. NO TODOS -> los que tiene en la mano no los guarda, las factories no son ingredientes son muebles  -> creo que se puede eliminar porque no es usado esto
     const property clientes = []
   
     method hayObjetoDeListaAqui(lista, position){

@@ -1,6 +1,5 @@
 import personaBase.*
 import posiciones.*
-//import mapaObjetos.*
 
 import wollok.game.*
 

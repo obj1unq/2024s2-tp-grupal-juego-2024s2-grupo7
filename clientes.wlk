@@ -1,9 +1,7 @@
 import personaBase.*
-//import restaurante.*
 import comestibles.*
 import objetosRecepcion.*
 import adminClientes.* 
-//import mapaObjetos.*
 
 import wollok.game.*
 
