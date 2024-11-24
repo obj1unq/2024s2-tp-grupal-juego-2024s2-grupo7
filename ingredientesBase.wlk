@@ -26,7 +26,6 @@ class Ingrediente {
 
     method serSostenido(chef) {
         estadoPosition = new Sostenido(queLoSostiene = chef)
-        self.llevarseIngredientesConsigo(chef)
     }
 
     method serDejadoAqui(nuevaPosition){

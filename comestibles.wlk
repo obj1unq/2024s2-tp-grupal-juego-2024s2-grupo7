@@ -14,6 +14,11 @@ class Masa inherits Ingrediente( image = "maasa_inicial.png", imgProcesadoFinal 
       //true
     }
 
+    override method serSostenido(chef) {
+        super(chef)
+        self.llevarseIngredientesConsigo(chef)
+    }
+
     method recibirIngrediente(ingrediente){
         self.validarRecibirIngrediente(ingrediente)
         ingredientes.add(ingrediente)
@@ -21,7 +26,8 @@ class Masa inherits Ingrediente( image = "maasa_inicial.png", imgProcesadoFinal 
     }
 
     override method llevarseIngredientesConsigo(chef){
-         ingredientes.forEach({i => i.serDejadoAqui(self.position())})
+         ingredientes.forEach({i => i.serSostenido(chef)})
+         //estadoPosition = new Sostenido(queLoSostiene = chef)
     }
 
     override method precio(){
