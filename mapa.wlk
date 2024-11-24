@@ -44,15 +44,17 @@ object imagenes {
         game.addVisual(estacionTomate)
         game.addVisual(estacionMasa)
         game.addVisual(estacionQueso)
-        // game.addVisual(estacionAceituna)
-        // game.addVisual(estacionAtun)
-        // game.addVisual(estacionHuevo)
-        // game.addVisual(estacionHongo)
+        game.addVisual(estacionAceituna)
+        game.addVisual(estacionAtun)
+        game.addVisual(estacionHuevo)
+        game.addVisual(estacionHongo)
     }
 
     method chefImg(){
         game.addVisual(remy)
     }
+
+    //separar mejor en mubles parte arriba y muebles parte abajo por el tema de sobreposicion de imagenes con el chef
 
     method mueblesImg(){
         self.mesadasImg()
@@ -65,10 +67,9 @@ object imagenes {
         game.addVisual(mesada1)
         game.addVisual(mesada2)
         game.addVisual(mesada3)
-        // game.addVisual(mesada4)
-        // game.addVisual(mesada5)
-        // game.addVisual(mesada6)
-        // game.addVisual(mesada7)
+        game.addVisual(mesada4)
+        game.addVisual(mesada5)
+        game.addVisual(mesada6)
     }
 
     method hornosImg(){ //hornos
