@@ -39,4 +39,4 @@ const mesada6 = new Mesada(position = game.at(75.2,44))
 //atun factory 
 
 //chef principal:
-const remy = new Chef( name = "remy", position = game.center()/*position = game.at(9.5,48)*/, image = "remy_abajo.png", ubicacion = restaurante) 
+const remy = new Chef( name = "Remy", position = game.center()/*position = game.at(9.5,48)*/, image = "Remy_down.png", ubicacion = restaurante) 
