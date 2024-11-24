@@ -26,6 +26,7 @@ class Ingrediente {
 
     method serSostenido(chef) {
         estadoPosition = new Sostenido(queLoSostiene = chef)
+        self.llevarseIngredientesConsigo(chef)
     }
 
     method serDejadoAqui(nuevaPosition){
@@ -41,17 +42,7 @@ class Ingrediente {
         procesado = true
     }
 
-    method serSostendioPorMasa(masa){
-        estadoPosition = new SostenidoPorMasa(queLoSostiene = masa)
-    }
-
-    // method dondeApunta() { 
-    //     return self.dondeMoverse(self.position())
-    // }
-
-    // method dondeMoverse(positionmasa){
-	// 	return self.position()
-	// }
+    method llevarseIngredientesConsigo(chef){}
 
 }
 
@@ -66,12 +57,6 @@ class Apoyado {
 class Sostenido inherits Apoyado{
     override method position() {
         return super().dondeApunta()
-    }
-}
-
-class SostenidoPorMasa inherits Apoyado{
-    override method position() {
-        return super().position()
     }
 }
 
