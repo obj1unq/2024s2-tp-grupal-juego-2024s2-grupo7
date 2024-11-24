@@ -13,7 +13,8 @@ describe "chefs test" {
   }
 
   test "remy no puede moverse porque hay un mueble arriba suyo y a su izquiera está el límite del mapa" {
-    assert.that(restaurantest.hayMuebleAqui(game.at(0,5))) //esto es arriba de remy
+    remy.position(game.at(2,4))
+    assert.that(restaurantest.hayMuebleAqui(game.at(2,5))) //esto es arriba de remy
 
     assert.throwsException({ remy.moverse(arriba) })
     assert.throwsException({ remy.moverse(izquierda) })
