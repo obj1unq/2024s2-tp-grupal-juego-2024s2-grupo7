@@ -63,7 +63,7 @@ object imagenes {
 
     method mesadasImg(){ //mesadas
         game.addVisual(mesada1)
-        // game.addVisual(mesada2)
+        game.addVisual(mesada2)
         // game.addVisual(mesada3)
         // game.addVisual(mesada4)
         // game.addVisual(mesada5)
