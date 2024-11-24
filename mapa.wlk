@@ -7,8 +7,8 @@ import wollok.game.*
 //revisar al final::
 object dimension {
 
-    const ancho = 120 //10
-    const largo = 60 //10
+    const ancho = 135 //10
+    const largo = 75 //10
 
 
     method tamanioMapa() {
@@ -58,11 +58,11 @@ object imagenes {
         self.mesadasImg()
         self.hornosImg()
         self.ingredientesImg()
-        //game.addVisual(tacho)
+        game.addVisual(tacho)
     }
 
     method mesadasImg(){ //mesadas
-        // game.addVisual(mesada1)
+        game.addVisual(mesada1)
         // game.addVisual(mesada2)
         // game.addVisual(mesada3)
         // game.addVisual(mesada4)
