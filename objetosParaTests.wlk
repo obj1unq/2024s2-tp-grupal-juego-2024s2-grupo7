@@ -1,5 +1,7 @@
 import personaBase.*
 import chefs.*
+import restaurante.*
+import factoryIngredientes.*
 import posiciones.*
 import objetosCocina.*
 import ingredientesBase.*
@@ -8,8 +10,10 @@ import clientes.*
 
 import wollok.game.*
 
+const restaurantest = new Restaurante(muebles = [mesada, tacho, mesada2, horno, mesada3, horno2, mesada4, mesada5, mesada6, estacionTomate, estacionQueso, estacionMasa, estacionHuevo, estacionAtun, estacionAceituna,estacionHongo])
 
-const remy = new Chef( name = "remy", position = game.at(0,4), image = "remy_abajo.png") //r
+
+const remy = new Chef( name = "remy", position = game.at(0,4), image = "remy_abajo.png", ubicacion = restaurantest) //r
 
 //tomates factory 
 //masas factory 

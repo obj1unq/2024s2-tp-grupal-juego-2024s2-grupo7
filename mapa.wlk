@@ -1,8 +1,8 @@
-import restaurante.*
-import chefs.*
-import comestibles.*
-import factoryIngredientes.*
-import objetosCocina.*
+// import restaurante.*
+// import chefs.*
+// import comestibles.*
+ import factoryIngredientes.*
+// import objetosCocina.*
 import posiciones.*
 import mapaObjetos.*
 
@@ -59,19 +59,19 @@ object imagenes {
     }
 
     method mueblesImg(){
-        self.mesadasImg()
-        self.hornosImg()
+        // self.mesadasImg()
+        // self.hornosImg()
     }
 
     method mesadasImg(){ //mesadas
 
-        game.addVisual(mesada)
-        game.addVisual(mesada2)
+        // game.addVisual(mesada)
+        // game.addVisual(mesada2)
     }
 
     method hornosImg(){ //hornos
-        game.addVisual(horno)
-        game.addVisual(horno2)
+        // game.addVisual(horno)
+        // game.addVisual(horno2)
     }
 
 }

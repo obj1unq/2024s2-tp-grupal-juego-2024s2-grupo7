@@ -1,7 +1,9 @@
 import posiciones.*
 import clientes.*
 import wollok.game.*
-import restaurante.*
+//import restaurante.*
+import mapaObjetos.*
+
 
 object adminClientes {
     const factories = #{factoryNormal, factoryPaciente, factoryQuisquilloso}
@@ -23,9 +25,6 @@ object adminClientes {
             game.addVisual(nuevoCliente)
             nuevoCliente.orientacion(izquierda)
             nuevoCliente.hacerPedido()
-
-            //nuevoCliente.generarPedido()
-            //nuevoCliente.esperarPedido()
         }
     }
 

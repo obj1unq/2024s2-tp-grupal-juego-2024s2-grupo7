@@ -75,7 +75,7 @@ class Coccion{
 
 } 
 
-object cruda inherits Coccion(imgCoccion = "piza_cruda.png"){ //cruda no hace falta que tenga imagen -> nunca se va a ver CREO
+object cruda inherits Coccion(imgCoccion = "piza_cruda.png"){ 
     override method quemarUnPoquito(masa){
         masa.estado(dorada) 
     }
@@ -149,7 +149,7 @@ class EstadosTomate{
     method resultadoDeProcesamiento(tomate)
 }
 
-object entero inherits EstadosTomate(estadoImg = "tomate_inicial.png") { //no necesita imagen CREO
+object entero inherits EstadosTomate(estadoImg = "tomate_inicial.png") { 
     override method resultadoDeProcesamiento(tomate){
         tomate.estadoTomate(cortado)
     }

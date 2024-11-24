@@ -1,7 +1,7 @@
 import personaBase.*
 import posiciones.*
 import chefs.*
-import restaurante.*
+
 import comestibles.*
 
 import objetosParaTests.*
@@ -19,7 +19,7 @@ describe "chefs test" {
   }
 
   test "remy no puede moverse porque hay un mueble arriba suyo y a su izquiera está el límite del mapa" {
-    assert.that(restaurante.hayMuebleAqui(game.at(0,5))) //esto es arriba de remy
+    assert.that(restaurantest.hayMuebleAqui(game.at(0,5))) //esto es arriba de remy
 
     assert.throwsException({ remy.moverse(arriba) })
     assert.throwsException({ remy.moverse(izquierda) })
@@ -30,7 +30,7 @@ describe "chefs test" {
     assert.that(remy.tengoBandejaVacia())
     assert.equals(abajo, remy.orientacion()) //a donde esta "mirando"
     assert.equals(game.at(0,2), remy.dondeApunta())
-    assert.equals(mesada4, restaurante.muebleAqui(remy.dondeApunta()))
+    assert.equals(mesada4, restaurantest.muebleAqui(remy.dondeApunta()))
     remy.interactuar()
 
     //assert.equals(tomate, remy.bandeja()) //-> no se por qué instancia un nuevo tomate y dice que tomate != tomate
@@ -44,7 +44,7 @@ describe "chefs test" {
     assert.equals(game.at(1,4), remy.position())
     assert.equals(game.at(2,4), remy.dondeApunta())
 
-    assert.notThat(restaurante.hayMuebleAqui(remy.dondeApunta()))
+    assert.notThat(restaurantest.hayMuebleAqui(remy.dondeApunta()))
     assert.that(remy.tengoBandejaVacia())
   
   }
@@ -53,13 +53,13 @@ describe "chefs test" {
      remy.bandeja(queso)
      remy.mover(abajo)
 
-    assert.that(restaurante.hayMuebleAqui(remy.dondeApunta()))
-    assert.equals(tomate, restaurante.muebleAqui(remy.dondeApunta()).contenido())
+    assert.that(restaurantest.hayMuebleAqui(remy.dondeApunta()))
+    assert.equals(tomate, restaurantest.muebleAqui(remy.dondeApunta()).contenido())
 
     assert.throwsException({ remy.interactuar() })
 
     assert.equals(queso, remy.bandeja())
-    assert.equals(tomate, restaurante.muebleAqui(remy.dondeApunta()).contenido())
+    assert.equals(tomate, restaurantest.muebleAqui(remy.dondeApunta()).contenido())
 
  }
 
@@ -70,8 +70,8 @@ describe "chefs test" {
      assert.notThat(remy.tengoBandejaVacia())
      remy.mover(abajo)
 
-     assert.that(restaurante.hayMuebleAqui(remy.dondeApunta()))
-     assert.that(restaurante.muebleAqui(remy.dondeApunta()).estoyLibre())
+     assert.that(restaurantest.hayMuebleAqui(remy.dondeApunta()))
+     assert.that(restaurantest.muebleAqui(remy.dondeApunta()).estoyLibre())
      //assert.equals(bandejaVacia, restaurante.muebleAqui(remy.dondeApunta()).contenido()) -> igual que en el tomate
 
     remy.interactuar()
@@ -84,7 +84,7 @@ describe "chefs test" {
   test "remy no puede soltar el ingrediente porque no hay ninguna mesada aqui, intenta soltar el ingrediente, no tira error pero no pasa nada y sigue teniendo su queso" { 
     remy.bandeja(queso)
     assert.equals(queso, remy.bandeja())
-    assert.notThat(restaurante.hayMuebleAqui(remy.dondeApunta()))
+    assert.notThat(restaurantest.hayMuebleAqui(remy.dondeApunta()))
 
     assert.throwsException({ remy.interactuar() })
 
@@ -94,8 +94,8 @@ describe "chefs test" {
   test "remy puede procesar el tomate porque hay una mesada allí" {
     remy.mover(abajo)
 
-    assert.equals(tomate, restaurante.muebleAqui(remy.dondeApunta()).contenido())
-    assert.notThat(restaurante.muebleAqui(remy.dondeApunta()).contenido().fueProcesado())
+    assert.equals(tomate, restaurantest.muebleAqui(remy.dondeApunta()).contenido())
+    assert.notThat(restaurantest.muebleAqui(remy.dondeApunta()).contenido().fueProcesado())
 
     remy.procesar()
 
@@ -104,8 +104,8 @@ describe "chefs test" {
 
   test "remy no puede procesar porque no hay nada que procesar en el mueble" {
     remy.position(game.at(5,3))
-    assert.that(restaurante.hayMuebleAqui(remy.dondeApunta()))
-    assert.that(restaurante.muebleAqui(remy.dondeApunta()).estoyLibre())
+    assert.that(restaurantest.hayMuebleAqui(remy.dondeApunta()))
+    assert.that(restaurantest.muebleAqui(remy.dondeApunta()).estoyLibre())
 
     assert.throwsException({ remy.procesar() })
 
@@ -137,7 +137,7 @@ describe "chefs test" {
       remy.mover(arriba)
 
       assert.notThat(remy.tengoBandejaVacia())
-      assert.equals(horno, restaurante.muebleAqui(remy.dondeApunta()))
+      assert.equals(horno, restaurantest.muebleAqui(remy.dondeApunta()))
 
       remy.interactuar()
 

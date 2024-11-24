@@ -28,7 +28,9 @@ class PilaIngrediente inherits Mueble{
 
 /*object estacionTomate  inherits PilaIngrediente(image = "pila_tomates.png", position = game.at(5.5, 51)){*/
 
-object estacionTomate  inherits PilaIngrediente(image = "tomate_factory.png", position = game.at(0, 5)){
+//tamaño asset tomate la mitad de lo que es
+
+object estacionTomate  inherits PilaIngrediente(image = "tomate_fact.png", position = game.at(5.5, 51)){
 
   override method nuevoIngrediente(chef){
     return 

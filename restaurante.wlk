@@ -5,9 +5,9 @@ import objetosParaTests.*
 import clientes.*
 
 
-object restaurante {
+class Restaurante {
 
-    const property muebles = [mesada, tacho, mesada2, horno, mesada3, horno2, mesada4, mesada5, mesada6, estacionTomate, estacionQueso, estacionMasa, estacionHuevo, estacionAtun, estacionAceituna,estacionHongo] 
+    var property muebles = [] //lo pongo en var para tests
     //const property ingredientesSueltos = [tomate, queso, masa] //acá guarda solo los ingredientes sueltos. NO TODOS -> los que tiene en la mano no los guarda, las factories no son ingredientes son muebles  -> creo que se puede eliminar porque no es usado esto
     const property clientes = []
   

@@ -9,9 +9,11 @@ import factoryIngredientes.*
 import objetosCocina.*
 import mueblesBase.*
 import adminClientes.*
-import mapa.*
+//import mapa.*
 
 import wollok.game.*
+
+const restaurante = new Restaurante()
 
 //hacer paredes invisibles solo a los cosatados de la cocina
 
