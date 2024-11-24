@@ -34,7 +34,7 @@ estacionAtun game.at(7,45)
 const mesada1 = new Mesada(position = game.at(36.9,63.5))
 const tacho = new Tacho(position = game.at(47, 65))
 const mesada2 = new Mesada(position = game.at(56.7 ,63.5))
-const horno1 = new Horno(position = game.at(15.5,63.5)) 
+const horno1 = new Horno(position = game.at(71.6,63.5)) 
 const mesada3 = new Mesada(position = game.at(17.5,63.5))
 const horno2 = new Horno(position = game.at(19.5,63.5)) 
 

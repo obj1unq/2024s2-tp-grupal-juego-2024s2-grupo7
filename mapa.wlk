@@ -72,7 +72,7 @@ object imagenes {
     }
 
     method hornosImg(){ //hornos
-        // game.addVisual(horno1)
+        game.addVisual(horno1)
         // game.addVisual(horno2)
     }
 

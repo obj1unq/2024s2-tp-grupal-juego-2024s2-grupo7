@@ -36,7 +36,7 @@ class Mesada inherits MuebleParaCocinar(image ="mesada_a.png") {
   }
 }
 
-class Horno inherits MuebleParaCocinar(image = "oven_0.png") {
+class Horno inherits MuebleParaCocinar(image = "horno.png") {
   var property temperatura = 0
 
   override method cumpleCondicionRecibir(chef){
