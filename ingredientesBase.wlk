@@ -23,15 +23,15 @@ class Ingrediente {
     method fueProcesado() {
         return procesado
     }
-//REVISAR: anda -> refactor muebles
+
     method serSostenido(chef) {
         estadoPosition = new Sostenido(queLoSostiene = chef)
     }
-//REVISAR: anda -> refactor muebles
+
     method serDejadoAqui(nuevaPosition){
         estadoPosition = new Apoyado(queLoSostiene = nuevaPosition)
     }
-//REVISAR: anda -> refactor muebles
+
     method position(){
         return estadoPosition.position()
     }
@@ -41,8 +41,20 @@ class Ingrediente {
         procesado = true
     }
 
+    method serSostendioPorMasa(masa){
+        estadoPosition = new SostenidoPorMasa(queLoSostiene = masa)
+    }
+
+    // method dondeApunta() { 
+    //     return self.dondeMoverse(self.position())
+    // }
+
+    // method dondeMoverse(positionmasa){
+	// 	return self.position()
+	// }
+
 }
-//REVISAR: anda -> refactor muebles
+
 class Apoyado {
     const queLoSostiene = null
     
@@ -50,23 +62,18 @@ class Apoyado {
         return queLoSostiene
     }
 }
-//REVISAR: anda -> refactor muebles
+
 class Sostenido inherits Apoyado{
     override method position() {
         return super().dondeApunta()
     }
 }
 
-//agregar el donde apunta al ingrediente solo masa tal vez, para que siga a la masa
-/*
-method dondeApunta() { 
-    return orientacion.dondeMoverse(self.position()) -> esto debería ser masa position 
-  }
+class SostenidoPorMasa inherits Apoyado{
+    override method position() {
+        return super().position()
+    }
+}
 
-  override method dondeMoverse(positionPersona){
-		return positionPersona.up(1) -> positionMasa (SIN EL UP NI NINGUNA MODIFICACION DEBE SER IGUAL)
-	}
-
-*/
 
 
