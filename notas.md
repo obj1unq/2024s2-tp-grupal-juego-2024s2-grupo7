@@ -4,4 +4,4 @@
         *hacer.
 
     -CLIENTES:
-        *imagenes para los diferentes tipos de clientes
+        *mejorar comportamientos y polimorfismo

@@ -4,6 +4,8 @@ import mapa.*
 
 import wollok.game.*
 
+//LAS INTERACCIONES SI ANDAN SOLO QUE UNICO DETALLITO QUE SE PODRÍA CAMBIAR DESPUÉS SI PUEDO ES QUE EL MUEBLE SE TRABAJE CON UN AREA MÁS QUE CON UNA POSICION ESPECIICA PORQUE TENES QUE DARLE CLICK EN UN LUGAR MEDIO ESPECIFICO A LOS OBJETOS PARA INTERACTUAR
+
 //faltan las acciones que inicien los ontick y eso   -> para la creacion de clientes
 
 program wollocook {
