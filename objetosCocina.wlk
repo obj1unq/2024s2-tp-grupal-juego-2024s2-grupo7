@@ -79,6 +79,7 @@ class Tacho inherits Mueble(image = "tacho.png") {
 
   override method usarse(chef){
      game.removeVisual(chef.bandeja())
+     chef.bandeja().eliminarConIngredientes()
      chef.soltar()
   }
 }
