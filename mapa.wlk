@@ -8,7 +8,7 @@ import wollok.game.*
 object dimension {
 
     const ancho = 135 //10
-    const largo = 75 //10
+    const largo = 75 //10 
 
 
     method tamanioMapa() {
