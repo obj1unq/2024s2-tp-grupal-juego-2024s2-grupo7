@@ -41,7 +41,7 @@ class Ingrediente {
         procesado = true
     }
 
-    method llevarseIngredientesConsigo(chef){}
+    method eliminarConIngredientes(){}
 
 }
 

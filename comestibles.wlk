@@ -25,9 +25,23 @@ class Masa inherits Ingrediente( image = "maasa_inicial.png", imgProcesadoFinal 
         ingrediente.serDejadoAqui(self.position()) 
     }
 
-    override method llevarseIngredientesConsigo(chef){
+    method llevarseIngredientesConsigo(chef){
          ingredientes.forEach({i => i.serSostenido(chef)})
          //estadoPosition = new Sostenido(queLoSostiene = chef)
+    }
+
+    override method serDejadoAqui(nuevaPosition){
+        super(nuevaPosition)
+        self.dejarIngredientesConsigo(nuevaPosition)
+    }
+
+    method dejarIngredientesConsigo(nuevaPosition){
+        ingredientes.forEach({i => i.serDejadoAqui(nuevaPosition)})
+    }
+
+    override method eliminarConIngredientes(){
+        ingredientes.forEach({i => game.removeVisual(i)})
+        ingredientes.clear()
     }
 
     override method precio(){
