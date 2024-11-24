@@ -26,8 +26,6 @@ class PilaIngrediente inherits Mueble{
   method nuevoIngrediente(chef)
 }
 
-/*object estacionTomate  inherits PilaIngrediente(image = "pila_tomates.png", position = game.at(5.5, 51)){*/
-
 //tamaño asset tomate la mitad de lo que es
 
 object estacionTomate  inherits PilaIngrediente(image = "tomate_fact.png", position = game.at(5.5, 51)){
@@ -39,7 +37,7 @@ object estacionTomate  inherits PilaIngrediente(image = "tomate_fact.png", posit
 
 }
 
-object estacionMasa inherits PilaIngrediente(image = "masa_inicial.png", position = game.at(0,5)){
+object estacionMasa inherits PilaIngrediente(image = "masa_inicial.png", position = game.at(22,51)){
 
     override method nuevoIngrediente(chef){
       return 
@@ -48,7 +46,7 @@ object estacionMasa inherits PilaIngrediente(image = "masa_inicial.png", positio
 
 }
 
-object estacionQueso inherits PilaIngrediente(image = "queso_factory.png", position = game.at(2,2)) {
+object estacionQueso inherits PilaIngrediente(image = "queso_factory.png", position = game.at(11.5,45)) {
 
   override method nuevoIngrediente(chef){
     return 
@@ -57,7 +55,7 @@ object estacionQueso inherits PilaIngrediente(image = "queso_factory.png", posit
 
 }
 
-object estacionAceituna inherits PilaIngrediente(image = "aceituna_factory.png", position = game.at(1,2)) {
+object estacionAceituna inherits PilaIngrediente(image = "aceituna_factory.png", position = game.at(9.5,45)) {
 
     override method nuevoIngrediente(chef){
       return 
@@ -65,7 +63,7 @@ object estacionAceituna inherits PilaIngrediente(image = "aceituna_factory.png",
     }
   }
 
-object estacionHongo inherits PilaIngrediente(image = "hongo_factory.png", position = game.at(3,2)){
+object estacionHongo inherits PilaIngrediente(image = "hongo_factory.png", position = game.at(13.5,45)){
 
   override method nuevoIngrediente(chef){
     return 
@@ -74,7 +72,7 @@ object estacionHongo inherits PilaIngrediente(image = "hongo_factory.png", posit
 
 }
 
-object estacionHuevo inherits PilaIngrediente(image = "huevos_factory.png", position = game.at(4,2)){
+object estacionHuevo inherits PilaIngrediente(image = "huevos_factory.png", position = game.at(15.5,45)){
 
   override method nuevoIngrediente(chef){
     return 
@@ -83,7 +81,7 @@ object estacionHuevo inherits PilaIngrediente(image = "huevos_factory.png", posi
 
 }
 
-object estacionAtun inherits PilaIngrediente(image = "atun_factory.png", position = game.at(7,2)) {
+object estacionAtun inherits PilaIngrediente(image = "atun_factory.png", position = game.at(7,45)) {
 
   override method nuevoIngrediente(chef){
     return 

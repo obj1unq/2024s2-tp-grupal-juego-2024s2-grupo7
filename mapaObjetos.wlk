@@ -13,27 +13,41 @@ import adminClientes.*
 
 import wollok.game.*
 
-const restaurante = new Restaurante()
+const restaurante = new Restaurante(muebles= [estacionTomate,estacionMasa,estacionQueso,estacionAceituna,estacionHongo,estacionHuevo,estacionAtun,mesada1,mesada2,mesada3,mesada4,mesada5,mesada6,mesada7,horno1,horno2,tacho])
 
-//hacer paredes invisibles solo a los cosatados de la cocina
+/*
+factories:
+estacionTomate game.at(5.5, 51)
+estacionMasa  game.at(7.5,51)
+estacionQueso game.at(11.5,45)
+estacionAceituna game.at(9.5,45)
+estacionHongo game.at(13.5,45)
+estacionHuevo game.at(15.5,45)
+estacionAtun game.at(7,45)
+*/
 
-const remy = new Chef( name = "remy", position = game.at(0,4), image = "remy_abajo.png") 
+//hacer paredes invisibles solo a los cosatados de la cocina???
+//game.at(x, y)
 
 //tomates factory 
 //masas factory 
-const mesada = new Mesada(position = game.at(2,5))
-const tacho = new Tacho(position = game.at(3,5))
-const mesada2 = new Mesada(position = game.at(4,5))
-const horno = new Horno(position = game.at(5,5)) 
-const mesada3 = new Mesada(position = game.at(6,5))
-const horno2 = new Horno(position = game.at(7,5)) 
-const mesadaX = new Mesada(position = game.at(10,10))
+const mesada1 = new Mesada(position = game.at(9.5,51))
+const tacho = new Tacho(position = game.at(11.5,51))
+const mesada2 = new Mesada(position = game.at(13.5,51))
+const horno1 = new Horno(position = game.at(15.5,51)) 
+const mesada3 = new Mesada(position = game.at(17.5,51))
+const horno2 = new Horno(position = game.at(19.5,51)) 
 
-const mesada4 = new Mesada(position = game.at(0,2))
+
+const mesada4 = new Mesada(position = game.at(5.5,51))
+const mesada5 = new Mesada(position = game.at(7.5,45))
 //aceitunas factory
 //queso factory
 //hongos factory
 //huevos factory
-const mesada5 = new Mesada(position = game.at(5,2))
-const mesada6 = new Mesada(position = game.at(6,2))
+const mesada6 = new Mesada(position = game.at(17.5,45))
+const mesada7 = new Mesada(position = game.at(19.5,45))
 //atun factory
+
+//chef principal:
+const remy = new Chef( name = "remy", position = game.center()/*position = game.at(9.5,48)*/, image = "remy_abajo.png", ubicacion = restaurante) 

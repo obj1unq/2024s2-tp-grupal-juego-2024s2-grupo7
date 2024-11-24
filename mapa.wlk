@@ -42,12 +42,12 @@ object imagenes {
 
     method ingredientesImg(){ //factories
         game.addVisual(estacionTomate)
-        game.addVisual(estacionQueso)
         game.addVisual(estacionMasa)
-        game.addVisual(estacionAceituna)
-        game.addVisual(estacionAtun)
-        game.addVisual(estacionHuevo)
-        game.addVisual(estacionHongo)
+        // game.addVisual(estacionQueso)
+        // game.addVisual(estacionAceituna)
+        // game.addVisual(estacionAtun)
+        // game.addVisual(estacionHuevo)
+        // game.addVisual(estacionHongo)
     }
 
     method chefImg(){
@@ -55,20 +55,28 @@ object imagenes {
     }
 
     method mueblesImg(){
-        // self.mesadasImg()
-        // self.hornosImg()
+        self.mesadasImg()
+        self.hornosImg()
+        self.ingredientesImg()
+        //game.addVisual(tacho)
     }
 
     method mesadasImg(){ //mesadas
-
-        // game.addVisual(mesada)
+        // game.addVisual(mesada1)
         // game.addVisual(mesada2)
+        // game.addVisual(mesada3)
+        // game.addVisual(mesada4)
+        // game.addVisual(mesada5)
+        // game.addVisual(mesada6)
+        // game.addVisual(mesada7)
     }
 
     method hornosImg(){ //hornos
-        // game.addVisual(horno)
+        // game.addVisual(horno1)
         // game.addVisual(horno2)
     }
 
 }
+
+object acciones{} //para los on tick de la factory de clientes?
     

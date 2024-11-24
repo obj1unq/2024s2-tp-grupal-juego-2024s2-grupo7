@@ -5,6 +5,7 @@ import mapa.*
 
 import wollok.game.*
 
+//faltan las acciones que inicien los ontick y eso   -> para la creacion de clientes
 
 program wollocook {
     
@@ -17,9 +18,6 @@ program wollocook {
 
     //restaurante
     imagenes.restauranteImg()
-
-    //ingredientes
-   imagenes.ingredientesImg()
 
    //muebles
     imagenes.mueblesImg()
