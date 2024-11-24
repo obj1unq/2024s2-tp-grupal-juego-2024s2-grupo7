@@ -5,7 +5,7 @@ import personaBase.*
 import wollok.game.*
 
 
-class Masa inherits Ingrediente( image = "masa_inicial.png", imgProcesadoFinal = "masa_final.png") { //imagen de masa redondita y despues amasada
+class Masa inherits Ingrediente( image = "masa_inicial.png", imgProcesadoFinal = "piza_cruda.png") { //imagen de masa redondita y despues amasada
     const property ingredientes = [] //la masa debe saber sus ingredientes
     var property estado = cruda  
 
@@ -81,13 +81,13 @@ object cruda inherits Coccion(imgCoccion = "piza_cruda.png"){
     }
 }
 
-object dorada inherits Coccion(imgCoccion = ""){
+object dorada inherits Coccion(imgCoccion = "piza_dorada.png"){
     override method quemarUnPoquito(masa){
         masa.estado(quemada)    
     }
 }
 
-object quemada inherits Coccion(imgCoccion = "") {
+object quemada inherits Coccion(imgCoccion = "piza_quemada.png") {
     override method quemarUnPoquito(masa){} //no hace nada porque es el último estado
 }
 
