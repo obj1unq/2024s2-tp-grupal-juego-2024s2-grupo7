@@ -43,7 +43,7 @@ object imagenes {
     method ingredientesImg(){ //factories
         game.addVisual(estacionTomate)
         game.addVisual(estacionMasa)
-        // game.addVisual(estacionQueso)
+        game.addVisual(estacionQueso)
         // game.addVisual(estacionAceituna)
         // game.addVisual(estacionAtun)
         // game.addVisual(estacionHuevo)
@@ -64,7 +64,7 @@ object imagenes {
     method mesadasImg(){ //mesadas
         game.addVisual(mesada1)
         game.addVisual(mesada2)
-        // game.addVisual(mesada3)
+        game.addVisual(mesada3)
         // game.addVisual(mesada4)
         // game.addVisual(mesada5)
         // game.addVisual(mesada6)
@@ -73,7 +73,7 @@ object imagenes {
 
     method hornosImg(){ //hornos
         game.addVisual(horno1)
-        // game.addVisual(horno2)
+        game.addVisual(horno2)
     }
 
 }
