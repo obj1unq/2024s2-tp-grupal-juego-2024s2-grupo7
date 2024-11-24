@@ -1,7 +1,6 @@
 import mapaObjetos.*
 import mapa.*
- 
-//TODO : revisar
+
 
 import wollok.game.*
 

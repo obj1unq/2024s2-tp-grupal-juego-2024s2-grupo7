@@ -5,7 +5,7 @@ import personaBase.*
 import wollok.game.*
 
 
-class Masa inherits Ingrediente( image = "masa_inicial.png", imgProcesadoFinal = "piza_cruda.png") { //imagen de masa redondita y despues amasada
+class Masa inherits Ingrediente( image = "maasa_inicial.png", imgProcesadoFinal = "piza_cruda.png") { //imagen de masa redondita y despues amasada
     const property ingredientes = [] //la masa debe saber sus ingredientes
     var property estado = cruda  
 
