@@ -71,6 +71,14 @@ object imagenes {
 
     method mueblesRes(){
         game.addVisual(caja)
+        game.addVisual(sep1)
+        game.addVisual(mostrador)
+        // game.addVisual(caja)
+        // game.addVisual(caja)
+        // game.addVisual(caja)
+        // game.addVisual(caja)
+        // game.addVisual(caja)
+        // game.addVisual(caja)
     }
 
 }

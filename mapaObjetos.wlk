@@ -49,4 +49,5 @@ const mesada6 = new Mesada(position = game.at(75,44))
 //Parte de recepion:
 
 //caja
-//const sep1 = new MuebleSeparador()
+const sep1 = new MuebleSeparador(position = game.at(106,25))
+const mostrador = new Mostrador(position = game.at(96, 25))
