@@ -119,27 +119,29 @@ describe "chefs test" {
   }
 
 //el test pasa pero el gradle tira error
-  // test "remy agarra una masa con queso y la mete al horno y luego la saca del horno" {
-  //    remy.position( game.at(5,3) )
-  //    masa.serProcesado() //es importante primero procesar todos los ingredientes para poder integrarlos todos :)
-  //    queso.serProcesado()
+  test "remy agarra una masa con queso y la mete al horno y luego la saca del horno" {
+    game.addVisual(masa)
 
-  //     masa.recibirIngrediente(queso)
-  //     remy.bandeja(masa)
-  //     remy.mover(arriba)
+     remy.position( game.at(5,3) )
+     masa.serProcesado() //es importante primero procesar todos los ingredientes para poder integrarlos todos :)
+     queso.serProcesado()
 
-  //     assert.notThat(remy.tengoBandejaVacia())
-  //     assert.equals(horno, restaurantest.muebleAqui(remy.dondeApunta()))
+      masa.recibirIngrediente(queso)
+      remy.bandeja(masa)
+      remy.mover(arriba)
 
-  //     remy.interactuar()
+      assert.notThat(remy.tengoBandejaVacia())
+      assert.equals(horno, restaurantest.muebleAqui(remy.dondeApunta()))
 
-  //     assert.equals(masa, horno.contenido())
+      remy.interactuar()
 
-  //     // remy.interactuar() -> tira error el graddle porque se elimina el visual
+      assert.equals(masa, horno.contenido())
 
-  //     // assert.that(horno.estoyLibre())
+      remy.interactuar() //-> tira error el graddle porque se elimina el visual
+
+      assert.that(horno.estoyLibre())
     
-  // }
+  }
 
   test "no se puede agregar un tomate a la masa porque la masa no fue procesada y despues porque el queso no fue procesado pero una vez son procesados ambos si se puede" {
      remy.position( game.at(5,3) ) //esta en una estacion de procesamiento 
