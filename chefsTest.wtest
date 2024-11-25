@@ -19,7 +19,7 @@ describe "chefs test" {
     assert.throwsException({ remy.moverse(arriba) })
     assert.throwsException({ remy.moverse(izquierda) })
   }
-//REVISAR: -> problemas con instancias de objetos
+//NOTA: -> hay problemas con instancias de objetos, son las mismas pero por alguna razon no las reconoce como las mismas
   test "remy agarra un ingrediente (tomate) que esta abajo suyo en donde mira, en la mesada4" { 
     remy.mover(abajo)
     assert.that(remy.tengoBandejaVacia())
@@ -58,7 +58,6 @@ describe "chefs test" {
 
  }
 
- //REVISAR: !! -> no esta andando el dejar ingrediente
   test "remy puede soltar ingrediente porque hay una mesada en donde esta mirando" { 
      remy.position( game.at(5,4) )
      remy.bandeja(tomate)
@@ -85,7 +84,7 @@ describe "chefs test" {
 
     assert.equals(queso, remy.bandeja())
   }
-//REVISAR:!! -> no esta andando el procesar ingrediente
+
   test "remy puede procesar el tomate porque hay una mesada allí" {
     remy.mover(abajo)
 
@@ -121,7 +120,6 @@ describe "chefs test" {
 
   //elimino el test de que va a tirar algo pero no puede porque no hay nada porque es igual que el de querer apoyar algo en una mesada pero no hay mesada
 
-//REVISAR : -> no funciona el interactuar con muebles
   test "remy agarra una masa con queso y la mete al horno y luego la saca del horno" {
      remy.position( game.at(5,3) )
      masa.serProcesado() //es importante primero procesar todos los ingredientes para poder integrarlos todos :)
@@ -136,11 +134,12 @@ describe "chefs test" {
 
       remy.interactuar()
 
-    //  assert.equals(masa, horno.contenido())
 
-      remy.interactuar()
+      assert.equals(masa, horno.contenido())
 
-      assert.that(horno.estoyLibre())
+      horno.dar(remy) //uso directamente el dar para evitar problemas con que el horno remueve la vissual 
+
+       assert.that(horno.estoyLibre())
     
   }
 
