@@ -48,10 +48,12 @@ class Horno inherits MuebleParaCocinar(image = "hornoParaPizza.png") {
   }
 
   override method accionDeRecibir(){
+    game.removeVisual(contenido)
     self.cocinar()
   }
 
   override method dar(chef){
+    game.addVisual(contenido)
     super(chef)
     temperatura = 0
   }
