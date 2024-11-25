@@ -23,14 +23,14 @@ program wollocook {
    //muebles de arriba
     imagenes.mueblesArribaImg()
 
-    //muebles en recepcion
-    imagenes.mueblesRes()
-
     //chef
     imagenes.chefImg()
 
     //muebles de abajo
     imagenes.mueblesAbajoImg()
+
+    //muebles en recepcion
+    imagenes.mueblesRes()
 
     game.start()
 }
