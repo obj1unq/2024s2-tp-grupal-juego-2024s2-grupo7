@@ -240,7 +240,7 @@ class Hongo inherits Ingrediente( image = "hongo_inicial.png", imgProcesadoFinal
 class IngredienteMenu{
     const nombreEnMenu = null
 
-     method nombreIngrediente() {
+     override method toString() {
         return nombreEnMenu
      }
 }

@@ -7,6 +7,8 @@ import wollok.game.*
 
 //LAS INTERACCIONES SI ANDAN SOLO QUE UNICO DETALLITO QUE SE PODRÍA CAMBIAR DESPUÉS SI PUEDO ES QUE EL MUEBLE SE TRABAJE CON UN AREA MÁS QUE CON UNA POSICION ESPECIICA PORQUE TENES QUE DARLE CLICK EN UN LUGAR MEDIO ESPECIFICO A LOS OBJETOS PARA INTERACTUAR
 
+//hacer en todos los onticks y timers lo del bloque applu
+
 //faltan las acciones que inicien los ontick y eso   -> para la creacion de clientes
 
 program wollocook {
@@ -34,6 +36,8 @@ program wollocook {
     imagenes.mueblesRes()
 
     game.schedule(1000, {adminCliente.crearCliente()})
+
+    //game.schedule(1000, {bloque.apply({adminCliente.crearCliente()})}) //pasa por el objeto que atrapa las excepciones
 
     game.start()
 }

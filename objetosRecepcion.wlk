@@ -16,7 +16,7 @@ object caja {
     plata -= _plata
   }
 
-  method decirPlata(){
+  method decirPlata(){ 
     return plata
   }
 

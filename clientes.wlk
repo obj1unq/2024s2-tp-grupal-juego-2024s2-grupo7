@@ -24,9 +24,14 @@ class Cliente inherits Persona(position = game.at(88,20)){
                         [self.ingredienteRandom()] + [self.ingredienteRandom()] 
     }
 
-    method anunciarPedido() {
+    method anunciarPedido() { //puede ser que no desaparezca el pedido hasta que 
+      // game.say(self, self.pedidoAString())
+      // game.onTick(100, self, {game.say(self, self.pedidoAString())})
       game.say(self, self.pedidoAString())
-      game.onTick(100, self, {game.say(self, self.pedidoAString())})
+    }
+    
+    method text(){
+      return self.pedidoAString()
     }
 
     method pedidoAString() { 

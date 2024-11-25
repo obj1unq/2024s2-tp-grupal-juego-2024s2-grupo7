@@ -60,7 +60,7 @@ object imagenes {
     }
 
     method mueblesAbajoImg(){
-        game.addVisual(mesada4)
+        game.addVisual(mesada4) //que la mesada se agregue a si misma al game -> así agregar los objetos de relleno
         game.addVisual(mesada5)
         game.addVisual(estacionAceituna)
         game.addVisual(estacionHuevo)
@@ -90,3 +90,13 @@ object imagenes {
 
 object acciones{} //para los on tick de la factory de clientes?
     
+    //para pasar todos los bloques que se van a ejecutar en lo onticks y schedulers
+object bloque{
+    method apply(_bloque){
+        // try{
+        //     _bloque.apply()
+        // } catch e : Exception{
+        //     game.say(remy, "error :" + e )
+        // }
+    }
+}
