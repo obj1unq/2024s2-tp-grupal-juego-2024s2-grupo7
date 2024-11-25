@@ -1,6 +1,11 @@
+import mueblesBase.*
+
 import wollok.game.*
 
 object caja { 
+  const property image = "caja.png"
+  const property position = game.at(116, 25)
+
   var plata = 0
   method recibir(_plata){
     plata += _plata
@@ -23,5 +28,17 @@ object caja {
 
 }
 
-class Mesa { //de decoración para llenar el espacio vacio en la recepcion :)
+class MuebleSeparador inherits Mueble(image = "separador_recepcion.png"){
+  override method usarse(chef){}
+} 
+
+class Mostrador inherits Mueble(image = "mueble_entrega.png") {
+  
+  override method usarse(chef){
+    //hacer 
+  }
+
 }
+
+class MesaDeco inherits Mueble(image = "mesa_deco.png") {}
+

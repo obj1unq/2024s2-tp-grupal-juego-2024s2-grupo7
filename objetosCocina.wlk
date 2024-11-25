@@ -83,9 +83,3 @@ class Tacho inherits Mueble(image = "tacho.png") {
      chef.soltar()
   }
 }
-
-class MuebleSeparador inherits Mueble(image = ""){
-  override method usarse(chef){}
-} 
-
-

@@ -23,6 +23,9 @@ program wollocook {
    //muebles de arriba
     imagenes.mueblesArribaImg()
 
+    //muebles en recepcion
+    imagenes.mueblesRes()
+
     //chef
     imagenes.chefImg()
 

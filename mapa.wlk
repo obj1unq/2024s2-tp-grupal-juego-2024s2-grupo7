@@ -1,4 +1,5 @@
 import factoryIngredientes.*
+import objetosRecepcion.*
 import posiciones.*
 import mapaObjetos.*
 
@@ -66,6 +67,10 @@ object imagenes {
         game.addVisual(estacionHongo)
         game.addVisual(mesada6)
         game.addVisual(estacionAtun)
+    }
+
+    method mueblesRes(){
+        game.addVisual(caja)
     }
 
 }

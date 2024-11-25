@@ -6,7 +6,7 @@ class Mueble {
   const property position = null
   const property image = null 
   
-  method usarse(chef)
+  method usarse(chef){}
 
   method procesarIngredientes(){} //solo la mesada procesa
   

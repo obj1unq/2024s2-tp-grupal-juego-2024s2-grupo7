@@ -9,11 +9,18 @@ import factoryIngredientes.*
 import objetosCocina.*
 import mueblesBase.*
 import adminClientes.*
+import objetosRecepcion.*
 
 
 import wollok.game.*
 
-const restaurante1 = new Restaurante(muebles= [estacionTomate,estacionMasa,estacionQueso,estacionAceituna,estacionHongo,estacionHuevo,estacionAtun,mesada1,mesada2,mesada3,mesada4,mesada5,mesada6,horno1,horno2,tacho])
+const restaurante1 = new Restaurante(muebles= [
+estacionTomate,estacionMasa,estacionQueso,estacionAceituna,estacionHongo,estacionHuevo,estacionAtun,
+mesada1,mesada2,mesada3,mesada4,mesada5,mesada6,horno1,horno2,tacho
+
+
+
+])
 
 //chef principal:
 const remy = new Chef( name = "Remy", position = game.at(9,48), image = "Remy_down.png", ubicacion = restaurante1) 
@@ -38,3 +45,8 @@ const mesada5 = new Mesada(position = game.at(22,44))
 //huevos factory game.at(62,44)
 const mesada6 = new Mesada(position = game.at(75,44)) 
 //atun factory game.at(116,44)
+
+//Parte de recepion:
+
+//caja
+//const sep1 = new MuebleSeparador()
