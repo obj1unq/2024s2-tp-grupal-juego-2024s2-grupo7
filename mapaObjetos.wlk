@@ -16,9 +16,9 @@ import wollok.game.*
 
 const restaurante1 = new Restaurante(muebles= [
 estacionTomate,estacionMasa,estacionQueso,estacionAceituna,estacionHongo,estacionHuevo,estacionAtun,
-mesada1,mesada2,mesada3,mesada4,mesada5,mesada6,horno1,horno2,tacho
+mesada1,mesada2,mesada3,mesada4,mesada5,mesada6,horno1,horno2,tacho,
 
-
+caja,sep1,mostrador,sep2,sep3,sep4,sep5,sep6,sep7,sep8,sep9,sep10
 
 ])
 
@@ -48,6 +48,19 @@ const mesada6 = new Mesada(position = game.at(75,44))
 
 //Parte de recepion:
 
-//caja
-const sep1 = new MuebleSeparador(position = game.at(106,25))
-const mostrador = new Mostrador(position = game.at(96, 25))
+const sep1 = new MuebleSeparador(position = game.at(116, 25)) 
+const sep2 = new MuebleSeparador(position = game.at(106,25))
+//caja 96, 25
+const mostrador = new Mostrador(position = game.at(86,25)) 
+const sep3 = new MuebleSeparador(position = game.at(76,25))
+const sep4 = new MuebleSeparador(position = game.at(66,25))
+const sep5 = new MuebleSeparador(position = game.at(56,25))
+const sep6 = new MuebleSeparador(position = game.at(46,25))
+const sep7 = new MuebleSeparador(position = game.at(36,25))
+const sep8 = new MuebleSeparador(position = game.at(26,25))
+const sep9 = new MuebleSeparador(position = game.at(16,25))
+const sep10 = new MuebleSeparador(position = game.at(6,25))
+
+//decoracion:
+const deco1 = new MesaDeco(position = game.at(22,12))
+const deco2 = new MesaDeco(position = game.at(49,12))

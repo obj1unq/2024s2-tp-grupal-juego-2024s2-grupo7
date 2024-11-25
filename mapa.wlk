@@ -73,12 +73,17 @@ object imagenes {
         game.addVisual(caja)
         game.addVisual(sep1)
         game.addVisual(mostrador)
-        // game.addVisual(caja)
-        // game.addVisual(caja)
-        // game.addVisual(caja)
-        // game.addVisual(caja)
-        // game.addVisual(caja)
-        // game.addVisual(caja)
+        game.addVisual(sep2)
+        game.addVisual(sep3)
+        game.addVisual(sep4)
+        game.addVisual(sep5)
+        game.addVisual(sep6)
+        game.addVisual(sep7)
+        game.addVisual(sep8)
+        game.addVisual(sep9)
+        game.addVisual(sep10)
+        game.addVisual(deco1)
+        game.addVisual(deco2)
     }
 
 }
