@@ -237,43 +237,19 @@ class Hongo inherits Ingrediente( image = "hongo_inicial.png", imgProcesadoFinal
     }
 }
 
-object ingredienteMasa {
-    override method toString() {
-        return "Masa"
-    }
+class IngredienteMenu{
+    const nombreEnMenu = null
+
+     method nombreIngrediente() {
+        return nombreEnMenu
+     }
 }
-object ingredienteQueso {
-    override method toString() {
-        return "Queso"
-    }
-}
-object ingredienteTomate {
-    override method toString() {
-        return "Tomate"
-    }
-} 
-object ingredienteSalsa{
-    override method toString() {
-        return "Salsa"
-    }
-}
-object ingredienteAceituna {
-    override method toString() {
-        return "Aceituna"
-    }
-}
-object ingredienteHuevo {
-    override method toString() {
-        return "Huevo"
-    }
-}
-object ingredienteAtun {
-    override method toString() {
-        return "Atun"
-    }
-}
-object ingredienteHongo {
-    override method toString() {
-        return "Hongo"
-    }
-}
+
+object ingredienteMasa inherits IngredienteMenu(nombreEnMenu = "Masa") {}
+object ingredienteQueso inherits IngredienteMenu(nombreEnMenu = "Queso") {}
+object ingredienteTomate inherits IngredienteMenu(nombreEnMenu = "Tomate") {} 
+object ingredienteSalsa inherits IngredienteMenu(nombreEnMenu = "Salsa") {}
+object ingredienteAceituna inherits IngredienteMenu(nombreEnMenu = "Aceituna") {}
+object ingredienteHuevo inherits IngredienteMenu(nombreEnMenu = "Huevo") {}
+object ingredienteAtun inherits IngredienteMenu(nombreEnMenu = "Atun") {}
+object ingredienteHongo inherits IngredienteMenu(nombreEnMenu = "Hongo") {}

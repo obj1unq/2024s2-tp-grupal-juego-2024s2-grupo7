@@ -7,7 +7,7 @@ import adminClientes.*
 import wollok.game.*
 
 
-class Cliente inherits Persona(position = game.at(86,25)){ 
+class Cliente inherits Persona(position = game.at(86,15)){ 
     var pedidoQueEspero = []
     var emocion = neutral 
     var nivelDePaciencia = null 
@@ -98,10 +98,10 @@ class Cliente inherits Persona(position = game.at(86,25)){
 
 }
 
-class ClienteNormal inherits Cliente(nivelDePaciencia = 40000, image = "image_clieneNormal.png", name = "clienteNormal"){
+class ClienteNormal inherits Cliente(nivelDePaciencia = 40000, image = "cliente_normal.png", name = "clienteNormal"){
   const disponibilidadParaTip = 50
   
-  override method reaccionBuena(){
+  override method reaccionBuena(){ //cliente_normal.png
     emocion = feliz
     self.celebrar()
     super()
@@ -127,9 +127,9 @@ class ClienteNormal inherits Cliente(nivelDePaciencia = 40000, image = "image_cl
   }
 }
 
-class ClientePaciente inherits ClienteNormal(nivelDePaciencia = 45000, image = "image_clienePaciente.png", name = "clientePaciente", disponibilidadParaTip = 100){
+class ClientePaciente inherits ClienteNormal(nivelDePaciencia = 45000, image = "cliente_paciente.png", name = "clientePaciente", disponibilidadParaTip = 100){
   
-  override method reaccionMala(){
+  override method reaccionMala(){ //cliente_paciente.png
     emocion = neutral
   }
 }
@@ -142,9 +142,9 @@ class Emotion {
   }
 }
 
-class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 30000, image = "image_clieneQuisquilloso.png", name = "clienteQuisquilloso"){
+class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 30000, image = "cliente_quisquilloso.png", name = "clienteQuisquilloso"){
   
-  override method reaccionBuena(){
+  override method reaccionBuena(){ //cliente_quisquilloso.png
     emocion = neutral
     super()
   }
