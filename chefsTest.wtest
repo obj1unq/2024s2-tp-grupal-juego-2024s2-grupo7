@@ -118,7 +118,6 @@ describe "chefs test" {
 
   }
 
-//el test pasa pero el gradle tira error
   test "remy agarra una masa con queso y la mete al horno y luego la saca del horno" {
     game.addVisual(masa)
 
@@ -137,7 +136,7 @@ describe "chefs test" {
 
       assert.equals(masa, horno.contenido())
 
-      remy.interactuar() //-> tira error el graddle porque se elimina el visual
+      remy.interactuar()
 
       assert.that(horno.estoyLibre())
     
