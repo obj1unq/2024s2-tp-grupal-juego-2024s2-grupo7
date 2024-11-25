@@ -1,4 +1,4 @@
-# Nombre del juego (<- borrar y completar)
+# WOLLOCOOK PIZERIA
 
 ## Equipo de desarrollo
 
@@ -9,15 +9,18 @@
 
 ## Capturas
 
-(agregar)
+![captura1]()
+![captura2]()
 
 ## Reglas de Juego / Instrucciones
 
-(Escribirlas)
+TECLAS:
+
+-
 
 
 ## Otros
 
-- Curso/Facultad
-- Versión de wollok
-- Una vez terminado, no tenemos problemas en que el repositorio sea público / queremos manternerlo privado
+- Objetos 1 || UNQ 
+- Versión de wollok : (no se)
+- Una vez terminado, no tenemos problemas en que el repositorio sea público
