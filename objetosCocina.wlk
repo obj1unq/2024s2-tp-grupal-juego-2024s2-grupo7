@@ -37,7 +37,7 @@ class Mesada inherits MuebleParaCocinar(image ="mesada_a.png") {
 }
 
 class Horno inherits MuebleParaCocinar(image = "hornoParaPizza.png") {
-  var property temperatura = 0
+  //var property temperatura = 0
 
   override method cumpleCondicionRecibir(chef){
     return super(chef) and self.esPiza(chef.bandeja()) //así solo acepta recibir pizzas
@@ -54,10 +54,10 @@ class Horno inherits MuebleParaCocinar(image = "hornoParaPizza.png") {
 
   override method dar(chef){
     game.removeTickEvent("cocinarContenido")
-    game.removeTickEvent("subirleTemperatura")
+    //game.removeTickEvent("subirleTemperatura")
     game.addVisual(contenido)
     super(chef)
-    temperatura = 0
+    //temperatura = 0
   }
 
    method cocinar() { 
