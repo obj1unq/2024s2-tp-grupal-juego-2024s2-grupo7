@@ -22,10 +22,10 @@ caja,sep1,mostrador,sep2,sep3,sep4,sep5,sep6,sep7,sep8,sep9,sep10
 
 ])
 
+//NO USAR POSICIONES DECIMALES!!
+
 //chef principal:
 const remy = new Chef( name = "Remy", position = game.at(9,48), image = "Remy_down.png", ubicacion = restaurante1) 
-
-//NO USAR DECIMALES PARA POSICIONAR COSAS
 
 //tomates factory  game.at(6, 63)
 //masas factory game.at(22,63)

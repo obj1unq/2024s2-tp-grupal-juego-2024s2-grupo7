@@ -5,13 +5,13 @@ import personaBase.*
 import wollok.game.*
 
 
-class Masa inherits Ingrediente( image = "maasa_inicial.png", imgProcesadoFinal = "piza_cruda.png") { //imagen de masa redondita y despues amasada
-    const property ingredientes = [] //la masa debe saber sus ingredientes
+class Masa inherits Ingrediente( image = "maasa_inicial.png", imgProcesadoFinal = "piza_cruda.png") { 
+
+    const property ingredientes = [] 
     var property estado = cruda  
 
     override method integraIngredintes(){ 
-      return procesado //-> asi la masa no recibe ingredientes hasta ser procesada
-      //true
+      return procesado //-> asi la masa no recibe ingredientes hasta ser procesados
     }
 
     override method serSostenido(chef) {
@@ -27,7 +27,6 @@ class Masa inherits Ingrediente( image = "maasa_inicial.png", imgProcesadoFinal 
 
     method llevarseIngredientesConsigo(chef){
          ingredientes.forEach({i => i.serSostenido(chef)})
-         //estadoPosition = new Sostenido(queLoSostiene = chef)
     }
 
     override method serDejadoAqui(nuevaPosition){
@@ -168,7 +167,6 @@ class EstadosTomate{
 
     method imgEstado(tomate){
         return tomate.image(estadoImg)
-        //estadoImg
     }
 
     method resultadoDeProcesamiento(tomate)

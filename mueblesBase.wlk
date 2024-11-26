@@ -54,7 +54,7 @@ class MuebleParaCocinar inherits Mueble{ //horno y mesada, la mesada procesa
 
   method dar(chef){
     chef.recibir(contenido)
-    contenido.serSostenido(chef) //ver si esta bien ahí
+    contenido.serSostenido(chef) 
     contenido = bandejaVacia
   }
 

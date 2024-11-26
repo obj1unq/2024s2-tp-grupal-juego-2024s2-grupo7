@@ -6,7 +6,7 @@ class Ingrediente {
     var property image = null 
     const imgProcesadoFinal = null
     var procesado = false
-    var estadoPosition = null //game.center()
+    var estadoPosition = game.center()
 
     method precio()
 
