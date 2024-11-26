@@ -50,9 +50,9 @@ const mesada6 = new Mesada(position = game.at(75,44))
 
 const sep1 = new MuebleSeparador(position = game.at(116, 25)) 
 const sep2 = new MuebleSeparador(position = game.at(106,25))
-//caja 96, 25
+const sep3 = new MuebleSeparador(position = game.at(96,25))
 const mostrador = new Mostrador(position = game.at(86,25)) 
-const sep3 = new MuebleSeparador(position = game.at(76,25))
+//caja 76,25
 const sep4 = new MuebleSeparador(position = game.at(66,25))
 const sep5 = new MuebleSeparador(position = game.at(56,25))
 const sep6 = new MuebleSeparador(position = game.at(46,25))

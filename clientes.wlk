@@ -45,7 +45,6 @@ class Cliente inherits Persona(position = game.at(88,20)){
 
     method esperarPedido() {
       game.schedule(nivelDePaciencia, {self.irseSinNada()})
-
     }
 
     method irseSinNada() {
@@ -54,6 +53,7 @@ class Cliente inherits Persona(position = game.at(88,20)){
     }
 
     method recibirPedido(pizza){
+      game.removeTickEvent(self)  //esto en teoría remueve la espera del pedido?
       manos = pizza
       game.removeVisual(manos)
       game.schedule(1000, {self.reaccionarAPedido()})
@@ -109,7 +109,7 @@ class Cliente inherits Persona(position = game.at(88,20)){
 
 }
 
-class ClienteNormal inherits Cliente(nivelDePaciencia = 75000, image = "cliente_normal.png", name = "cliente_Normal"){
+class ClienteNormal inherits Cliente(nivelDePaciencia = 75000, image = "cliente_normal.png", name = "cliente_normal"){
   const disponibilidadParaTip = 50
   
   override method reaccionBuena(){ 
@@ -128,6 +128,7 @@ class ClienteNormal inherits Cliente(nivelDePaciencia = 75000, image = "cliente_
   
   override method reaccionMala(){
     emocion = decepcionado
+    self.pagarPedido()
   }
 
   override method irseSinNada() {
@@ -136,14 +137,14 @@ class ClienteNormal inherits Cliente(nivelDePaciencia = 75000, image = "cliente_
   }
 }
 
-class ClientePaciente inherits ClienteNormal(nivelDePaciencia = 120000, image = "cliente_paciente.png", name = "cliente_Paciente", disponibilidadParaTip = 20){
+class ClientePaciente inherits ClienteNormal(nivelDePaciencia = 120000, image = "cliente_paciente.png", name = "cliente_paciente", disponibilidadParaTip = 20){
   
   override method reaccionMala(){ 
     emocion = neutral
   }
 }
 
-class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 50000, image = "cliente_quisquilloso.png", name = "cliente_Quisquilloso"){
+class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 50000, image = "cliente_quisquilloso.png", name = "cliente_quisquilloso"){
   
   override method reaccionBuena(){ 
     emocion = neutral
@@ -167,8 +168,7 @@ class Emotion {
   const nombreEmocion = null
 
   method mostrarse(cliente){
-    cliente.image(""+ cliente.nombre() + nombreEmocion + ".png")
-    //hacer los assets para todas las emociones
+    cliente.image(""+ cliente.name() + "_" + nombreEmocion + ".png")
   }
 }
 

@@ -5,7 +5,7 @@ import personaBase.*
 
 object caja { 
   const property image = "caja.png"
-  const property position = game.at(96, 25)
+  const property position = game.at(76, 25)
 
   var plata = 0
   method recibir(_plata){
