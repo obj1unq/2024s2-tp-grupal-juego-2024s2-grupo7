@@ -5,8 +5,6 @@ import objetosParaTests.*
 
 import wollok.game.*
 
-/*agregar más tests??*/
-
 describe "restaurante" {
   test "busca objetos que hay y te devuelve el objeto en esa dirección" {
     assert.notThat(restaurantest.hayMuebleAqui( game.at(1, 0) ))

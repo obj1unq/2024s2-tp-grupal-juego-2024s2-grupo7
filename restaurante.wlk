@@ -36,14 +36,5 @@ class Restaurante {
       return not clientes.isEmpty()
     }
   
-    // method hayClienteAqui(position) { 
-    //   return 
-    //   self.hayObjetoDeListaAqui(clientes, position)
-    // }
-    
-    // method clienteAqui(position) { 
-    //   return self.objetoDeListaAqui(clientes, position)
-    // }
-    
 }
 

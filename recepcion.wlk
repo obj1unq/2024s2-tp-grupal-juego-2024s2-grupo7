@@ -1,3 +1,0 @@
-import objetosRecepcion.*
-
-object recepcion {}
