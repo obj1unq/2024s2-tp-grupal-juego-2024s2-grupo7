@@ -9,7 +9,6 @@
 
         *cambiar la manera en la que se mueve el cheff -> es más facil implementar que camine con pasos más largos
 
-        *cliente con el game say es mejor que el chef le pregunte en vez de decirlo a cada rato
 
         
 

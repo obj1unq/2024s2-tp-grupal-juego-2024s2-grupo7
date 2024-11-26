@@ -62,22 +62,22 @@ class Horno inherits MuebleParaCocinar(image = "hornoParaPizza.png") {
 
    method cocinar() { 
     game.onTick(2500, "cocinarContenido", {contenido.serCocinada()})
-    game.onTick(2500, "subirleTemperatura", {self.subirNivelDeHorno()})
+    //game.onTick(2500, "subirleTemperatura", {self.subirNivelDeHorno()}) al final no se usa porque no se puede hacer animacion
   } 
 
-  method subirNivelDeHorno(){
-    temperatura = (temperatura + 1).min(3)
-    self.actualizarEstadoHorno()
-  }
+//   method subirNivelDeHorno(){
+//     temperatura = (temperatura + 1).min(3)
+// //    self.actualizarEstadoHorno()
+//   }
 
-  method actualizarEstadoHorno() {
-    if (temperatura == 3) self.simularFuego()
-  }
+//   method actualizarEstadoHorno() {
+//     if (temperatura == 3) self.simularFuego()
+//   }
 
-  method simularFuego() {
-    //esto sería mejor que hagamos que aparezca dibujos de humo arriba del horno y ya está
-  }
-}
+//   method simularFuego() {
+//     //esto sería mejor que hagamos que aparezca dibujos de humo arriba del horno y ya está
+//   }
+ }
 
 class Tacho inherits Mueble(image = "tacho.png") {
 

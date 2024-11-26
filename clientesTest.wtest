@@ -5,27 +5,4 @@ import objetosParaTests.*
 
 import wollok.game.*
 
-// describe "adminClientes" {
-//   test "El admin crea un cliente" {
-//     //adminClientes.crearCliente()
-
-//   }
-// }
-/*los tests siguen andando pero hay que agregarle más cosas y segun los tipos probar más cosas -> los comento mientras agrego más cosas depsués los modifico
-*/
-// describe "cliente normal" {
-//   test "cliente normal hace un pedidom, esto hace que tengo un pedido en mente ahora y no sea una lista vacia como por default su pedido deceado" {
-//     cliente1.avanzarAHacerPedido()
-
-//     assert.that(cliente1.pedidoQueEspero() != #{})
-//   }
-
-//   test "cliente normal acepta un pedido que no es lo que quería entonces su estado cambia" {
-    
-//     cliente1.avanzarAHacerPedido()
-//     cliente1.recibirPedido(tomate)
-
-//     assert.equals(decepcionado, cliente1.emocion())
-    
-//   }
-// }
+//se necesitan hacer los tests

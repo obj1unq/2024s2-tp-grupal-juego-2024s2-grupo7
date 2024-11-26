@@ -74,6 +74,7 @@ class Masa inherits Ingrediente( image = "maasa_inicial.png", imgProcesadoFinal 
 
     method serCocinada(){
         estado.cocinarseMas(self)
+        game.say(self, estado)
     }
 
     override method tipoIngrediente(){
