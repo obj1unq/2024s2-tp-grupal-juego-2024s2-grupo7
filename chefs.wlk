@@ -41,7 +41,7 @@ class Chef inherits Persona {
 
      mueble.procesarIngredientes()
     }
-//PROBAR: -> esto se podría cambiar para preguntarle al admin de clientes
+
     method preguntarPedido() {
     self.validarPreguntarPedido()
     ubicacion.clienteAqui(self.dondeApunta()).decirPedido()

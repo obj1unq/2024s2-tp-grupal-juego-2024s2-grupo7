@@ -5,11 +5,10 @@ import mapaObjetos.*
 
 import wollok.game.*
 
-//revisar al final::
 object dimension {
 
-    const ancho = 135 //10
-    const largo = 75 //10 
+    const ancho = 135 
+    const largo = 75 
 
 
     method tamanioMapa() {
@@ -28,6 +27,8 @@ object teclas{
     keyboard.right().onPressDo({remy.mover(derecha)})
     keyboard.left().onPressDo({remy.mover(izquierda)})
     }
+
+    //LAS INTERACCIONES SI ANDAN SOLO QUE UNICO DETALLITO QUE SE PODRÍA CAMBIAR DESPUÉS SI PUEDO ES QUE EL MUEBLE SE TRABAJE CON UN AREA MÁS QUE CON UNA POSICION ESPECIICA PORQUE TENES QUE DARLE CLICK EN UN LUGAR MEDIO ESPECIFICO A LOS OBJETOS PARA INTERACTUAR
 
     method accion(){
     keyboard.q().onPressDo({remy.interactuar()})
@@ -60,7 +61,7 @@ object imagenes {
     }
 
     method mueblesAbajoImg(){
-        game.addVisual(mesada4) //que la mesada se agregue a si misma al game -> así agregar los objetos de relleno
+        game.addVisual(mesada4)
         game.addVisual(mesada5)
         game.addVisual(estacionAceituna)
         game.addVisual(estacionHuevo)
@@ -88,15 +89,18 @@ object imagenes {
 
 }
 
-object acciones{} //para los on tick de la factory de clientes?
+object acciones{} //para los on tick que en esta versión fallan
     
-    //para pasar todos los bloques que se van a ejecutar en lo onticks y schedulers
+//para pasar todos los bloques que se van a ejecutar en lo onticks y schedulers
 object bloque{
     method apply(_bloque){
-        // try{
-        //     _bloque.apply()
-        // } catch e : Exception{
-        //     game.say(remy, "error :" + e )
-        // }
+        try{
+            _bloque.apply()
+        } catch e : Exception{
+            game.say(remy, "error :" + e )
+        }
     }
 }
+
+//ej:
+//game.schedule(1000, {bloque.apply({adminCliente.crearCliente()})}) //pasa por el objeto que atrapa las excepciones

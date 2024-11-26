@@ -36,14 +36,12 @@ class Restaurante {
       return not clientes.isEmpty()
     }
   
-//probar:
-    method hayClienteAqui(position) { //cambiarlo por "hayFila()" tal vez
+    method hayClienteAqui(position) { 
       return 
-      self.hayObjetoDeListaAqui(clientes, position) //creo que debería ser position + 1 porque esta el mueble (en donde esta mirando remi) y después el cliente- o ver otra forma
-      //la factory de clientes tiene que agregar los clientes a la fila del restaurante
+      self.hayObjetoDeListaAqui(clientes, position)
     }
     
-    method clienteAqui(position) { //igual que hayClienteAqui(p)
+    method clienteAqui(position) { 
       return self.objetoDeListaAqui(clientes, position)
     }
     

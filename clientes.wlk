@@ -24,14 +24,16 @@ class Cliente inherits Persona(position = game.at(88,20)){
                         [self.ingredienteRandom()] + [self.ingredienteRandom()] 
     }
 
-    method anunciarPedido() { //puede ser que no desaparezca el pedido hasta que 
-      // game.say(self, self.pedidoAString())
-      // game.onTick(100, self, {game.say(self, self.pedidoAString())})
+    method anunciarPedido() { 
       game.say(self, self.pedidoAString())
     }
     
     method text(){
       return self.pedidoAString()
+    }
+
+    method textColor(){
+      return "#000000"
     }
 
     method pedidoAString() { 
@@ -68,7 +70,11 @@ class Cliente inherits Persona(position = game.at(88,20)){
       } else{
         self.reaccionMala()        
       }
-    
+      self.mostrarReaccion()
+    }
+
+    method mostrarReaccion(){ //HACER LAS IMAGENES, ESTO ES PARA QUE SE VEA COMO REACCIONA
+      emocion.mostrarse(self)
     }
    
 
@@ -104,18 +110,16 @@ class Cliente inherits Persona(position = game.at(88,20)){
 
 }
 
-class ClienteNormal inherits Cliente(nivelDePaciencia = 75000, image = "cliente_normal.png", name = "clienteNormal"){
+class ClienteNormal inherits Cliente(nivelDePaciencia = 75000, image = "cliente_normal.png", name = "cliente_Normal"){
   const disponibilidadParaTip = 50
   
-  override method reaccionBuena(){ //cliente_normal.png
+  override method reaccionBuena(){ 
     emocion = feliz
     self.celebrar()
     super()
-    
   }
 
   method celebrar(){
-    //animacion de que aparezcan estrellitas ? -> como los estados
     caja.recibirTip(self.valorTip())
   }
 
@@ -133,24 +137,16 @@ class ClienteNormal inherits Cliente(nivelDePaciencia = 75000, image = "cliente_
   }
 }
 
-class ClientePaciente inherits ClienteNormal(nivelDePaciencia = 120000, image = "cliente_paciente.png", name = "clientePaciente", disponibilidadParaTip = 20){
+class ClientePaciente inherits ClienteNormal(nivelDePaciencia = 120000, image = "cliente_paciente.png", name = "cliente_Paciente", disponibilidadParaTip = 20){
   
-  override method reaccionMala(){ //cliente_paciente.png
+  override method reaccionMala(){ 
     emocion = neutral
   }
 }
 
-class Emotion {
-  const property image = ""
-
-  method mostrarse(cliente){
-    //game.addVisual(cliente.position().up()) //no sé como hacer que dure solo un rato la imagen -> ayuda con esto por favor
-  }
-}
-
-class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 50000, image = "cliente_quisquilloso.png", name = "clienteQuisquilloso"){
+class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 50000, image = "cliente_quisquilloso.png", name = "cliente_Quisquilloso"){
   
-  override method reaccionBuena(){ //cliente_quisquilloso.png
+  override method reaccionBuena(){ 
     emocion = neutral
     super()
   }
@@ -158,21 +154,29 @@ class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 50000, image = "cl
   override method reaccionMala(){
     game.removeTickEvent(self)
     emocion = enojado
-    self.robar()
+    self.robar() 
     game.schedule(1000, {adminCliente.retirarCliente(self)})
   }
 
   method robar(){
     caja.gastar(100) //siempre roba 100 pesos cunado el pedido no es el que quería 
-  }
+  } //HACER QUE LA CAJA TENAGA IMAGEN BURBUJA ARRIBA DE +$ Y -$
 }
 
 
+class Emotion {
+  const nombreEmocion = null
 
-object neutral inherits Emotion( image = "") {}
+  method mostrarse(cliente){
+    cliente.image(""+ cliente.nombre() + nombreEmocion + ".png")
+    //hacer los assets para todas las emociones
+  }
+}
 
-object feliz inherits Emotion( image = "") {}
+object neutral inherits Emotion( nombreEmocion = "neutral") {}
 
-object decepcionado inherits Emotion( image = "") {}
+object feliz inherits Emotion( nombreEmocion = "feliz") {}
 
-object enojado inherits Emotion( image = "") {}
+object decepcionado inherits Emotion( nombreEmocion = "decepcionado") {}
+
+object enojado inherits Emotion( nombreEmocion = "enojado") {}
