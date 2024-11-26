@@ -10,22 +10,22 @@ object caja {
   var plata = 0
   method recibir(_plata){
     plata += _plata
+    self.decirPlata()
   }
 
   method gastar(_plata){
     plata -= _plata
+    self.decirPlata()
   }
 
   method decirPlata(){ 
-    return plata
+    game.say(self, plata)
   }
 
   method recibirTip(tip){
-    self.alertarTip()
     self.recibir(tip)
+    self.decirPlata()
   }
-//que aparezca arriba de la caja un cartelito o imagen de "tip!!"
-  method alertarTip(){} //aparece cartel de "tip"
 
 }
 

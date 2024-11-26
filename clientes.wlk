@@ -5,6 +5,8 @@ import adminClientes.*
 
 import wollok.game.*
 
+//se necesitan comentarios sobre los onTick y Schedules, no los entiendo
+
 
 class Cliente inherits Persona(position = game.at(88,20)){ 
     var pedidoQueEspero = []
@@ -53,7 +55,7 @@ class Cliente inherits Persona(position = game.at(88,20)){
     }
 
     method recibirPedido(pizza){
-      game.removeTickEvent(self)  //esto en teoría remueve la espera del pedido?
+      game.removeTickEvent(self)  
       manos = pizza
       game.removeVisual(manos)
       game.schedule(1000, {self.reaccionarAPedido()})
@@ -72,7 +74,7 @@ class Cliente inherits Persona(position = game.at(88,20)){
       self.mostrarReaccion()
     }
 
-    method mostrarReaccion(){ //HACER LAS IMAGENES, ESTO ES PARA QUE SE VEA COMO REACCIONA
+    method mostrarReaccion(){ 
       emocion.mostrarse(self)
     }
    
@@ -160,7 +162,7 @@ class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 50000, image = "cl
 
   method robar(){
     caja.gastar(100) //siempre roba 100 pesos cunado el pedido no es el que quería 
-  } //HACER QUE LA CAJA TENAGA IMAGEN BURBUJA ARRIBA DE +$ Y -$
+  } 
 }
 
 

@@ -1,4 +1,5 @@
 import posiciones.*
+import personaBase.*
 import objetosParaTests.*
 
 import wollok.game.*
@@ -19,7 +20,7 @@ describe "chefs test" {
     assert.throwsException({ remy.moverse(arriba) })
     assert.throwsException({ remy.moverse(izquierda) })
   }
-//NOTA: -> hay problemas con instancias de objetos, son las mismas pero por alguna razon no las reconoce como las mismas
+
   test "remy agarra un ingrediente (tomate) que esta abajo suyo en donde mira, en la mesada4" { 
     remy.mover(abajo)
     assert.that(remy.tengoBandejaVacia())
@@ -28,7 +29,7 @@ describe "chefs test" {
     assert.equals(mesada4, restaurantest.muebleAqui(remy.dondeApunta()))
     remy.interactuar()
 
-    //assert.equals(tomate, remy.bandeja()) //-> no se por qué instancia un nuevo tomate y dice que tomate != tomate
+    assert.equals(tomate.tipoIngrediente(), remy.bandeja().tipoIngrediente()) 
   }
 
   test "remy no puede agarrar un ingrediente porque no hay ningun muble con ingrediente en donde está mirando, a su derecha, no falla pero se da el aviso de que no hay nada allí y su bandeja sigue igual" {
@@ -66,12 +67,12 @@ describe "chefs test" {
 
      assert.that(restaurantest.hayMuebleAqui(remy.dondeApunta()))
      assert.that(restaurantest.muebleAqui(remy.dondeApunta()).estoyLibre())
-     //assert.equals(bandejaVacia, restaurante.muebleAqui(remy.dondeApunta()).contenido()) -> igual que en el tomate
+     assert.equals(bandejaVacia, restaurantest.muebleAqui(remy.dondeApunta()).contenido()) //-> igual que en el tomate
 
     remy.interactuar()
 
     assert.that(remy.tengoBandejaVacia())
-    //assert.equals(tomate, restaurante.muebleAqui(remy.dondeApunta()).contenido())
+    assert.equals(tomate.tipoIngrediente(), restaurantest.muebleAqui(remy.dondeApunta()).contenido().tipoIngrediente())
     
   }
 
@@ -93,7 +94,7 @@ describe "chefs test" {
 
     remy.procesar()
 
-    //assert.that(restaurante.muebleAqui(remy.dondeApunta()).contenido().fueProcesado())
+    assert.that(restaurantest.muebleAqui(remy.dondeApunta()).contenido().fueProcesado())
   }
 
   test "remy no puede procesar porque no hay nada que procesar en el mueble" {

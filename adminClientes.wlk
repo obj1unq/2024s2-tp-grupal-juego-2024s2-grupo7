@@ -4,6 +4,7 @@ import mapaObjetos.*
 
 import wollok.game.*
 
+//se necesitan comentarios sobre los onTick y Schedules, no los entiendo
 
 object adminCliente {
     const factories = #{factoryNormal, factoryPaciente, factoryQuisquilloso}
