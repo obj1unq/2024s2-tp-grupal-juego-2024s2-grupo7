@@ -10,15 +10,15 @@ class Persona {
     const property ubicacion = restaurante1
     const name = "Remy"  //por default
     var velocidad = 1 
+    const velocidadMaxima = 5
 
     method mover(direccion) {
       orientacion = direccion
-	orientacion.moverse(self)
-      //orientacion.moverse(self, velocidad)
+      orientacion.moverse(self, velocidad)
 	}
 
     method dondeApunta() { 
-    return orientacion.dondeMoverse(self.position())
+    return orientacion.dondeMoverse(self.position(), velocidad)
   }
 
     method name(){
@@ -27,7 +27,7 @@ class Persona {
 
     method cambiarModo(){ //corre -> camina / camina -> corre
       velocidad =
-      if(velocidad == 1) 4 else 1
+      if(velocidad == 1) velocidadMaxima else 1
     }
 
 }
