@@ -68,7 +68,7 @@ class Horno inherits MuebleParaCocinar(image = "hornoParaPizza.png") {
 class Tacho inherits Mueble(image = "tacho.png") {
 
   override method usarse(chef){
-     game.removeVisual(chef.bandeja())
+     //game.removeVisual(chef.bandeja())
      chef.bandeja().eliminarConIngredientes()
      chef.soltar()
   }

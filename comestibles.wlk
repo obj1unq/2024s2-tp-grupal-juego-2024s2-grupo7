@@ -41,6 +41,7 @@ class Masa inherits Ingrediente( image = "maasa_inicial.png", imgProcesadoFinal 
     override method eliminarConIngredientes(){
         self.ocultarIngredientes()
         ingredientes.clear()
+        super()
     }
 
     method ocultarIngredientes(){

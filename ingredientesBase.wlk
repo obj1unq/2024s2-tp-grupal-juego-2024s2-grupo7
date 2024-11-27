@@ -41,7 +41,9 @@ class Ingrediente {
         procesado = true
     }
 
-    method eliminarConIngredientes(){}
+    method eliminarConIngredientes(){
+        game.removeVisual(self)
+    }
 
 }
 
