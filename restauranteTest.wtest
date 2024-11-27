@@ -8,13 +8,13 @@ import wollok.game.*
 describe "restaurante" {
   test "busca objetos que hay y te devuelve el objeto en esa dirección" {
     assert.notThat(restaurantest.hayMuebleAqui( game.at(1, 0) ))
-    assert.equals(horno, restaurantest.muebleAqui( game.at(5, 5) ))
+    assert.equals(horno, restaurantest.muebleAqui( game.at(4,30) ))
 
-    assert.that(restaurantest.hayMuebleAqui( game.at(2, 5) ))
-    assert.equals(mesada, restaurantest.muebleAqui( game.at(2, 5) ))
+    assert.that(restaurantest.hayMuebleAqui( game.at(4,27) ))
+    assert.equals(mesada, restaurantest.muebleAqui( game.at(4,27) ))
 
-    assert.that(restaurantest.hayMuebleAqui( game.at(4, 5) ))
-    assert.equals(mesada2, restaurantest.muebleAqui( game.at(4, 5) ))
+    assert.that(restaurantest.hayMuebleAqui( game.at(4,29) ))
+    assert.equals(mesada2, restaurantest.muebleAqui( game.at(4,29) ))
   }
 
   test "busca objetos que no hay entonces no da error cuando te devuelve los objetos en esa dirección sino que te devuelve el mueble fantasma" {

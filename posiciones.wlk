@@ -15,10 +15,17 @@ class Direccion{
 	}
 
 	method validarMoverse(persona, distancia){
-		if(persona.ubicacion().hayMuebleAqui(self.dondeMoverse(persona.position(), distancia))){
+		if(not self.puedoMover(persona, distancia)){
 			self.error("no se puede mover ahí")	
 		}
 	}
+
+	method puedoMover(persona, distancia) {
+		return not persona.ubicacion().hayMuebleAqui(self.dondeMoverse(persona.position(), distancia)) and
+			   self.estoyEnCocina(persona.position(), distancia)
+	}
+
+	method estoyEnCocina(posicion, distancia)
 
 	method mover(persona, distancia){
 		persona.position(self.dondeMoverse(persona.position(), distancia))
@@ -39,6 +46,10 @@ object arriba inherits Direccion {
 	override method dondeMoverse(positionPersona, distancia){
 		return positionPersona.up(distancia)
 	}
+
+	override method estoyEnCocina(posicion, distancia) {
+		return self.dondeMoverse(posicion, distancia).y() <= 70
+	}
   
 }
 
@@ -52,6 +63,10 @@ object abajo inherits Direccion {
 	override method dondeMoverse(positionPersona, distancia) {
 	 return positionPersona.down(distancia)
 	}
+
+	override method estoyEnCocina(posicion, distancia) {
+		return self.dondeMoverse(posicion, distancia).y() >= 26
+	}
 }
 
 object izquierda inherits Direccion {
@@ -63,6 +78,10 @@ object izquierda inherits Direccion {
 	override method dondeMoverse(positionPersona, distancia) {
 	 return positionPersona.left(distancia)
 	}
+
+	override method estoyEnCocina(posicion, distancia) {
+		return self.dondeMoverse(posicion, distancia).x() >= 2
+	}
 }
 
 object derecha inherits Direccion {
@@ -73,5 +92,9 @@ object derecha inherits Direccion {
 
 	override method dondeMoverse(positionPersona, distancia) {
 	 return positionPersona.right(distancia)
+	}
+
+	override method estoyEnCocina(posicion, distancia) {
+		return self.dondeMoverse(posicion, distancia).x() <= 122
 	}
 }

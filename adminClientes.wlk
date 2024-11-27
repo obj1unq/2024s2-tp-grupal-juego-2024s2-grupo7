@@ -4,33 +4,33 @@ import mapaObjetos.*
 
 import wollok.game.*
 
-//se necesitan comentarios sobre los onTick y Schedules, no los entiendo
-
 object adminCliente {
     const factories = #{factoryNormal, factoryPaciente, factoryQuisquilloso}
-    var hayCliente = false 
-    const ubicacion = restaurante1
+    var ubicacion = restaurante1
 
+    method ubicacion(_ubicacion) {
+        ubicacion = _ubicacion
+    }
 
     method crearCliente() {
+       
         const nuevoCliente = self.clienteRandom()
-        ubicacion.clientes().add(nuevoCliente)
-        game.addVisual(nuevoCliente)
         
+        ubicacion.addCliente(nuevoCliente)
+        game.addVisual(nuevoCliente)
         nuevoCliente.hacerPedido()
+        
         
     }
 
     method retirarCliente(cliente) {
         game.removeTickEvent(cliente)
-        cliente.mover(abajo)
         game.schedule(500, {self.eliminar(cliente)})
     }
 
     method eliminar(cliente) {
-        ubicacion.clientes().remove(cliente)
+        ubicacion.quitarCliente(cliente)
         game.removeVisual(cliente)
-        hayCliente = false
         game.schedule(1500, {self.crearCliente()})
     }
     

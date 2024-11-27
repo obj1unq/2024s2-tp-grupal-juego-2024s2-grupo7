@@ -1,8 +1,180 @@
+import objetosRecepcion.*
+import comestibles.*
 import adminClientes.*
 import clientes.*
 import restaurante.*
 import objetosParaTests.*
 
+
 import wollok.game.*
 
-//se necesitan hacer los tests
+describe "adminClientes" {
+  
+ 
+
+   test "El admin crea y retira un cliente" {
+    const nuevoCliente = adminCliente.clienteRandom()
+
+    adminCliente.ubicacion(restaurantest)
+    nuevoCliente.ubicacion(restaurantest)
+    game.addVisual(nuevoCliente)
+
+    assert.equals([nuevoCliente], game.getObjectsIn(restaurantest.mostrador()))
+
+    adminCliente.eliminar(nuevoCliente)
+
+    assert.equals([], game.getObjectsIn(restaurantest.mostrador()))
+   }
+
+   test "El cliente genera un pedido con 3 ingredientes random mas la salsa como ingrediente fijo" {
+    const nuevoCliente = adminCliente.clienteRandom()
+
+    adminCliente.ubicacion(restaurantest)
+    nuevoCliente.ubicacion(restaurantest)
+    game.addVisual(nuevoCliente)
+
+    nuevoCliente.generarPedido()
+
+    assert.that(nuevoCliente.pedidoQueEspero().size() == 4)
+    assert.that(nuevoCliente.pedidoQueEspero().any({i => i == ingredienteSalsa }))
+
+   }
+
+   test "El mostrador recibe una pizza y el cliente la recoge" {
+    const nuevoCliente = adminCliente.clienteRandom()
+    adminCliente.ubicacion(restaurantest)
+    restaurantest.clientes().add(nuevoCliente)
+    mostrador.ubicacion(restaurantest)
+    nuevoCliente.ubicacion(restaurantest)
+    game.addVisual(nuevoCliente)
+
+     const pizza = new Masa(ingredientes = [ingredienteSalsa, ingredienteHongo, ingredienteQueso, ingredienteTomate])
+     mostrador.contenido(pizza)
+
+     mostrador.avisarACliente()
+
+     assert.equals(pizza, nuevoCliente.manos())
+
+   }
+
+   test "Un cliente Normal/Paciente recibe el pedido correcto, tiene una buena reaccion" {
+    const nuevoCliente = new ClienteNormal()
+
+    adminCliente.ubicacion(restaurantest)
+    nuevoCliente.ubicacion(restaurantest)
+    game.addVisual(nuevoCliente)
+
+    assert.equals([nuevoCliente], game.getObjectsIn(restaurantest.mostrador()))
+
+    nuevoCliente.pedidoQueEspero([ingredienteSalsa, ingredienteHongo, ingredienteQueso, ingredienteTomate])
+    nuevoCliente.manos(new Masa(ingredientes = [new Tomate(tipo = ingredienteSalsa),
+                                                new Hongo(), new Queso(), new Tomate()]))
+
+    assert.that(nuevoCliente.esLaPizzaQuePedi())
+
+    nuevoCliente.reaccionBuena()
+
+    assert.that(caja.plata() >= 905)
+    assert.equals(feliz, nuevoCliente.emocion())
+
+   }
+
+   test "Un cliente Normal recibe el pedido incorrecto y tiene una mala reaccion" {
+    const nuevoCliente = new ClienteNormal()
+
+    adminCliente.ubicacion(restaurantest)
+    nuevoCliente.ubicacion(restaurantest)
+    game.addVisual(nuevoCliente)
+
+    assert.equals([nuevoCliente], game.getObjectsIn(restaurantest.mostrador()))
+
+    nuevoCliente.pedidoQueEspero([ingredienteSalsa, ingredienteHongo, ingredienteQueso, ingredienteTomate])
+    nuevoCliente.manos(new Masa(ingredientes = [new Tomate(), new Hongo(), new Queso(), new Tomate()]))
+
+    assert.notThat(nuevoCliente.esLaPizzaQuePedi())
+
+    nuevoCliente.reaccionMala()
+
+    assert.equals(decepcionado, nuevoCliente.emocion())
+   }
+
+   test "Un cliente Paciente recibe el pedido incorrecto y tiene una mala reaccion" {
+     const nuevoCliente = new ClientePaciente()
+    adminCliente.ubicacion(restaurantest)
+    nuevoCliente.ubicacion(restaurantest)
+    game.addVisual(nuevoCliente)
+
+    assert.equals([nuevoCliente], game.getObjectsIn(restaurantest.mostrador()))
+
+    nuevoCliente.pedidoQueEspero([ingredienteSalsa, ingredienteHongo, ingredienteQueso, ingredienteTomate])
+    nuevoCliente.manos(new Masa(ingredientes = [new Tomate(), new Hongo(), new Queso(), new Tomate()]))
+
+    assert.notThat(nuevoCliente.esLaPizzaQuePedi())
+
+    nuevoCliente.reaccionMala()
+    
+    assert.equals(neutral, nuevoCliente.emocion())
+   }
+
+   test "Un cliente Quisquilloso recibe el pedido correcto y tiene una buena reaccion" {
+    const nuevoCliente = new ClienteQuisquilloso()
+
+    adminCliente.ubicacion(restaurantest)
+    nuevoCliente.ubicacion(restaurantest)
+    game.addVisual(nuevoCliente)
+
+    assert.equals([nuevoCliente], game.getObjectsIn(restaurantest.mostrador()))
+
+    nuevoCliente.pedidoQueEspero([ingredienteSalsa, ingredienteHongo, ingredienteQueso, ingredienteTomate])
+    nuevoCliente.manos(new Masa(ingredientes = [new Tomate(tipo = ingredienteSalsa), new Hongo(), new Queso(), new Tomate()]))
+
+    assert.that(nuevoCliente.esLaPizzaQuePedi())
+
+    nuevoCliente.reaccionBuena()
+
+    assert.equals(900, caja.plata())
+    assert.equals(neutral, nuevoCliente.emocion())
+   }
+
+   test "Un cliente Quisquilloso recibe el pedido incorrecto y tiene una mala reaccion" {
+     const nuevoCliente = new ClienteQuisquilloso()
+
+    adminCliente.ubicacion(restaurantest)
+    nuevoCliente.ubicacion(restaurantest)
+    game.addVisual(nuevoCliente)
+    caja.recibir(1000)
+
+    assert.equals([nuevoCliente], game.getObjectsIn(restaurantest.mostrador()))
+
+    nuevoCliente.pedidoQueEspero([ingredienteSalsa, ingredienteHongo, ingredienteQueso, ingredienteTomate])
+    nuevoCliente.manos(new Masa(ingredientes = [new Tomate(), new Hongo(), new Queso(), new Tomate()]))
+
+    assert.notThat(nuevoCliente.esLaPizzaQuePedi())
+
+    nuevoCliente.reaccionMala()
+
+    assert.equals(900, caja.plata())
+    assert.equals(enojado, nuevoCliente.emocion())
+   }
+
+   test "Un cliente Normal recibe un ingrediente en vez de una pizza y tiene una mala reaccion" {
+    const nuevoCliente = new ClienteNormal()
+    adminCliente.ubicacion(restaurantest)
+    restaurantest.clientes().add(nuevoCliente)
+    mostrador.ubicacion(restaurantest)
+    nuevoCliente.ubicacion(restaurantest)
+    game.addVisual(nuevoCliente)
+
+    
+    mostrador.contenido(new Tomate())
+
+    mostrador.avisarACliente()
+
+    assert.notThat(nuevoCliente.esUnaPizza())
+
+    nuevoCliente.reaccionarAPedido()
+
+    assert.equals(decepcionado, nuevoCliente.emocion())
+   }
+
+ }

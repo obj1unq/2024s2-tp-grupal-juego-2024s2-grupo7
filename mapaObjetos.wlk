@@ -64,3 +64,14 @@ const sep10 = new MuebleSeparador(position = game.at(6,25))
 //decoracion:
 const deco1 = new MesaDeco(position = game.at(22,12))
 const deco2 = new MesaDeco(position = game.at(49,12))
+
+
+object youWin {
+  const property image = "victoria.png"
+  const property position = game.at(52,40)
+}
+
+object youLose {
+  const property image = "derrota.png"
+  const property position = game.at(53,41)
+}

@@ -1,10 +1,12 @@
 import personaBase.*
 import posiciones.*
+import objetosRecepcion.*
 
 import wollok.game.*
 
 class Chef inherits Persona {
     var property bandeja = bandejaVacia
+    const fondos = caja
 
   method tengoBandejaVacia() {
     return bandeja.esVacio()
@@ -28,7 +30,7 @@ class Chef inherits Persona {
     }
 
     method soltar(){
-      bandeja = bandejaVacia //la bandeja representa el no tener nada
+      bandeja = bandejaVacia 
     }
 
     method recibir(ingrediente) {
@@ -40,6 +42,14 @@ class Chef inherits Persona {
      const mueble = ubicacion.muebleAqui(self.dondeApunta())
 
      mueble.procesarIngredientes()
+    }
+
+    method preguntarPedido() {
+      ubicacion.clienteActual().anunciarPedido()
+    }
+
+    method decirCuantoFalta() {
+      game.say(self, "Todavia falta recolectar " + fondos.cuantoFalta() + "$")
     }
     
 }

@@ -4,6 +4,8 @@ import factoryIngredientes.*
 import objetosParaTests.*
 import clientes.*
 
+import wollok.game.*
+
 
 class Restaurante {
 
@@ -28,12 +30,28 @@ class Restaurante {
     }
 
 
-    method cliente() {
+    method clienteActual() {
       return clientes.head()
     }
 
     method llegoCliente() {
       return not clientes.isEmpty()
+    }
+
+    method mostrador() {
+      return game.at(88,20)
+    }
+
+    method personaFrenteAMostrador() {
+      return game.getObjectsIn(self.mostrador())
+    }
+
+    method addCliente(cliente) {
+      clientes.add(cliente)
+    }
+
+    method quitarCliente(cliente) {
+      clientes.remove(cliente)
     }
   
 }

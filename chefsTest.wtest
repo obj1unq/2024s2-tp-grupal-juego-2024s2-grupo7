@@ -5,27 +5,41 @@ import objetosParaTests.*
 import wollok.game.*
 
 describe "chefs test" {
-  test "remy puede moverse porque no hay ningun mueble en el medio y se mueve" {
+  test "remy puede caminar y correr porque no hay ningun mueble en el medio y se mueve" {
     remy.mover(abajo)
-    assert.equals(game.at(0,3), remy.position())
+    assert.equals(game.at(95,48), remy.position())
 
     remy.mover(derecha)
-    assert.equals(game.at(1,3), remy.position())
+    assert.equals(game.at(96,48), remy.position())
+
+    remy.cambiarModo()
+
+    remy.mover(abajo)
+    assert.equals(game.at(96,43), remy.position())
+
+    remy.mover(derecha)
+    assert.equals(game.at(101,43), remy.position())
   }
 
-  test "remy no puede moverse porque hay un mueble arriba suyo y a su izquiera está el límite del mapa" {
-    remy.position(game.at(2,4))
-    assert.that(restaurantest.hayMuebleAqui(game.at(2,5))) //esto es arriba de remy
+  test "remy no puede caminar ni correr porque hay un mueble arriba suyo y a su izquiera está el límite del mapa" {
+    remy.position(game.at(2,53))
+    assert.that(restaurantest.hayMuebleAqui(game.at(2,54))) //esto es arriba de remy
+
+    assert.throwsException({ remy.moverse(arriba) })
+    assert.throwsException({ remy.moverse(izquierda) })
+
+    remy.cambiarModo()
 
     assert.throwsException({ remy.moverse(arriba) })
     assert.throwsException({ remy.moverse(izquierda) })
   }
 
   test "remy agarra un ingrediente (tomate) que esta abajo suyo en donde mira, en la mesada4" { 
-    remy.mover(abajo)
+    remy.position(game.at(6,34))
+    remy.mover(izquierda)
     assert.that(remy.tengoBandejaVacia())
-    assert.equals(abajo, remy.orientacion()) //a donde esta "mirando"
-    assert.equals(game.at(0,2), remy.dondeApunta())
+    assert.equals(izquierda, remy.orientacion()) //a donde esta "mirando"
+    assert.equals(game.at(4,34), remy.dondeApunta())
     assert.equals(mesada4, restaurantest.muebleAqui(remy.dondeApunta()))
     remy.interactuar()
 
@@ -37,8 +51,8 @@ describe "chefs test" {
     assert.that(remy.tengoBandejaVacia())
 
     assert.equals(derecha, remy.orientacion()) //a donde esta "mirando"
-    assert.equals(game.at(1,4), remy.position())
-    assert.equals(game.at(2,4), remy.dondeApunta())
+    assert.equals(game.at(96,49), remy.position())
+    assert.equals(game.at(97,49), remy.dondeApunta())
 
     assert.notThat(restaurantest.hayMuebleAqui(remy.dondeApunta()))
     assert.that(remy.tengoBandejaVacia())
@@ -46,8 +60,9 @@ describe "chefs test" {
   }
 
   test "remy no puede agarrar un ingrediente porque tiene algo en las manos ya" { 
-     remy.bandeja(queso)
-     remy.mover(abajo)
+    remy.position(game.at(6,34))
+    remy.bandeja(queso)
+    remy.mover(izquierda)
 
     assert.that(restaurantest.hayMuebleAqui(remy.dondeApunta()))
     assert.equals(tomate, restaurantest.muebleAqui(remy.dondeApunta()).contenido())
@@ -60,14 +75,13 @@ describe "chefs test" {
  }
 
   test "remy puede soltar ingrediente porque hay una mesada en donde esta mirando" { 
-     remy.position( game.at(5,4) )
-     remy.bandeja(tomate)
-     assert.notThat(remy.tengoBandejaVacia())
-     remy.mover(abajo)
+    remy.position( game.at(6,31) )
+    remy.bandeja(tomate)
+    assert.notThat(remy.tengoBandejaVacia())
+    remy.mover(izquierda)
 
-     assert.that(restaurantest.hayMuebleAqui(remy.dondeApunta()))
-     assert.that(restaurantest.muebleAqui(remy.dondeApunta()).estoyLibre())
-     assert.equals(bandejaVacia, restaurantest.muebleAqui(remy.dondeApunta()).contenido()) //-> igual que en el tomate
+    assert.that(restaurantest.hayMuebleAqui(remy.dondeApunta()))
+    assert.that(restaurantest.muebleAqui(remy.dondeApunta()).estoyLibre())
 
     remy.interactuar()
 
@@ -87,7 +101,8 @@ describe "chefs test" {
   }
 
   test "remy puede procesar el tomate porque hay una mesada allí" {
-    remy.mover(abajo)
+    remy.position( game.at(6,34) )
+    remy.mover(izquierda)
 
     assert.equals(tomate, restaurantest.muebleAqui(remy.dondeApunta()).contenido())
     assert.notThat(restaurantest.muebleAqui(remy.dondeApunta()).contenido().fueProcesado())
@@ -98,7 +113,8 @@ describe "chefs test" {
   }
 
   test "remy no puede procesar porque no hay nada que procesar en el mueble" {
-    remy.position(game.at(5,3))
+    remy.position(game.at(6,31))
+    remy.mover(izquierda)
     assert.that(restaurantest.hayMuebleAqui(remy.dondeApunta()))
     assert.that(restaurantest.muebleAqui(remy.dondeApunta()).estoyLibre())
 
@@ -107,8 +123,8 @@ describe "chefs test" {
   }
 
   test "remi va a tirar el queso que agarro a la basura y se puede porque hay un tacho" {
-    remy.position(game.at(3,3))
-    remy.mover(arriba)
+    remy.position(game.at(6,28))
+    remy.mover(izquierda)
     remy.bandeja(queso)
     game.addVisualCharacter(queso)
 
@@ -123,13 +139,13 @@ describe "chefs test" {
     game.addVisual(masa)
     game.addVisual(queso)
 
-     remy.position( game.at(5,3) )
+     remy.position( game.at(6,30) )
      masa.serProcesado() //es importante primero procesar todos los ingredientes para poder integrarlos todos :)
      queso.serProcesado()
 
       masa.recibirIngrediente(queso)
       remy.bandeja(masa)
-      remy.mover(arriba)
+      remy.mover(izquierda)
 
       assert.notThat(remy.tengoBandejaVacia())
       assert.equals(horno, restaurantest.muebleAqui(remy.dondeApunta()))

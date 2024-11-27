@@ -2,29 +2,40 @@ import mueblesBase.*
 import mapaObjetos.*
 import wollok.game.*
 import personaBase.*
+import adminDeVictoria.*
 
 object caja { 
   const property image = "caja.png"
   const property position = game.at(76, 25)
+  var property objetivo = 3100
 
   var plata = 0
+
+  method plata() {
+    return plata
+  }
+
   method recibir(_plata){
     plata += _plata
-    self.decirPlata()
+    self.considerarVictoria()
+  }
+
+  method considerarVictoria() {
+    if(plata >= objetivo) {
+      adminWinCon.ganar()
+    }
   }
 
   method gastar(_plata){
     plata -= _plata
-    self.decirPlata()
   }
 
-  method decirPlata(){ 
-    game.say(self, plata)
+  method cuantoFalta() {
+    return (objetivo - plata).max(0).toString()
   }
 
   method recibirTip(tip){
     self.recibir(tip)
-    self.decirPlata()
   }
 
 }
@@ -34,8 +45,11 @@ class MuebleSeparador inherits Mueble(image = "separador_recepcion.png"){
 } 
 
 class Mostrador inherits MuebleParaCocinar(image = "mueble_entrega.png") {
-  const ubicacion = restaurante1
+  var ubicacion = restaurante1
   
+  method ubicacion(_ubicacion) {
+    ubicacion = _ubicacion
+  }
 
   override method accionDeRecibir() {
     self.validarAccionRecibir()
@@ -50,7 +64,7 @@ class Mostrador inherits MuebleParaCocinar(image = "mueble_entrega.png") {
   }
 
   method avisarACliente() {
-    ubicacion.cliente().recibirPedido(contenido)
+    ubicacion.clienteActual().recibirPedido(contenido)
     contenido = bandejaVacia
   }
 }

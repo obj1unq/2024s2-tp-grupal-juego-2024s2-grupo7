@@ -5,14 +5,24 @@ import adminClientes.*
 
 import wollok.game.*
 
-//se necesitan comentarios sobre los onTick y Schedules, no los entiendo
-
 
 class Cliente inherits Persona(position = game.at(88,20)){ 
     var pedidoQueEspero = []
     var emocion = neutral 
-    var nivelDePaciencia = null 
-    var manos = bandejaVacia
+    var nivelDePaciencia = null
+    var property manos = bandejaVacia
+
+    method emocion() {
+      return emocion
+    }
+
+    method pedidoQueEspero(_pedidoQueEspero) {
+      pedidoQueEspero = _pedidoQueEspero
+    }
+
+    method ubicacion(_ubicacion) {
+      ubicacion = _ubicacion
+    }
 
     method hacerPedido() {
       self.generarPedido()
@@ -26,18 +36,9 @@ class Cliente inherits Persona(position = game.at(88,20)){
     }
 
     method anunciarPedido() { 
-      //game.say(self, self.pedidoAString())
-      self.text()
+      game.say(self, self.pedidoAString())
     }
     
-    method text(){
-      return self.pedidoAString()
-    }
-
-    method textColor(){
-      return "#000000"
-    }
-
     method pedidoAString() { 
       return "Quiero una pizza con " + self.pedidoQueEspero().join(", ") + ", por favor!"
     }
@@ -59,8 +60,14 @@ class Cliente inherits Persona(position = game.at(88,20)){
       game.removeTickEvent(self)  
       manos = pizza
       game.removeVisual(manos)
-      manos.eliminarConIngredientes()
+      self.ocultarIngredientesDisponibles()
       game.schedule(1000, {self.reaccionarAPedido()})
+    }
+
+    method ocultarIngredientesDisponibles() {
+      if(self.esUnaPizza()) {
+        manos.ocultarIngredientes()
+      }
     }
 
     method ingredienteRandom() {
@@ -102,7 +109,7 @@ class Cliente inherits Persona(position = game.at(88,20)){
     method reaccionMala()
 
     method plataAPagarPorPedido() {
-      return manos.precio() * nivelDePaciencia / 100 
+      return manos.precio()
     }
 
     method pagarPedido() {
@@ -113,7 +120,7 @@ class Cliente inherits Persona(position = game.at(88,20)){
 
 }
 
-class ClienteNormal inherits Cliente(nivelDePaciencia = 75000, image = "cliente_normal.png", name = "cliente_normal"){
+class ClienteNormal inherits Cliente(nivelDePaciencia = 90000, image = "cliente_normal.png", name = "cliente_normal"){
   const disponibilidadParaTip = 50
   
   override method reaccionBuena(){ 
@@ -127,7 +134,7 @@ class ClienteNormal inherits Cliente(nivelDePaciencia = 75000, image = "cliente_
   }
 
     method valorTip(){
-    return 0.randomUpTo(disponibilidadParaTip)
+    return 5.randomUpTo(disponibilidadParaTip)
   }
   
   override method reaccionMala(){
@@ -148,7 +155,7 @@ class ClientePaciente inherits ClienteNormal(nivelDePaciencia = 120000, image = 
   }
 }
 
-class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 50000, image = "cliente_quisquilloso.png", name = "cliente_quisquilloso"){
+class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 90000, image = "cliente_quisquilloso.png", name = "cliente_quisquilloso"){
   
   override method reaccionBuena(){ 
     emocion = neutral

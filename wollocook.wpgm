@@ -1,3 +1,4 @@
+import adminDeVictoria.*
 import mapaObjetos.*
 import mapa.*
 import adminClientes.*
@@ -30,6 +31,7 @@ program wollocook {
     imagenes.mueblesRes()
 
     game.schedule(1000, {adminCliente.crearCliente()})
+    game.schedule(500000, {adminWinCon.perder()})
 
     game.start()
 }
