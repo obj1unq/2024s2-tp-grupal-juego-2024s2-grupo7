@@ -24,11 +24,6 @@ object adminCliente {
     }
 
     method retirarCliente(cliente) {
-        game.removeTickEvent(cliente)
-        game.schedule(500, {self.eliminar(cliente)})
-    }
-
-    method eliminar(cliente) {
         ubicacion.quitarCliente(cliente)
         game.removeVisual(cliente)
         game.schedule(1500, {self.crearCliente()})

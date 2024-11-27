@@ -21,7 +21,7 @@ describe "adminClientes" {
 
     assert.equals([nuevoCliente], game.getObjectsIn(restaurantest.mostrador()))
 
-    adminCliente.eliminar(nuevoCliente)
+    adminCliente.retirarCliente(nuevoCliente)
 
     assert.equals([], game.getObjectsIn(restaurantest.mostrador()))
    }

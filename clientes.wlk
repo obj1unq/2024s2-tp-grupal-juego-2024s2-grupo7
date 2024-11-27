@@ -49,19 +49,23 @@ class Cliente inherits Persona(position = game.at(88,20)){
 
     method esperarPedido() {
       game.schedule(nivelDePaciencia, {self.irseSinNada()})
+      //El nivel de paciencia es el tiempo que espera el cliente antes de irse sin nada, este schedule
+      // se encarga de ejecutar irseSinNada una vez que se le termina la paciencia al cliente
     }
 
     method irseSinNada() {
       self.reaccionMala()
-      game.removeTickEvent(self)
+
     }
 
     method recibirPedido(pizza){
-      game.removeTickEvent(self)  
+  
       manos = pizza
       game.removeVisual(manos)
       self.ocultarIngredientesDisponibles()
       game.schedule(1000, {self.reaccionarAPedido()})
+      //Espera un segundo antes de hacer al cliente que reaccione al pedido,
+      // para que la reaccion no sea tan instantanea y se vea mejor
     }
 
     method ocultarIngredientesDisponibles() {
@@ -101,9 +105,10 @@ class Cliente inherits Persona(position = game.at(88,20)){
     }
 
     method reaccionBuena() {
-      game.removeTickEvent(self)
+
       self.pagarPedido()
       game.schedule(1000, {adminCliente.retirarCliente(self)})
+      //Schedule para que no ocurra de manera tan instantanea y el cliente reaccione y un segundo despues se vaya
     }
 
     method reaccionMala()
@@ -145,6 +150,7 @@ class ClienteNormal inherits Cliente(nivelDePaciencia = 90000, image = "cliente_
   override method irseSinNada() {
     super()
     game.schedule(1000, {adminCliente.retirarCliente(self)})
+    //Para darle tiepo al cliente a reaccionar
   }
 }
 
@@ -163,10 +169,10 @@ class ClienteQuisquilloso inherits Cliente(nivelDePaciencia = 90000, image = "cl
   }
   
   override method reaccionMala(){
-    game.removeTickEvent(self)
     emocion = enojado
     self.robar() 
     game.schedule(1000, {adminCliente.retirarCliente(self)})
+    //Para darle tiepo al cliente a reaccionar
   }
 
   method robar(){
