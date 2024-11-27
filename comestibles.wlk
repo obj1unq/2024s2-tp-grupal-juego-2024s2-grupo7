@@ -39,8 +39,16 @@ class Masa inherits Ingrediente( image = "maasa_inicial.png", imgProcesadoFinal 
     }
 
     override method eliminarConIngredientes(){
-        ingredientes.forEach({i => game.removeVisual(i)})
+        self.ocultarIngredientes()
         ingredientes.clear()
+    }
+
+    method ocultarIngredientes(){
+        ingredientes.forEach({i => game.removeVisual(i)})
+    }
+
+    method mostrarIngredientes(){
+        ingredientes.forEach({i => game.addVisual(i)})
     }
 
     override method precio(){
@@ -105,13 +113,13 @@ object cruda inherits Coccion(imgCoccion = "masa_procesada.png"){
     }
 }
 
-object dorada inherits Coccion(imgCoccion = "piza_dorada.png"){
+object dorada inherits Coccion(imgCoccion = "masa_dorada.png"){
     override method quemarUnPoquito(masa){
         masa.estado(quemada)    
     }
 }
 
-object quemada inherits Coccion(imgCoccion = "piza_quemada.png") {
+object quemada inherits Coccion(imgCoccion = "masa_quemada.png") {
     override method quemarUnPoquito(masa){} //no hace nada porque es el último estado
 }
 
