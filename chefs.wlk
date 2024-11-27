@@ -41,16 +41,5 @@ class Chef inherits Persona {
 
      mueble.procesarIngredientes()
     }
-
-//al final no los usaron cuando se hizo la parte de cliente
-  //   method preguntarPedido() {
-  //   self.validarPreguntarPedido()
-  //   ubicacion.clienteAqui(self.dondeApunta()).decirPedido()
-  // }
-
-  // method validarPreguntarPedido(){
-  //   if(not ubicacion.hayClienteAqui(self.dondeApunta())){ 
-  //     self.error("no hay ningun cliente aqui")
-  //   }
-  // }
+    
 }
