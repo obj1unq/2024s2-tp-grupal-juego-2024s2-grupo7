@@ -75,3 +75,7 @@ class MuebleParaCocinar inherits Mueble{ //horno y mesada, la mesada procesa
     return content.integraIngredintes()
   }
 }
+
+/*class MuebleHitbox {
+
+}*/

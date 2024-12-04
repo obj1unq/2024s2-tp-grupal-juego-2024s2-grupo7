@@ -65,6 +65,10 @@ const sep10 = new MuebleSeparador(position = game.at(6,25))
 const deco1 = new MesaDeco(position = game.at(22,12))
 const deco2 = new MesaDeco(position = game.at(49,12))
 
+//interfaz
+//const cartelHorno2 = new Cartel(position = game.at(108,70), objeto = horno2)
+//const cartelHorno1 = new Cartel(position = game.at(77,70), objeto = horno1)
+//const cartelCliente = new Cartel(position = game.at(96,36), objeto = horno1)
 
 object youWin {
   const property image = "victoria.png"
@@ -75,3 +79,5 @@ object youLose {
   const property image = "derrota.png"
   const property position = game.at(53,41)
 }
+
+

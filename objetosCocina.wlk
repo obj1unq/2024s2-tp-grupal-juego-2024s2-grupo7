@@ -1,3 +1,4 @@
+import adminCartel.*
 import mueblesBase.*
 import personaBase.*
 import comestibles.*
@@ -60,8 +61,25 @@ class Horno inherits MuebleParaCocinar(image = "hornoParaPizza.png") {
   }
 
    method cocinar() { 
-    game.onTick(2500, "cocinarContenido", {contenido.serCocinada()})
+    game.onTick(4000, "cocinarContenido", {self.cocinarPizza()})
   } 
+
+  method cocinarPizza() {
+    contenido.serCocinada()
+    adminCartel.nuevoCartel(self, 1500, "text_box.png")
+  }
+
+  method posicionCartel() {
+      return self.position().up(7).right(6)
+    }
+
+  method textoCartel() {
+    return "              La pizza
+                        fue cocinada!
+                        
+                        
+                        "
+  }
   
  }
 

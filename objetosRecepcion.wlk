@@ -1,3 +1,4 @@
+import adminCartel.*
 import mueblesBase.*
 import mapaObjetos.*
 import wollok.game.*
@@ -36,6 +37,28 @@ object caja {
 
   method recibirTip(tip){
     self.recibir(tip)
+  }
+
+  method textoCartel() {
+      return ""
+    }
+
+  method texto() {
+      return "Todavia falta 
+      recolectar: " + self.cuantoFalta() + "$"
+  }
+
+  method posicionCartel() {
+      return game.at(76,36)
+  }
+
+  method posicionTexto() {
+      return game.at(80,38)
+  }
+
+  method anunciarCuantoFalta() {
+    adminCartel.nuevoCartel(self, 3000, "text_box.png")
+    adminCartel.nuevoTexto(self, 3000)
   }
 
 }
