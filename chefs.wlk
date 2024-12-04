@@ -49,7 +49,7 @@ class Chef inherits Persona {
     }
 
     method decirCuantoFalta() {
-      game.say(self, "Todavia falta recolectar " + fondos.cuantoFalta() + "$")
+      fondos.anunciarCuantoFalta()
     }
     
 }

@@ -1,3 +1,4 @@
+import adminCartel.*
 import personaBase.*
 import comestibles.*
 import objetosRecepcion.*
@@ -35,12 +36,35 @@ class Cliente inherits Persona(position = game.at(88,20)){
                         [self.ingredienteRandom()] + [self.ingredienteRandom()] 
     }
 
+    method textoCartel() {
+      return ""
+    }
+
+    method texto() {
+      return self.pedidoAString()
+    }
+
+    method posicionCartel() {
+      return game.at(96,36)
+    }
+
+    method posicionTexto() {
+      return game.at(107,41)
+    }
+
     method anunciarPedido() { 
-      game.say(self, self.pedidoAString())
+      adminCartel.nuevoCartel(self, 5000, "text_box_big.png")
+      adminCartel.nuevoTexto(self, 5000)
     }
     
     method pedidoAString() { 
-      return "Quiero una pizza con " + self.pedidoQueEspero().join(", ") + ", por favor!"
+      return "Quiero una pizza con ".concat(self.ingredienteAString(0)).concat(",
+       ").concat(self.ingredienteAString(1)).concat(", ").concat(self.ingredienteAString(2)).concat(", 
+       ").concat(self.ingredienteAString(3) ).concat(", por favor!")
+    }
+
+    method ingredienteAString(indice) {
+      return (pedidoQueEspero.get(indice).toString())
     }
 
     method pedidoQueEspero() {
@@ -75,7 +99,8 @@ class Cliente inherits Persona(position = game.at(88,20)){
     }
 
     method ingredienteRandom() {
-      return [ingredienteAceituna, ingredienteQueso, ingredienteAtun, ingredienteHongo].anyOne()
+      return [ingredienteAceituna, ingredienteQueso, ingredienteAtun, ingredienteHongo,
+              ingredienteHuevo, ingredienteTomate].anyOne()
     }
 
     method reaccionarAPedido() {
