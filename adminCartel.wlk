@@ -1,4 +1,6 @@
 import mapaObjetos.*
+import wollok.game.*
+
 
 object adminCartel {
 
