@@ -17,7 +17,8 @@ import wollok.game.*
 const restaurante1 = new Restaurante(muebles= [
 estacionTomate,estacionMasa,estacionQueso,estacionAceituna,estacionHongo,estacionHuevo,estacionAtun,
 mesada1,mesada2,mesada3,mesada4,mesada5,mesada6,horno1,horno2,tacho,
-
+mesadaHit1, mesadaHit2, mesadaHit3, mesadaHit4, mesadaHit5, mesadaHit6, mesadaHit7, mesadaHit8, mesadaHit9, mesadaHit10,
+tachoHitbox1, tachoHitbox2, tachoHitbox3, tachoHitbox4,
 caja,sep1,mostrador,sep2,sep3,sep4,sep5,sep6,sep7,sep8,sep9,sep10
 
 ])
@@ -35,6 +36,36 @@ const mesada2 = new Mesada(position = game.at(56 ,63))
 const horno1 = new Horno(position = game.at(71,63)) 
 const mesada3 = new Mesada(position = game.at(87,63)) 
 const horno2 = new Horno(position = game.at(102,63)) 
+
+const mesadaHit1 = new MesadaHitbox(position = game.at(37,63), muebleMadre = mesada1)
+const mesadaHit2 = new MesadaHitbox(position = game.at(38,63), muebleMadre = mesada1)
+const mesadaHit3 = new MesadaHitbox(position = game.at(39,63), muebleMadre = mesada1)
+const mesadaHit4 = new MesadaHitbox(position = game.at(40,63), muebleMadre = mesada1)
+const mesadaHit5 = new MesadaHitbox(position = game.at(35,63), muebleMadre = mesada1)
+const mesadaHit6 = new MesadaHitbox(position = game.at(34,63), muebleMadre = mesada1)
+const mesadaHit7 = new MesadaHitbox(position = game.at(33,63), muebleMadre = mesada1)
+const mesadaHit8 = new MesadaHitbox(position = game.at(32,63), muebleMadre = mesada1)
+const mesadaHit9 = new MesadaHitbox(position = game.at(31,63), muebleMadre = mesada1)
+const mesadaHit10 = new MesadaHitbox(position = game.at(38,63), muebleMadre = mesada1)
+
+const tachoHitbox1 = new MesadaHitbox(position = game.at(45,65), muebleMadre = mesada1)
+const tachoHitbox2 = new MesadaHitbox(position = game.at(46,65), muebleMadre = mesada1)
+const tachoHitbox3 = new MesadaHitbox(position = game.at(48,65), muebleMadre = mesada1)
+const tachoHitbox4 = new MesadaHitbox(position = game.at(49,65), muebleMadre = mesada1)
+
+const mesadaHit11 = new MesadaHitbox(position = game.at(38,63), muebleMadre = mesada2)
+const mesadaHit12 = new MesadaHitbox(position = game.at(38,63), muebleMadre = mesada2)
+const mesadaHit13 = new MesadaHitbox(position = game.at(38,63), muebleMadre = mesada2)
+const mesadaHit14 = new MesadaHitbox(position = game.at(38,63), muebleMadre = mesada2)
+const mesadaHit15 = new MesadaHitbox(position = game.at(38,63), muebleMadre = mesada2)
+const mesadaHit16 = new MesadaHitbox(position = game.at(38,63), muebleMadre = mesada2)
+const mesadaHit17 = new MesadaHitbox(position = game.at(38,63), muebleMadre = mesada2)
+const mesadaHit18 = new MesadaHitbox(position = game.at(38,63), muebleMadre = mesada2)
+const mesadaHit19 = new MesadaHitbox(position = game.at(38,63), muebleMadre = mesada2)
+const mesadaHit20 = new MesadaHitbox(position = game.at(38,63), muebleMadre = mesada2)
+const mesadaHit21 = new MesadaHitbox(position = game.at(38,63), muebleMadre = mesada2)
+
+
 //queso factory game.at(116, 63)
 
 
@@ -80,4 +111,18 @@ object youLose {
   const property position = game.at(53,41)
 }
 
+class MuebleHitbox {
+  const property position = null
+  const muebleMadre = null
 
+  method usarse(chef) {
+    muebleMadre.usarse(chef)
+  }
+}
+
+class MesadaHitbox inherits MuebleHitbox {
+
+  method procesarIngredientes() {
+    muebleMadre.procesarIngredientes()
+  }
+}
